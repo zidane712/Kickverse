@@ -108,18 +108,16 @@ difficultyButtons.forEach((button) => {
 });
 
 startGameButton.addEventListener("click", () => {
-  if (chosenMode !== "Penalty Shootout") {
-    alert("That game mode is coming soon. Choose Penalty Shootout.");
-    return;
-  }
+  if (chosenMode === "Penalty Shootout") {
+    document.querySelector("#difficulty-name").textContent =
+        `${chosenDifficulty} Bot`;
 
-  document.querySelector("#difficulty-name").textContent =
-    `${chosenDifficulty} Bot`;
-
-  showScreen(penaltyScreen);
-  resetGame();
+    showScreen(penaltyScreen);
+    resetGame();
+} else {
+    alert(`${chosenMode} mode is coming in the next update!`);
+}
 });
-
 shotButtons.forEach((button) => {
   button.addEventListener("click", () => {
     if (gameFinished) {
