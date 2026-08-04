@@ -823,3 +823,41 @@ button:active,
 .play-card {
   animation: cardGlow 2.5s ease-in-out infinite;
 }
+/* ===== REALISTIC PENALTY PITCH ===== */
+
+.penalty-area {
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #18763d 0px,
+            #18763d 95px,
+            #1e8b49 95px,
+            #1e8b49 190px
+        );
+}
+
+.penalty-area::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.10) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(255,255,255,.10) 2px, transparent 2px);
+    background-size:70px 70px;
+    opacity:.25;
+    pointer-events:none;
+}
+
+.penalty-area::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at center,
+        rgba(255,255,255,.08),
+        transparent 65%);
+    pointer-events:none;
+}
