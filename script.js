@@ -395,3 +395,14 @@ function updateStats() {
 }
 
 updateStats();
+// Let each player choose their KickVerse name
+let playerName = localStorage.getItem("kickversePlayerName");
+
+if (!playerName) {
+  playerName = prompt("Choose your KickVerse player name:")?.trim() || "Chief Creator";
+  localStorage.setItem("kickversePlayerName", playerName);
+}
+
+document.querySelectorAll("h1, h2, h3, p, span").forEach((item) => {
+  item.innerHTML = item.innerHTML.replaceAll("Chief Creator", playerName);
+});
