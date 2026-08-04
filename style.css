@@ -829,7 +829,7 @@ button:active,
     position: relative;
     overflow: hidden;
     border-radius: 22px;
-    background: url("54FED17D-673B-4D27-B689-45EED8E50D8C.png") center center / cover no-repeat;
+  background: url("pitch.png") center center / cover no-repeat;
 }
 
 .penalty-area::before{
