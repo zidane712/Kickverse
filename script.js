@@ -114,6 +114,8 @@ startGameButton.addEventListener("click", () => {
 
     showScreen(penaltyScreen);
     resetGame();
+} else if (chosenMode === "Quick Match") {
+    showScreen(matchScreen);
 } else {
     alert(`${chosenMode} mode is coming in the next update!`);
 }
@@ -133,7 +135,8 @@ function showScreen(screenToShow) {
     homeScreen,
     modeScreen,
     penaltyScreen,
-    resultsScreen
+    matchScreen,
+resultsScreen
   ];
 
   screens.forEach((screen) => {
