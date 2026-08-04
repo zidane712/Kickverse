@@ -829,14 +829,7 @@ button:active,
     position: relative;
     overflow: hidden;
     border-radius: 22px;
-    background:
-        repeating-linear-gradient(
-            90deg,
-            #18763d 0px,
-            #18763d 95px,
-            #1e8b49 95px,
-            #1e8b49 190px
-        );
+    background: url("54FED17D-673B-4D27-B689-45EED8E50D8C.png") center center / cover no-repeat;
 }
 
 .penalty-area::before{
