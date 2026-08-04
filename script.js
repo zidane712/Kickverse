@@ -15,8 +15,8 @@ let gameFinished = false;
 const homeScreen = document.querySelector("#home-screen");
 const modeScreen = document.querySelector("#mode-screen");
 const penaltyScreen = document.querySelector("#penalty-screen");
+const matchScreen = document.querySelector("#match-screen");
 const resultsScreen = document.querySelector("#results-screen");
-
 const playButton = document.querySelector("#play-button");
 const backHomeButton = document.querySelector("#back-home");
 const backModesButton = document.querySelector("#back-modes");
