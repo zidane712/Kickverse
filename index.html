@@ -299,7 +299,58 @@
 
   </main>
 
+<!-- MATCH SCREEN -->
+<main id="match-screen" class="screen hidden">
 
+  <header class="top-bar">
+    <button id="back-match-modes" class="back-button">
+      ← Modes
+    </button>
+
+    <div class="page-title">
+      <h1>Quick Match</h1>
+      <p>Kick FC vs Thunder United</p>
+    </div>
+  </header>
+
+  <section class="match-scoreboard">
+    <div class="match-team">
+      <span>🔵</span>
+      <strong>Kick FC</strong>
+      <span id="home-match-score">0</span>
+    </div>
+
+    <div class="match-clock">
+      <strong><span id="match-minute">0</span>'</strong>
+      <small>Match Time</small>
+    </div>
+
+    <div class="match-team">
+      <span>🔴</span>
+      <strong>Thunder United</strong>
+      <span id="away-match-score">0</span>
+    </div>
+  </section>
+
+  <section class="match-pitch">
+    <div class="match-ball">⚽</div>
+    <div id="match-commentary">
+      Kick-off! Choose your move.
+    </div>
+  </section>
+
+  <section class="match-controls">
+    <button id="match-pass">🔄 Pass</button>
+    <button id="match-attack">⚡ Attack</button>
+    <button id="match-shoot">🥅 Shoot</button>
+    <button id="match-defend">🛡️ Defend</button>
+  </section>
+
+  <button id="finish-match" class="main-button hidden">
+    Finish Match
+  </button>
+
+</main>
   <!-- RESULTS SCREEN -->
   <main id="results-screen" class="screen hidden">
 
