@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>KickVerse</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- HOME SCREEN -->
+  <main id="home-screen" class="screen">
+
+    <header class="top-bar">
+
+      <section class="profile">
+        <div class="badge">KV</div>
+
+        <div>
+          <h1>Chief Creator</h1>
+          <p>⭐ Level <span id="level">1</span></p>
+
+          <div class="xp-bar">
+            <div id="xp-fill"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="money-bar">
+        <div>🪙 <span id="coins">500</span></div>
+        <div>💎 <span id="gems">0</span></div>
+        <div>⭐ <span id="xp">0</span> XP</div>
+      </section>
+
+    </header>
+
+    <section class="welcome-area">
+
+      <div class="mascot">
+        ⚽😊
+      </div>
+
+      <div class="speech-bubble">
+        <strong>Welcome back, Chief Creator!</strong>
+        <p>Ready to become a football legend?</p>
+      </div>
+
+      <div class="daily-panels">
+
+        <button id="daily-reward" class="daily-card reward-card">
+          <span>🎁</span>
+          <strong>Daily Reward</strong>
+          <small id="reward-text">Ready to claim!</small>
+        </button>
+
+        <button class="daily-card challenge-card">
+          <span>🎯</span>
+          <strong>Daily Challenge</strong>
+          <small>Score 3 goals: <span id="challenge">0</span>/3</small>
+        </button>
+
+      </div>
+
+    </section>
+
+    <section class="home-menu">
+
+      <button id="play-button" class="menu-card play-card">
+        <span>⚽</span>
+        <h2>Play</h2>
+        <p>Play matches against bots and test your skills.</p>
+        <strong>Play Now</strong>
+      </button>
+
+      <button class="menu-card training-card coming-soon">
+        <span>🥅</span>
+        <h2>Training</h2>
+        <p>Improve your football skills and learn new moves.</p>
+        <strong>Coming Soon</strong>
+      </button>
+
+      <button class="menu-card club-card coming-soon">
+        <span>🏟️</span>
+        <h2>My Club</h2>
+        <p>Build your team and upgrade your stadium.</p>
+        <strong>Coming Soon</strong>
+      </button>
+
+      <button class="menu-card market-card coming-soon">
+        <span>🃏</span>
+        <h2>Market</h2>
+        <p>Buy, sell and trade football players.</p>
+        <strong>Coming Soon</strong>
+      </button>
+
+    </section>
+
+    <section class="bottom-panels">
+
+      <div class="season-panel">
+        <span>🏆</span>
+
+        <div>
+          <h3>KickVerse Season 1</h3>
+          <p>Win games and climb the rankings.</p>
+        </div>
+      </div>
+
+      <div class="club-panel">
+        <span>🛡️</span>
+
+        <div>
+          <h3>Kick FC</h3>
+          <p>Club rating: 60</p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- GAME MODE SCREEN -->
+  <main id="mode-screen" class="screen hidden">
+
+    <header class="top-bar">
+
+      <button id="back-home" class="back-button">
+        ← Back
+      </button>
+
+      <div class="page-title">
+        <h1>Choose Game Mode</h1>
+        <p>How do you want to play today?</p>
+      </div>
+
+      <section class="money-bar">
+        <div>🪙 <span class="coins-copy">500</span></div>
+        <div>⭐ <span class="xp-copy">0</span> XP</div>
+      </section>
+
+    </header>
+
+    <section class="mode-grid">
+
+      <button
+        class="mode-card penalty selected"
+        data-mode="Penalty Shootout"
+      >
+        <span>🥅</span>
+        <h2>Penalty Shootout</h2>
+        <p>Take five penalties against the goalkeeper.</p>
+        <strong>Select</strong>
+      </button>
+
+      <button
+        class="mode-card match"
+        data-mode="Match Mode"
+      >
+        <span>⚽</span>
+        <h2>Match Mode</h2>
+        <p>Play a quick match against a bot.</p>
+        <strong>Coming Soon</strong>
+      </button>
+
+      <button
+        class="mode-card tournament"
+        data-mode="Tournaments"
+      >
+        <span>🏆</span>
+        <h2>Tournaments</h2>
+        <p>Compete in special tournaments.</p>
+        <strong>Coming Soon</strong>
+      </button>
+
+    </section>
+
+    <section class="difficulty-panel">
+
+      <h2>Choose Bot Difficulty</h2>
+
+      <div class="difficulty-grid">
+
+        <button
+          class="difficulty active"
+          data-difficulty="Beginner"
+        >
+          🙂 Beginner
+        </button>
+
+        <button
+          class="difficulty"
+          data-difficulty="Skilled"
+        >
+          😐 Skilled
+        </button>
+
+        <button
+          class="difficulty"
+          data-difficulty="Pro"
+        >
+          😠 Pro
+        </button>
+
+        <button
+          class="difficulty"
+          data-difficulty="Legend"
+        >
+          👑 Legend
+        </button>
+
+      </div>
+
+    </section>
+
+    <p id="selection-text">
+      Penalty Shootout · Beginner Bot
+    </p>
+
+    <button id="start-game" class="main-button">
+      Start Game
+    </button>
+
+  </main>
+
+
+  <!-- PENALTY SCREEN -->
+  <main id="penalty-screen" class="screen hidden">
+
+    <header class="top-bar">
+
+      <button id="back-modes" class="back-button">
+        ← Modes
+      </button>
+
+      <div class="page-title">
+        <h1>Penalty Shootout</h1>
+        <p id="difficulty-name">Beginner Bot</p>
+      </div>
+
+      <section class="money-bar">
+        <div>🪙 <span class="coins-copy">500</span></div>
+        <div>⭐ <span class="xp-copy">0</span> XP</div>
+      </section>
+
+    </header>
+
+    <section class="scoreboard">
+
+      <div>
+        <small>You</small>
+        <strong id="player-score">0</strong>
+      </div>
+
+      <div>
+        <small>Shot</small>
+        <strong><span id="shot-number">1</span>/5</strong>
+      </div>
+
+      <div>
+        <small>Bot</small>
+        <strong id="bot-score">0</strong>
+      </div>
+
+    </section>
+
+    <section class="stadium">
+
+      <div class="goal">
+        <div id="goalkeeper">🧤</div>
+      </div>
+
+      <div id="ball">⚽</div>
+
+    </section>
+
+    <p id="game-message">
+      Choose where you want to shoot!
+    </p>
+
+    <section id="shot-buttons" class="shot-grid">
+
+      <button data-shot="top-left">↖️ Top Left</button>
+      <button data-shot="top-middle">⬆️ Top Middle</button>
+      <button data-shot="top-right">↗️ Top Right</button>
+
+      <button data-shot="bottom-left">↙️ Bottom Left</button>
+      <button data-shot="bottom-middle">⬇️ Bottom Middle</button>
+      <button data-shot="bottom-right">↘️ Bottom Right</button>
+
+    </section>
+
+  </main>
+
+
+  <!-- RESULTS SCREEN -->
+  <main id="results-screen" class="screen hidden">
+
+    <section class="results-box">
+
+      <div id="result-icon">🏆</div>
+
+      <h1 id="result-title">Victory!</h1>
+
+      <p id="result-message">
+        Brilliant performance, Chief!
+      </p>
+
+      <div class="rewards">
+
+        <div>
+          🪙
+          <strong id="coins-won">+100</strong>
+          <small>Coins</small>
+        </div>
+
+        <div>
+          ⭐
+          <strong id="xp-won">+50</strong>
+          <small>XP</small>
+        </div>
+
+      </div>
+
+      <button id="play-again" class="main-button">
+        Play Again
+      </button>
+
+      <button id="return-home" class="back-button">
+        Return Home
+      </button>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
