@@ -407,3 +407,83 @@ if (!playerName) {
 document.querySelectorAll("h1, h2, h3, p, span").forEach((item) => {
   item.innerHTML = item.innerHTML.replaceAll("Chief Creator", playerName);
 });
+const backMatchModesButton = document.querySelector("#back-match-modes");
+const matchPassButton = document.querySelector("#match-pass");
+const matchAttackButton = document.querySelector("#match-attack");
+const matchShootButton = document.querySelector("#match-shoot");
+const matchDefendButton = document.querySelector("#match-defend");
+
+const matchMinuteText = document.querySelector("#match-minute");
+const homeMatchScoreText = document.querySelector("#home-match-score");
+const awayMatchScoreText = document.querySelector("#away-match-score");
+const matchCommentary = document.querySelector("#match-commentary");
+
+let matchMinute = 0;
+let homeMatchScore = 0;
+let awayMatchScore = 0;
+
+backMatchModesButton.addEventListener("click", () => {
+  showScreen(modeScreen);
+});
+
+matchPassButton.addEventListener("click", () => {
+  matchMinute += 5;
+  matchCommentary.textContent = "Great pass! Kick FC keeps possession.";
+  updateMatchScreen();
+});
+
+matchAttackButton.addEventListener("click", () => {
+  matchMinute += 7;
+
+  if (Math.random() < 0.45) {
+    matchCommentary.textContent = "Kick FC breaks forward into the box!";
+  } else {
+    awayMatchScore += 1;
+    matchCommentary.textContent = "Thunder United wins the ball and scores!";
+  }
+
+  updateMatchScreen();
+});
+
+matchShootButton.addEventListener("click", () => {
+  matchMinute += 6;
+
+  if (Math.random() < 0.55) {
+    homeMatchScore += 1;
+    matchCommentary.textContent = "GOAL! Kick FC scores!";
+  } else {
+    matchCommentary.textContent = "The goalkeeper saves the shot!";
+  }
+
+  updateMatchScreen();
+});
+
+matchDefendButton.addEventListener("click", () => {
+  matchMinute += 5;
+
+  if (Math.random() < 0.65) {
+    matchCommentary.textContent = "Brilliant defending! Danger cleared.";
+  } else {
+    awayMatchScore += 1;
+    matchCommentary.textContent = "Thunder United gets through and scores!";
+  }
+
+  updateMatchScreen();
+});
+
+function updateMatchScreen() {
+  if (matchMinute >= 90) {
+    matchMinute = 90;
+    matchCommentary.textContent =
+      `Full time! Kick FC ${homeMatchScore}-${awayMatchScore} Thunder United`;
+
+    matchPassButton.disabled = true;
+    matchAttackButton.disabled = true;
+    matchShootButton.disabled = true;
+    matchDefendButton.disabled = true;
+  }
+
+  matchMinuteText.textContent = matchMinute;
+  homeMatchScoreText.textContent = homeMatchScore;
+  awayMatchScoreText.textContent = awayMatchScore;
+}
