@@ -115,6 +115,7 @@ startGameButton.addEventListener("click", () => {
     showScreen(penaltyScreen);
     resetGame();
 } else if (chosenMode === "Match Mode") {
+    matchRewardsGiven = false;
     showScreen(matchScreen);
 } else {
     alert(`${chosenMode} mode is coming in the next update!`);
