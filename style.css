@@ -854,3 +854,23 @@ button:active,
         transparent 65%);
     pointer-events:none;
 }
+.pitch-image {
+    width: 100%;
+    max-width: 500px;
+    display: block;
+    margin: 0 auto 15px;
+    border-radius: 12px;
+}
+
+.match-pitch {
+    position: relative;
+    text-align: center;
+}
+
+.match-ball {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+}
