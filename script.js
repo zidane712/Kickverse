@@ -485,6 +485,17 @@ if (!matchRewardsGiven) {
     xp += 50;
     updateStats();
     saveGame();
+  document.querySelector("#result-title").textContent =
+    homeMatchScore > awayMatchScore ? "Victory!" :
+    homeMatchScore === awayMatchScore ? "Draw!" : "Defeat";
+
+document.querySelector("#result-message").textContent =
+    `Kick FC ${homeMatchScore}-${awayMatchScore} Thunder United`;
+
+document.querySelector("#coins-won").textContent = "+100";
+document.querySelector("#xp-won").textContent = "+50";
+
+showScreen(resultsScreen);
     matchRewardsGiven = true;
 }
     matchPassButton.disabled = true;
