@@ -487,3 +487,21 @@ function updateMatchScreen() {
   homeMatchScoreText.textContent = homeMatchScore;
   awayMatchScoreText.textContent = awayMatchScore;
 }
+function loadGame() {
+  coins = Number(localStorage.getItem("kickverseCoins")) || 500;
+  gems = Number(localStorage.getItem("kickverseGems")) || 0;
+  xp = Number(localStorage.getItem("kickverseXP")) || 0;
+  level = Number(localStorage.getItem("kickverseLevel")) || 1;
+  dailyGoals = Number(localStorage.getItem("kickverseDailyGoals")) || 0;
+
+  updateStats();
+}
+function saveGame() {
+  localStorage.setItem("kickverseCoins", coins);
+  localStorage.setItem("kickverseGems", gems);
+  localStorage.setItem("kickverseXP", xp);
+  localStorage.setItem("kickverseLevel", level);
+  localStorage.setItem("kickverseDailyGoals", dailyGoals);
+}
+loadGame();
+window.addEventListener("pagehide", saveGame);
