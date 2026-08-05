@@ -421,7 +421,7 @@ const matchCommentary = document.querySelector("#match-commentary");
 let matchMinute = 0;
 let homeMatchScore = 0;
 let awayMatchScore = 0;
-
+let matchRewardsGiven = false;
 backMatchModesButton.addEventListener("click", () => {
   showScreen(modeScreen);
 });
@@ -476,7 +476,13 @@ function updateMatchScreen() {
     matchMinute = 90;
     matchCommentary.textContent =
       `Full time! Kick FC ${homeMatchScore}-${awayMatchScore} Thunder United`;
-
+if (!matchRewardsGiven) {
+    coins += 100;
+    xp += 50;
+    updateStats();
+    saveGame();
+    matchRewardsGiven = true;
+}
     matchPassButton.disabled = true;
     matchAttackButton.disabled = true;
     matchShootButton.disabled = true;
