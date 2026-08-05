@@ -481,8 +481,19 @@ function updateMatchScreen() {
     matchCommentary.textContent =
       `Full time! Kick FC ${homeMatchScore}-${awayMatchScore} Thunder United`;
 if (!matchRewardsGiven) {
-    coins += 100;
-    xp += 50;
+let coinReward = 20;
+let xpReward = 10;
+
+if (homeMatchScore > awayMatchScore) {
+    coinReward = 100;
+    xpReward = 50;
+} else if (homeMatchScore === awayMatchScore) {
+    coinReward = 50;
+    xpReward = 25;
+}
+
+coins += coinReward;
+xp += xpReward;
     updateStats();
     saveGame();
   document.querySelector("#result-title").textContent =
@@ -492,9 +503,8 @@ if (!matchRewardsGiven) {
 document.querySelector("#result-message").textContent =
     `Kick FC ${homeMatchScore}-${awayMatchScore} Thunder United`;
 
-document.querySelector("#coins-won").textContent = "+100";
-document.querySelector("#xp-won").textContent = "+50";
-
+document.querySelector("#coins-won").textContent = `+${coinReward}`;
+document.querySelector("#xp-won").textContent = `+${xpReward}`;
 showScreen(resultsScreen);
     matchRewardsGiven = true;
 }
