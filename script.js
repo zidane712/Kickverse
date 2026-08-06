@@ -426,6 +426,17 @@ let matchMinute = 0;
 let homeMatchScore = 0;
 let awayMatchScore = 0;
 let matchRewardsGiven = false;
+const matchBall = document.querySelector(".match-ball");
+
+function moveBall(position) {
+    if (position === "left") {
+        matchBall.style.left = "25%";
+    } else if (position === "center") {
+        matchBall.style.left = "50%";
+    } else if (position === "right") {
+        matchBall.style.left = "75%";
+    }
+}
 backMatchModesButton.addEventListener("click", () => {
   showScreen(modeScreen);
 });
@@ -433,6 +444,7 @@ backMatchModesButton.addEventListener("click", () => {
 matchPassButton.addEventListener("click", () => {
   matchMinute += 5;
   matchCommentary.textContent = "Great pass! Kick FC keeps possession.";
+  moveBall("left");
   updateMatchScreen();
 });
 
@@ -441,6 +453,7 @@ matchAttackButton.addEventListener("click", () => {
 
   if (Math.random() < 0.45) {
     matchCommentary.textContent = "Kick FC breaks forward into the box!";
+    moveBall("right");
   } else {
     awayMatchScore += 1;
     matchCommentary.textContent = "Thunder United wins the ball and scores!";
@@ -455,6 +468,7 @@ matchShootButton.addEventListener("click", () => {
   if (Math.random() < 0.55) {
     homeMatchScore += 1;
     matchCommentary.textContent = "GOAL! Kick FC scores!";
+    moveBall("right");
   } else {
     matchCommentary.textContent = "The goalkeeper saves the shot!";
   }
@@ -467,6 +481,7 @@ matchDefendButton.addEventListener("click", () => {
 
   if (Math.random() < 0.65) {
     matchCommentary.textContent = "Brilliant defending! Danger cleared.";
+    moveBall("left");
   } else {
     awayMatchScore += 1;
     matchCommentary.textContent = "Thunder United gets through and scores!";
