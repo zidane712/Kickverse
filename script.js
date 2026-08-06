@@ -493,6 +493,7 @@ matchDefendButton.addEventListener("click", () => {
 function updateMatchScreen() {
   if (matchMinute >= 90) {
     matchMinute = 90;
+    moveBall("center");
     matchCommentary.textContent =
       `Full time! Kick FC ${homeMatchScore}-${awayMatchScore} Thunder United`;
 if (!matchRewardsGiven) {
