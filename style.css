@@ -2056,3 +2056,99 @@ button:active,
 #home-screen .bottom-panels > div {
   min-height: 115px !important;
 }
+/* ===== FINAL COMPACT HOME DASHBOARD ===== */
+
+#home-screen {
+  grid-template-columns: 260px minmax(420px, 1fr) 300px !important;
+  grid-template-rows: 80px 210px 330px 120px !important;
+  column-gap: 18px !important;
+  row-gap: 10px !important;
+  padding: 12px 28px 85px !important;
+}
+
+/* Top logo + currency */
+#home-screen .home-hero {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  transform: scale(0.7) !important;
+  transform-origin: top left !important;
+}
+
+#home-screen .money-bar {
+  grid-column: 2 / 4 !important;
+  grid-row: 1 !important;
+  align-self: start !important;
+}
+
+/* Profile */
+#home-screen .profile {
+  grid-column: 1 !important;
+  grid-row: 2 !important;
+  height: 200px !important;
+  transform: none !important;
+}
+
+/* Centre welcome */
+#home-screen .mascot {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  align-self: start !important;
+  transform: scale(0.65) !important;
+  margin-top: -15px !important;
+}
+
+#home-screen .speech-bubble {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  align-self: end !important;
+  max-width: 420px !important;
+  height: 90px !important;
+  transform: none !important;
+}
+
+/* Daily cards */
+#home-screen .daily-panels {
+  grid-column: 3 !important;
+  grid-row: 2 !important;
+  height: 200px !important;
+  transform: none !important;
+  gap: 8px !important;
+}
+
+#home-screen .daily-card {
+  min-height: 94px !important;
+  padding: 10px !important;
+}
+
+/* Main buttons */
+#home-screen .home-menu {
+  grid-column: 1 / 4 !important;
+  grid-row: 3 !important;
+  height: 330px !important;
+  margin: 0 !important;
+}
+
+#home-screen .training-card,
+#home-screen .club-card {
+  min-height: 330px !important;
+}
+
+#home-screen .play-card {
+  min-height: 195px !important;
+}
+
+#home-screen .market-card {
+  min-height: 125px !important;
+}
+
+/* Bottom row */
+#home-screen .bottom-panels {
+  grid-column: 1 / 4 !important;
+  grid-row: 4 !important;
+  height: 120px !important;
+}
+
+#home-screen .bottom-panels > div {
+  min-height: 110px !important;
+  padding: 12px !important;
+}
