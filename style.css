@@ -900,3 +900,206 @@ button:active,
   opacity: 0.45;
   cursor: not-allowed;
 }
+/* ========================================
+   KICKVERSE HOME SCREEN V2
+======================================== */
+
+#home-screen {
+  min-height: 100vh;
+  padding: 18px;
+  box-sizing: border-box;
+
+  background:
+    radial-gradient(circle at 50% 30%,
+      rgba(0, 153, 255, 0.28),
+      transparent 38%),
+    linear-gradient(
+      180deg,
+      #03152f 0%,
+      #062b55 55%,
+      #071c32 100%
+    );
+
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* KickVerse title */
+.home-hero {
+  text-align: center;
+  padding: 14px 10px 20px;
+}
+
+.home-brand {
+  font-size: clamp(32px, 6vw, 58px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: white;
+  text-shadow:
+    0 3px 0 #087fd1,
+    0 6px 18px rgba(0, 170, 255, 0.55);
+}
+
+.home-tagline {
+  margin: 7px 0 0;
+  font-size: 16px;
+  color: #bfe8ff;
+  font-weight: 600;
+}
+
+/* Top player information */
+#home-screen .top-bar {
+  background: rgba(2, 15, 35, 0.88);
+  border: 2px solid #168ee8;
+  border-radius: 18px;
+  padding: 14px;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.35),
+    inset 0 0 20px rgba(0, 140, 255, 0.08);
+}
+
+/* Coins / Gems / XP */
+#home-screen .money-bar > div {
+  background: #071c34;
+  border: 1px solid #1d79b7;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-weight: 800;
+
+  box-shadow:
+    inset 0 0 12px rgba(0, 153, 255, 0.12);
+}
+/* Home menu cards */
+#home-screen .home-menu {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+#home-screen .menu-card {
+  min-height: 150px;
+  border: 2px solid #168ee8;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #0d4f91, #071c42);
+  color: white;
+  padding: 20px;
+  text-align: left;
+  cursor: pointer;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.35),
+    inset 0 0 20px rgba(0, 153, 255, 0.10);
+}
+
+#home-screen .menu-card span {
+  font-size: 34px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+#home-screen .menu-card h2 {
+  margin: 4px 0;
+  font-size: 25px;
+}
+
+#home-screen .menu-card p {
+  margin: 8px 0;
+  opacity: 0.8;
+}
+
+#home-screen .play-card {
+  background: linear-gradient(145deg, #1472c9, #082b61);
+  transform: scale(1.02);
+}
+
+#home-screen .menu-card:active {
+  transform: scale(0.97);
+}
+
+#home-screen .coming-soon {
+  opacity: 0.7;
+}
+/* Daily Reward + Daily Challenge */
+#home-screen .daily-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+#home-screen .daily-card {
+  min-height: 95px;
+  border: 2px solid #168ee8;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #0b3768, #071c3f);
+  color: white;
+  padding: 16px;
+  text-align: left;
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.30),
+    inset 0 0 16px rgba(0, 153, 255, 0.10);
+}
+
+#home-screen .daily-card > span {
+  font-size: 30px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+#home-screen .daily-card strong {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+#home-screen .daily-card small {
+  color: #bfe8ff;
+  font-size: 14px;
+}
+
+#home-screen .reward-card {
+  border-color: #ffd34d;
+  background: linear-gradient(145deg, #5b4610, #14264a);
+}
+
+#home-screen .challenge-card {
+  border-color: #36d98b;
+  background: linear-gradient(145deg, #0c5944, #10294c);
+}
+
+#home-screen .daily-card:active {
+  transform: scale(0.97);
+}
+/* Season + Club panels */
+#home-screen .season-card,
+#home-screen .club-card {
+  border: 2px solid #168ee8;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #0a2a52, #06152e);
+  color: white;
+  padding: 16px;
+  margin-top: 16px;
+
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.30),
+    inset 0 0 16px rgba(0, 153, 255, 0.08);
+}
+
+#home-screen .season-card h3,
+#home-screen .club-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+#home-screen .season-card p,
+#home-screen .club-card p {
+  margin: 4px 0;
+  color: #c8eaff;
+}
+
+#home-screen .season-card strong,
+#home-screen .club-card strong {
+  color: #ffffff;
+}
