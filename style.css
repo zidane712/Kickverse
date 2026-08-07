@@ -2152,3 +2152,46 @@ button:active,
   min-height: 110px !important;
   padding: 12px !important;
 }
+/* ===== FIX HOME CARD COLLISIONS ===== */
+
+#home-screen .daily-panels {
+  height: auto !important;
+  min-height: 220px !important;
+  gap: 12px !important;
+  overflow: visible !important;
+}
+
+#home-screen .daily-card {
+  min-height: 105px !important;
+  height: auto !important;
+  padding: 12px 14px !important;
+  overflow: hidden !important;
+}
+
+#home-screen .challenge-card {
+  min-height: 120px !important;
+}
+
+#home-screen .challenge-card p {
+  margin: 4px 0 !important;
+  line-height: 1.2 !important;
+}
+
+#home-screen .market-card {
+  min-height: 125px !important;
+  overflow: hidden !important;
+  padding-bottom: 18px !important;
+}
+
+#home-screen .market-card p {
+  margin-bottom: 6px !important;
+  line-height: 1.25 !important;
+}
+
+#home-screen .home-menu {
+  height: 340px !important;
+}
+
+#home-screen .bottom-panels {
+  margin-top: 10px !important;
+}
