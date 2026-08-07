@@ -176,7 +176,26 @@ function resetGame() {
   resetPositions();
   disableShotButtons(false);
 }
+function movePenaltyBall(direction) {
+  const penaltyBall = document.querySelector("#ball");
 
+  const positions = {
+    "top-left": { left: "30%", top: "25%" },
+    "top-middle": { left: "50%", top: "25%" },
+    "top-right": { left: "70%", top: "25%" },
+    "bottom-left": { left: "30%", top: "45%" },
+    "bottom-middle": { left: "50%", top: "45%" },
+    "bottom-right": { left: "70%", top: "45%" }
+  };
+
+  const target = positions[direction];
+
+  if (target) {
+    penaltyBall.style.transition = "all 0.5s ease";
+    penaltyBall.style.left = target.left;
+    penaltyBall.style.top = target.top;
+  }
+}
 function takeShot(playerChoice) {
   disableShotButtons(true);
 
@@ -192,7 +211,7 @@ function takeShot(playerChoice) {
   const goalkeeperChoice =
     chooseGoalkeeperDirection(playerChoice, choices);
 
-  moveBall(playerChoice);
+  movePenaltyBall(playerChoice);
   moveGoalkeeper(goalkeeperChoice);
 
   const saved = playerChoice === goalkeeperChoice;
