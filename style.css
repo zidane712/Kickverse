@@ -1617,3 +1617,107 @@ button:active,
   font-weight: 900;
   color: white !important;
 }
+/* ===== KICKVERSE HOME SCREEN LAYOUT FIX ===== */
+
+#home-screen {
+  min-height: 100vh;
+  padding: 20px 28px 90px;
+  overflow-x: hidden;
+}
+
+#home-screen .home-hero {
+  margin-bottom: 10px;
+}
+
+#home-screen .welcome-area {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#home-screen .mascot {
+  margin: 0 0 10px;
+}
+
+#home-screen .speech-bubble {
+  margin: 0;
+  text-align: center;
+}
+
+#home-screen .daily-panels {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 2;
+}
+
+#home-screen .daily-card {
+  width: 100%;
+  min-height: 120px;
+  padding: 18px;
+}
+
+#home-screen .home-menu {
+  display: grid;
+  grid-template-columns: 1fr 1.55fr 1fr;
+  grid-template-areas:
+    "training play club"
+    "training market club";
+  gap: 16px;
+  align-items: stretch;
+  margin-top: 10px;
+}
+
+#home-screen .training-card {
+  grid-area: training;
+}
+
+#home-screen .play-card {
+  grid-area: play;
+  min-height: 190px;
+}
+
+#home-screen .club-card {
+  grid-area: club;
+}
+
+#home-screen .market-card {
+  grid-area: market;
+  min-height: 130px;
+}
+
+#home-screen .menu-card {
+  height: auto;
+  margin: 0;
+}
+
+#home-screen .bottom-panels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+
+#home-screen .bottom-panels > div {
+  min-height: 145px;
+}
+
+@media (max-width: 900px) {
+  #home-screen .daily-panels {
+    position: static;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 15px;
+  }
+
+  #home-screen .home-menu {
+    grid-template-columns: 1fr 1.4fr 1fr;
+  }
+}
