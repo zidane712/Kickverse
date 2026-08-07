@@ -2400,3 +2400,99 @@ button:active,
   height: 120px !important;
   min-height: 120px !important;
 }
+/* ===== FINAL HOME SCREEN CLEANUP ===== */
+
+#home-screen {
+  grid-template-columns: 280px minmax(430px, 1fr) 320px !important;
+  grid-template-rows: 80px 300px 350px 130px !important;
+  column-gap: 18px !important;
+  row-gap: 14px !important;
+}
+
+/* Keep profile in its own space */
+#home-screen .profile {
+  grid-column: 1 !important;
+  grid-row: 2 !important;
+  height: 280px !important;
+  margin: 0 !important;
+  align-self: start !important;
+}
+
+/* Welcome + mascot in the middle */
+#home-screen .speech-bubble {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  align-self: start !important;
+  width: 420px !important;
+  height: 90px !important;
+  margin: 0 !important;
+}
+
+#home-screen .mascot {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  align-self: center !important;
+  justify-self: center !important;
+  transform: scale(0.7) !important;
+  margin: 25px 0 0 !important;
+}
+
+/* Daily cards stay completely above My Club */
+#home-screen .daily-panels {
+  grid-column: 3 !important;
+  grid-row: 2 !important;
+  display: grid !important;
+  grid-template-rows: 135px 145px !important;
+  gap: 12px !important;
+  height: 292px !important;
+  min-height: 292px !important;
+  margin: 0 !important;
+  position: static !important;
+}
+
+#home-screen .daily-card,
+#home-screen .challenge-card {
+  height: 100% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  position: static !important;
+  overflow: hidden !important;
+}
+
+/* Main four cards */
+#home-screen .home-menu {
+  grid-column: 1 / 4 !important;
+  grid-row: 3 !important;
+  height: 350px !important;
+  margin: 0 !important;
+}
+
+#home-screen .training-card,
+#home-screen .club-card {
+  height: 350px !important;
+  min-height: 350px !important;
+}
+
+#home-screen .play-card {
+  height: 205px !important;
+  min-height: 205px !important;
+}
+
+#home-screen .market-card {
+  height: 133px !important;
+  min-height: 133px !important;
+  overflow: hidden !important;
+}
+
+/* Bottom row */
+#home-screen .bottom-panels {
+  grid-column: 1 / 4 !important;
+  grid-row: 4 !important;
+  height: 125px !important;
+  margin: 0 !important;
+}
+
+#home-screen .bottom-panels > div {
+  min-height: 120px !important;
+  height: 120px !important;
+}
