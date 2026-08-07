@@ -2232,3 +2232,49 @@ button:active,
 #home-screen .bottom-panels {
   margin-top: 18px !important;
 }
+/* ===== HOME GRID POSITIONING FIX ===== */
+
+/* Keep the right-hand cards in their own column */
+#home-screen .daily-panels {
+  position: relative !important;
+  z-index: 2 !important;
+  margin-bottom: 18px !important;
+}
+
+/* Prevent challenge from floating over My Club */
+#home-screen .challenge-card {
+  position: relative !important;
+  top: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  margin-bottom: 16px !important;
+}
+
+/* My Club must stay below/clear of challenge */
+#home-screen .club-card {
+  position: relative !important;
+  z-index: 1 !important;
+  padding-top: 36px !important;
+}
+
+/* Give Market enough room for its description */
+#home-screen .market-card {
+  height: auto !important;
+  min-height: 150px !important;
+  padding-bottom: 28px !important;
+  overflow: visible !important;
+}
+
+#home-screen .market-card p {
+  position: static !important;
+  margin: 8px 0 0 !important;
+  padding: 0 !important;
+  line-height: 1.3 !important;
+}
+
+/* Push bottom four cards below Market */
+#home-screen .bottom-panels {
+  position: relative !important;
+  clear: both !important;
+  margin-top: 30px !important;
+}
