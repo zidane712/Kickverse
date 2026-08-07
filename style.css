@@ -1849,3 +1849,107 @@ button:active,
     width: 100% !important;
   }
 }
+/* ===== HOME SCREEN MASTER GRID ===== */
+
+#home-screen {
+  display: grid !important;
+  grid-template-columns: 300px minmax(420px, 1fr) 340px !important;
+  grid-template-rows: auto auto auto auto auto !important;
+  column-gap: 24px !important;
+  row-gap: 16px !important;
+  align-items: center !important;
+  max-width: 1500px !important;
+  margin: 0 auto !important;
+  padding: 22px 34px 90px !important;
+}
+
+/* Let children of these sections join the main grid */
+#home-screen .top-bar,
+#home-screen .welcome-area {
+  display: contents !important;
+}
+
+/* Logo */
+#home-screen .home-hero {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  margin: 0 !important;
+  align-self: start !important;
+}
+
+/* Coins / gems / XP */
+#home-screen .money-bar {
+  grid-column: 2 / 4 !important;
+  grid-row: 1 !important;
+  justify-self: end !important;
+  position: static !important;
+  margin: 0 !important;
+}
+
+/* Profile card */
+#home-screen .profile {
+  grid-column: 1 !important;
+  grid-row: 2 / 4 !important;
+  position: static !important;
+  width: 100% !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+/* Character */
+#home-screen .mascot {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  position: static !important;
+  margin: 0 !important;
+  justify-self: center !important;
+  transform: none !important;
+}
+
+/* Welcome message */
+#home-screen .speech-bubble {
+  grid-column: 2 !important;
+  grid-row: 3 !important;
+  position: static !important;
+  width: 100% !important;
+  max-width: 430px !important;
+  margin: 0 !important;
+  justify-self: center !important;
+  transform: none !important;
+}
+
+/* Reward + challenge on the right */
+#home-screen .daily-panels {
+  grid-column: 3 !important;
+  grid-row: 2 / 4 !important;
+  position: static !important;
+  width: 100% !important;
+  margin: 0 !important;
+  transform: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+}
+
+#home-screen .daily-card {
+  position: static !important;
+  width: 100% !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+/* Main game buttons */
+#home-screen .home-menu {
+  grid-column: 1 / 4 !important;
+  grid-row: 4 !important;
+  width: 100% !important;
+  margin: 8px 0 0 !important;
+}
+
+/* Bottom cards */
+#home-screen .bottom-panels {
+  grid-column: 1 / 4 !important;
+  grid-row: 5 !important;
+  width: 100% !important;
+  margin: 4px 0 0 !important;
+}
