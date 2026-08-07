@@ -380,6 +380,7 @@ function moveGoalkeeper(choice) {
 
 function resetPositions() {
   ball.style.left = "50%";
+  ball.style.top = "";
   ball.style.bottom = "28px";
   ball.style.transform =
     "translateX(-50%) scale(1)";
