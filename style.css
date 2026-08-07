@@ -1331,3 +1331,117 @@ button:active,
   background: linear-gradient(90deg, #18a9ff, #47e2ff);
   box-shadow: 0 0 12px rgba(44, 205, 255, 0.55);
 }
+/* Compact the top dashboard */
+#home-screen {
+  grid-template-columns: 260px minmax(420px, 1fr) 290px;
+  gap: 14px 18px;
+}
+
+#home-screen .home-hero {
+  padding: 6px 10px;
+}
+
+#home-screen .profile {
+  min-height: 210px;
+  padding: 16px;
+}
+
+#home-screen .welcome-area {
+  min-height: 210px;
+  padding: 10px 18px;
+  justify-content: flex-start;
+}
+
+#home-screen .mascot {
+  font-size: 72px;
+  margin-bottom: 8px;
+}
+
+#home-screen .speech-bubble {
+  padding: 12px 16px;
+  max-width: 320px;
+}
+
+#home-screen .daily-panels {
+  gap: 10px;
+}
+
+#home-screen .daily-card {
+  min-height: 82px;
+  padding: 12px;
+}
+
+#home-screen .home-menu {
+  margin-top: 4px;
+}
+
+#home-screen .menu-card {
+  min-height: 135px;
+}
+/* Main home menu layout */
+#home-screen .home-menu {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr 1fr;
+  grid-template-areas:
+    "training play club"
+    ". market .";
+  gap: 14px;
+  align-items: stretch;
+}
+
+#home-screen .training-card {
+  grid-area: training;
+}
+
+#home-screen .play-card {
+  grid-area: play;
+  min-height: 220px;
+  transform: scale(1.03);
+}
+
+#home-screen .club-card {
+  grid-area: club;
+}
+
+#home-screen .market-card {
+  grid-area: market;
+  min-height: 115px;
+}
+
+#home-screen .menu-card {
+  padding: 18px;
+}
+
+#home-screen .menu-card h2 {
+  margin: 8px 0;
+}
+
+#home-screen .menu-card p {
+  margin: 6px 0 12px;
+}
+/* Tablet / iPad home screen */
+@media (max-width: 1100px) {
+  #home-screen {
+    padding: 18px 22px 30px;
+  }
+
+  #home-screen .home-menu {
+    grid-template-columns: 1fr 1.5fr 1fr;
+    grid-template-areas:
+      "training play club"
+      ". market .";
+    gap: 12px;
+  }
+
+  #home-screen .play-card {
+    min-height: 190px;
+  }
+
+  #home-screen .market-card {
+    min-height: 100px;
+  }
+
+  #home-screen .menu-card {
+    min-height: 0;
+  }
+}
