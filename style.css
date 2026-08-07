@@ -2000,3 +2000,59 @@ button:active,
 #home-screen .market-card {
   min-height: 135px !important;
 }
+/* ===== HOME SCREEN HEIGHT REDUCTION ===== */
+
+#home-screen {
+  padding-top: 12px !important;
+  row-gap: 4px !important;
+}
+
+#home-screen .home-hero {
+  transform: scale(0.82);
+  transform-origin: top left;
+  margin-bottom: -35px !important;
+}
+
+#home-screen .profile {
+  transform: scale(0.88) !important;
+  transform-origin: top left !important;
+}
+
+#home-screen .mascot {
+  transform: scale(0.78) !important;
+  transform-origin: center !important;
+  margin-top: -25px !important;
+  margin-bottom: -25px !important;
+}
+
+#home-screen .speech-bubble {
+  transform: scale(0.9) !important;
+  margin-top: -20px !important;
+}
+
+#home-screen .daily-panels {
+  transform: scale(0.88) !important;
+  transform-origin: top right !important;
+  margin-bottom: -45px !important;
+}
+
+#home-screen .home-menu {
+  margin-top: -35px !important;
+}
+
+#home-screen .training-card,
+#home-screen .club-card {
+  min-height: 290px !important;
+}
+
+#home-screen .play-card {
+  min-height: 175px !important;
+}
+
+#home-screen .market-card {
+  min-height: 105px !important;
+}
+
+#home-screen .bottom-panels > div {
+  min-height: 115px !important;
+}
