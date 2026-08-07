@@ -2195,3 +2195,40 @@ button:active,
 #home-screen .bottom-panels {
   margin-top: 10px !important;
 }
+/* ===== FINAL CARD OVERLAP FIX ===== */
+
+#home-screen .daily-panels {
+  min-height: 250px !important;
+  height: 250px !important;
+}
+
+#home-screen .daily-card {
+  flex: 1 1 0 !important;
+  min-height: 118px !important;
+}
+
+#home-screen .challenge-card {
+  min-height: 125px !important;
+}
+
+#home-screen .club-card {
+  padding-top: 28px !important;
+}
+
+#home-screen .market-card {
+  min-height: 135px !important;
+  padding-bottom: 24px !important;
+}
+
+#home-screen .market-card p {
+  display: block !important;
+  overflow: visible !important;
+}
+
+#home-screen .home-menu {
+  height: 355px !important;
+}
+
+#home-screen .bottom-panels {
+  margin-top: 18px !important;
+}
