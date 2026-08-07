@@ -1953,3 +1953,50 @@ button:active,
   width: 100% !important;
   margin: 4px 0 0 !important;
 }
+/* ===== HOME SCREEN COMPACT SPACING FIX ===== */
+
+#home-screen {
+  row-gap: 8px !important;
+}
+
+#home-screen .home-hero {
+  margin-bottom: 0 !important;
+}
+
+#home-screen .profile {
+  align-self: start !important;
+}
+
+#home-screen .mascot {
+  margin-top: -8px !important;
+  margin-bottom: -8px !important;
+}
+
+#home-screen .speech-bubble {
+  margin-top: -6px !important;
+}
+
+#home-screen .daily-panels {
+  align-self: start !important;
+}
+
+#home-screen .home-menu {
+  margin-top: 0 !important;
+}
+
+#home-screen .bottom-panels {
+  margin-top: 0 !important;
+}
+
+#home-screen .training-card,
+#home-screen .club-card {
+  min-height: 360px !important;
+}
+
+#home-screen .play-card {
+  min-height: 210px !important;
+}
+
+#home-screen .market-card {
+  min-height: 135px !important;
+}
