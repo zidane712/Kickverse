@@ -877,3 +877,26 @@ button:active,
     transform: translate(-50%, -50%);
     font-size: 32px;
 }
+/* Match Mode action buttons */
+#match-screen button {
+  padding: 14px 22px;
+  margin: 6px;
+  border: 2px solid #28a8ff;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #1765a8, #0b3768);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  min-width: 140px;
+  min-height: 55px;
+}
+
+#match-screen button:active {
+  transform: scale(0.96);
+}
+
+#match-screen button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
