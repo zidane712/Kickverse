@@ -1103,3 +1103,231 @@ button:active,
 #home-screen .club-card strong {
   color: #ffffff;
 }
+/* ========================================
+   HOME SCREEN DESKTOP LAYOUT
+======================================== */
+
+#home-screen {
+  display: grid;
+  grid-template-columns: 280px minmax(420px, 1fr) 320px;
+  grid-template-areas:
+    "brand money money"
+    "profile welcome daily"
+    "menu menu menu"
+    "bottom bottom bottom";
+  gap: 18px;
+  align-items: start;
+}
+
+/* Let profile + currency bar join the main grid */
+#home-screen .top-bar {
+  display: contents;
+}
+
+#home-screen .home-hero {
+  grid-area: brand;
+  text-align: left;
+  align-self: center;
+}
+
+#home-screen .profile {
+  grid-area: profile;
+  background: rgba(2, 15, 35, 0.92);
+  border: 2px solid #168ee8;
+  border-radius: 20px;
+  padding: 20px;
+  min-height: 250px;
+}
+
+#home-screen .money-bar {
+  grid-area: money;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#home-screen .welcome-area {
+  grid-area: welcome;
+  text-align: center;
+  min-height: 270px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#home-screen .daily-panels {
+  grid-area: daily;
+  grid-template-columns: 1fr;
+  margin-top: 0;
+}
+
+#home-screen .home-menu {
+  grid-area: menu;
+}
+
+#home-screen .bottom-panels {
+  grid-area: bottom;
+}
+/* Welcome / mascot panel */
+#home-screen .welcome-area {
+  position: relative;
+  background:
+    radial-gradient(circle at center,
+      rgba(0, 153, 255, 0.22),
+      transparent 62%);
+  border-radius: 22px;
+  padding: 24px;
+}
+
+#home-screen .mascot {
+  font-size: 90px;
+  line-height: 1;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
+}
+
+#home-screen .speech-bubble {
+  background: rgba(2, 15, 35, 0.9);
+  border: 2px solid #168ee8;
+  border-radius: 18px;
+  padding: 16px 20px;
+  max-width: 360px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+}
+
+#home-screen .speech-bubble strong {
+  display: block;
+  font-size: 24px;
+  color: #42b9ff;
+  margin-bottom: 6px;
+}
+/* Big central PLAY card */
+#home-screen .play-card {
+  min-height: 210px;
+  position: relative;
+  background:
+    linear-gradient(145deg, #159cff, #0752b8 65%, #032b68);
+  border: 3px solid #55d7ff;
+  border-radius: 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 0 0 4px rgba(0, 119, 255, 0.25),
+    0 12px 30px rgba(0, 0, 0, 0.4),
+    inset 0 0 28px rgba(120, 225, 255, 0.25);
+}
+
+#home-screen .play-card span {
+  font-size: 62px;
+  margin: 0;
+}
+
+#home-screen .play-card h2 {
+  font-size: 46px;
+  margin: 4px 0;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.45);
+}
+
+#home-screen .play-card p {
+  font-size: 18px;
+  margin: 4px 0 10px;
+}
+
+#home-screen .play-card strong {
+  font-size: 20px;
+}
+/* Arrange main menu like the concept */
+#home-screen .home-menu {
+  grid-template-columns: 1fr 1.7fr 1fr;
+  grid-template-areas:
+    "training play club"
+    ". market .";
+  align-items: stretch;
+}
+
+#home-screen .training-card {
+  grid-area: training;
+}
+
+#home-screen .play-card {
+  grid-area: play;
+}
+
+#home-screen .club-card {
+  grid-area: club;
+}
+
+#home-screen .market-card {
+  grid-area: market;
+  min-height: 115px;
+}
+
+/* Tablet / smaller screens */
+@media (max-width: 900px) {
+  #home-screen {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "brand"
+      "money"
+      "profile"
+      "welcome"
+      "daily"
+      "menu"
+      "bottom";
+  }
+
+  #home-screen .home-menu {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "play play"
+      "training club"
+      "market market";
+  }
+}
+/* Profile card */
+#home-screen .profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+#home-screen .profile-name {
+  font-size: 24px;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+#home-screen .level-badge {
+  display: inline-block;
+  width: fit-content;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffdf4d, #d89b00);
+  color: #1d1600;
+  font-weight: 900;
+  box-shadow: 0 4px 12px rgba(255, 200, 0, 0.25);
+}
+
+#home-screen .xp-bar {
+  width: 100%;
+  height: 14px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #031126;
+  border: 1px solid #177fc7;
+}
+
+#home-screen .xp-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #18a9ff, #47e2ff);
+  box-shadow: 0 0 12px rgba(44, 205, 255, 0.55);
+}
