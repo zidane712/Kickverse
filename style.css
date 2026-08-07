@@ -2278,3 +2278,18 @@ button:active,
   clear: both !important;
   margin-top: 30px !important;
 }
+/* Fix Daily Challenge overlapping My Club */
+
+#home-screen .daily-panels {
+  grid-row: 2 / 4 !important;
+  align-self: start !important;
+  min-height: 270px !important;
+}
+
+#home-screen .challenge-card {
+  margin-bottom: 24px !important;
+}
+
+#home-screen .home-menu {
+  margin-top: 20px !important;
+}
