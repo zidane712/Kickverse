@@ -1445,3 +1445,52 @@ button:active,
     min-height: 0;
   }
 }
+/* Make the upper dashboard compact */
+#home-screen {
+  grid-template-rows: auto auto auto auto;
+}
+
+#home-screen .profile,
+#home-screen .welcome-area,
+#home-screen .daily-panels {
+  align-self: start;
+}
+
+#home-screen .profile {
+  min-height: 175px;
+}
+
+#home-screen .welcome-area {
+  min-height: 175px;
+  max-height: 210px;
+}
+
+#home-screen .mascot {
+  font-size: 58px;
+}
+
+#home-screen .speech-bubble {
+  padding: 9px 14px;
+}
+
+#home-screen .speech-bubble strong {
+  font-size: 20px;
+}
+
+#home-screen .daily-card {
+  min-height: 70px;
+  padding: 9px 12px;
+}
+
+#home-screen .daily-card > span {
+  font-size: 23px;
+  margin-bottom: 2px;
+}
+
+#home-screen .daily-card strong {
+  font-size: 16px;
+}
+
+#home-screen .daily-card small {
+  font-size: 12px;
+}
