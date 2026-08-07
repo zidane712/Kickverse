@@ -1494,3 +1494,126 @@ button:active,
 #home-screen .daily-card small {
   font-size: 12px;
 }
+/* ===== KICKVERSE NEW HOME SCREEN ===== */
+
+#home-screen {
+  min-height: 100vh;
+  padding: 20px 28px 110px;
+  background:
+    linear-gradient(rgba(2, 18, 35, 0.28), rgba(2, 18, 35, 0.38)),
+    url("pitch.png") center center / cover no-repeat;
+}
+
+#home-screen .home-menu {
+  display: grid;
+  grid-template-columns: 1fr 1.65fr 1fr;
+  grid-template-areas:
+    "training play club"
+    "training market club";
+  gap: 16px;
+  max-width: 1120px;
+  margin: 20px auto;
+  align-items: stretch;
+}
+
+#home-screen .training-card {
+  grid-area: training;
+}
+
+#home-screen .play-card {
+  grid-area: play;
+}
+
+#home-screen .club-card {
+  grid-area: club;
+}
+
+#home-screen .market-card {
+  grid-area: market;
+}
+
+#home-screen .menu-card {
+  border: 2px solid #159cff;
+  border-radius: 20px;
+  background: rgba(2, 20, 38, 0.9);
+  color: white;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+#home-screen .play-card {
+  min-height: 190px;
+  background: linear-gradient(135deg, #078cff, #0751bd);
+  border: 4px solid #50c9ff;
+  transform: scale(1.03);
+}
+
+#home-screen .play-card h2 {
+  font-size: 3rem;
+  margin: 8px 0;
+}
+
+#home-screen .play-card span {
+  font-size: 3.4rem;
+}
+
+#home-screen .play-card p {
+  font-size: 1.15rem;
+}
+/* Bottom dashboard cards */
+#home-screen .bottom-panels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  max-width: 1120px;
+  margin: 18px auto 0;
+}
+
+#home-screen .season-panel,
+#home-screen .club-panel,
+#home-screen .packs-panel,
+#home-screen .news-panel {
+  min-height: 125px;
+  padding: 16px;
+  border: 2px solid #168ee8;
+  border-radius: 18px;
+  background: linear-gradient(
+    145deg,
+    rgba(8, 45, 82, 0.96),
+    rgba(3, 19, 39, 0.96)
+  );
+  color: white;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.35),
+    inset 0 0 18px rgba(0, 153, 255, 0.08);
+}
+
+#home-screen .bottom-panels > div > span {
+  font-size: 38px;
+}
+
+#home-screen .bottom-panels h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+#home-screen .bottom-panels p {
+  margin: 4px 0;
+  font-size: 13px;
+  color: #c8eaff;
+}
+
+#home-screen .bottom-panels strong {
+  display: block;
+  margin-top: 8px;
+  color: #42b9ff;
+  font-size: 12px;
+}
+
+#home-screen .rating-number {
+  font-size: 28px !important;
+  font-weight: 900;
+  color: white !important;
+}
