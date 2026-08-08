@@ -1,18 +1,25 @@
+/* =========================================================
+   KICKVERSE - FULL CLEAN STYLESHEET
+   ========================================================= */
+
 * {
   box-sizing: border-box;
 }
 
 :root {
-  --dark-blue: #031638;
-  --navy: #06265a;
-  --blue: #0d63bd;
-  --bright-blue: #2ba7ff;
-  --light-blue: #7bd8ff;
-  --yellow: #ffd83d;
-  --green: #25b92c;
-  --dark-green: #087522;
+  --navy: #03152b;
+  --navy-2: #061f3b;
+  --panel: rgba(3, 20, 36, 0.94);
+  --panel-2: rgba(5, 34, 48, 0.95);
+  --blue: #159cff;
+  --cyan: #61d8ff;
+  --bright-blue: #22adff;
+  --yellow: #ffd84c;
+  --green: #62e131;
+  --purple: #b85cff;
   --white: #ffffff;
-  --shadow: rgba(0, 0, 0, 0.4);
+  --muted: #b9c9db;
+  --shadow: rgba(0, 0, 0, 0.48);
 }
 
 html {
@@ -22,21 +29,26 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  overflow-x: hidden;
-  color: white;
   font-family: Arial, Helvetica, sans-serif;
-  background:
-    radial-gradient(circle at top, #258fd8 0%, #07508f 35%, #042650 70%, #031638 100%);
+  color: var(--white);
+  background: #03152b;
+  overflow-x: hidden;
 }
 
 button {
-  color: inherit;
   font: inherit;
-  cursor: pointer;
+}
+
+button,
+.menu-card,
+.daily-card,
+.mode-card,
+.difficulty {
+  -webkit-tap-highlight-color: transparent;
 }
 
 button:active {
-  transform: scale(0.97);
+  transform: scale(0.985);
 }
 
 .hidden {
@@ -44,617 +56,1368 @@ button:active {
 }
 
 .screen {
-  width: min(100%, 1180px);
+  width: 100%;
   min-height: 100vh;
-  margin: 0 auto;
-  padding: 18px;
 }
 
-.top-bar {
+/* =========================================================
+   HOME SCREEN
+   ========================================================= */
+
+#home-screen {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 18px 28px 92px;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 18, 42, 0.18) 0%,
+      rgba(0, 24, 48, 0.28) 38%,
+      rgba(0, 50, 30, 0.70) 70%,
+      rgba(0, 38, 18, 0.92) 100%
+    ),
+    url("pitch.png") center bottom / cover no-repeat;
+}
+
+/* dark stadium atmosphere */
+#home-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 11%, rgba(130, 206, 255, 0.20), transparent 22%),
+    radial-gradient(circle at 8% 30%, rgba(255, 255, 255, 0.13), transparent 14%),
+    radial-gradient(circle at 91% 27%, rgba(255, 255, 255, 0.13), transparent 14%);
+  z-index: 0;
+}
+
+#home-screen > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- top brand ---------- */
+
+.home-hero {
+  position: absolute;
+  top: 18px;
+  left: 32px;
+  width: 230px;
+  z-index: 5;
+}
+
+.home-brand {
+  font-size: 36px;
+  line-height: 0.92;
+  font-weight: 1000;
+  font-style: italic;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  color: white;
+  text-shadow:
+    0 3px 0 #0b7fd1,
+    0 6px 12px rgba(0, 0, 0, 0.65);
+}
+
+.home-tagline {
+  display: none;
+}
+
+/* ---------- top bar ---------- */
+
+#home-screen .top-bar {
+  height: 72px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 16px;
-  border: 3px solid var(--bright-blue);
-  border-radius: 22px;
-  background: rgba(3, 22, 56, 0.96);
-  box-shadow: 0 10px 25px var(--shadow);
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0;
 }
 
 .profile {
+  position: absolute;
+  left: 34px;
+  top: 124px;
+  width: 290px;
+  height: 330px;
+  padding: 20px 20px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(118, 181, 231, 0.55);
+
+  background:
+    linear-gradient(
+      160deg,
+      rgba(4, 19, 36, 0.98),
+      rgba(5, 31, 48, 0.97)
+    );
+
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.48),
+    inset 0 0 22px rgba(47, 159, 236, 0.05);
+
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 14px;
+  text-align: center;
 }
 
-.badge {
+.profile::before {
+  content: "YOUR PROFILE";
+  display: block;
+  width: 100%;
+  margin-bottom: 18px;
+  font-size: 17px;
+  font-weight: 900;
+  color: #c3c7ce;
+}
+
+.profile .badge {
+  width: 116px;
+  height: 116px;
+  margin: 0 auto 18px;
+
+  border-radius: 26% 26% 42% 42%;
+  border: 4px solid #d4e6f6;
+
   display: grid;
   place-items: center;
-  width: 74px;
-  height: 74px;
-  border: 3px solid white;
-  border-radius: 20px;
-  background: linear-gradient(#268fff, #073a78);
-  font-size: 24px;
-  font-weight: 900;
-  box-shadow: 0 6px 15px var(--shadow);
+
+  font-size: 34px;
+  font-weight: 1000;
+  font-style: italic;
+
+  color: #fff;
+
+  background:
+    linear-gradient(
+      155deg,
+      #1b456b,
+      #081a2c 55%,
+      #0f2e49
+    );
+
+  box-shadow:
+    inset 0 0 16px rgba(255, 255, 255, 0.11),
+    0 6px 16px rgba(0, 0, 0, 0.40);
 }
 
 .profile h1 {
-  margin: 0;
-  font-size: 26px;
+  margin: 0 0 8px;
+  font-size: 24px;
 }
 
 .profile p {
-  margin: 5px 0;
-  color: var(--yellow);
+  margin: 2px 0;
+  font-size: 19px;
   font-weight: 800;
 }
 
+.profile p:first-of-type {
+  color: var(--yellow);
+}
+
 .xp-bar {
-  width: 220px;
-  height: 14px;
+  width: 100%;
+  height: 15px;
+  margin-top: 16px;
+  border-radius: 999px;
   overflow: hidden;
-  border: 2px solid var(--light-blue);
-  border-radius: 20px;
-  background: #020d25;
+  border: 1px solid #163f61;
+  background: #07131f;
 }
 
 #xp-fill {
-  width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, var(--yellow), var(--light-blue));
-  transition: width 0.5s ease;
+  width: 50%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffe15f, #12a8ff);
+  transition: width 0.3s ease;
 }
 
 .money-bar {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
   gap: 10px;
 }
 
-.money-bar div {
-  padding: 11px 15px;
-  border: 2px solid var(--bright-blue);
-  border-radius: 14px;
-  background: #092f69;
-  font-size: 18px;
-  font-weight: 800;
-  box-shadow: 0 5px 12px var(--shadow);
+#home-screen .money-bar {
+  position: absolute;
+  top: 18px;
+  right: 30px;
 }
 
-.welcome-area {
+.money-bar > div {
+  min-width: 105px;
+  height: 52px;
+  padding: 0 16px;
+
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 22px;
-  margin-top: 24px;
+  justify-content: center;
+  gap: 6px;
+
+  border: 1px solid #22567f;
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8, 31, 53, 0.98),
+      rgba(3, 21, 39, 0.98)
+    );
+
+  box-shadow:
+    0 5px 12px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  font-size: 18px;
+  font-weight: 900;
+}
+
+/* ---------- welcome area ---------- */
+
+.welcome-area {
+  position: relative;
+  height: 470px;
+  margin-top: 0;
 }
 
 .mascot {
-  font-size: 105px;
-  filter: drop-shadow(0 12px 8px rgba(0, 0, 0, 0.45));
+  position: absolute;
+  left: 50%;
+  top: 150px;
+  transform: translateX(-50%);
+
+  width: 300px;
+  height: 300px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  font-size: 58px;
+
+  color: transparent;
+  overflow: hidden;
+}
+
+/*
+  Temporary character built with CSS/emoji space.
+  Later we can replace this with an actual mascot PNG.
+*/
+.mascot::before {
+  content: "⚽";
+  display: none;
+}
+
+.mascot::after {
+  content: "🧑🏻‍💼";
+  color: initial;
+  font-size: 220px;
+  line-height: 1;
+  transform: translateY(22px);
+  filter:
+    drop-shadow(0 12px 8px rgba(0, 0, 0, 0.42));
 }
 
 .speech-bubble {
-  max-width: 320px;
-  padding: 18px 20px;
-  border-radius: 20px;
-  color: #062456;
-  background: white;
-  box-shadow: 0 9px 20px var(--shadow);
+  position: absolute;
+  left: 50%;
+  top: 24px;
+  transform: translateX(-50%);
+
+  width: 420px;
+  text-align: center;
+
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
 }
 
 .speech-bubble strong {
-  font-size: 19px;
+  display: block;
+  font-size: 25px;
+  line-height: 1.03;
+  color: white;
+  text-transform: uppercase;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.speech-bubble strong::first-line {
+  color: white;
 }
 
 .speech-bubble p {
-  margin: 7px 0 0;
-  line-height: 1.4;
+  margin: 8px 0 0;
+  color: white;
+  font-size: 17px;
 }
 
+/* ---------- daily cards ---------- */
+
 .daily-panels {
+  position: absolute;
+  top: 94px;
+  right: 32px;
+  width: 325px;
+
   display: flex;
-  gap: 14px;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .daily-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 185px;
-  min-height: 155px;
-  padding: 15px;
-  border: 3px solid rgba(255, 255, 255, 0.34);
-  border-radius: 20px;
-  box-shadow: 0 10px 20px var(--shadow);
+  width: 100%;
+  border-radius: 15px;
+  padding: 14px 16px;
+
+  color: white;
+  text-align: left;
+  cursor: pointer;
+
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  grid-template-rows: auto auto auto;
+  column-gap: 10px;
+
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.42),
+    inset 0 0 18px rgba(255, 255, 255, 0.05);
 }
 
-.daily-card span {
-  font-size: 48px;
+.daily-card > span {
+  grid-row: 1 / 4;
+  align-self: center;
+  justify-self: center;
+  font-size: 58px;
 }
 
 .daily-card strong {
-  margin-top: 8px;
-  font-size: 19px;
+  font-size: 20px;
+  align-self: end;
 }
 
 .daily-card small {
-  margin-top: 7px;
   font-size: 14px;
+  line-height: 1.25;
+  color: #ecf6ff;
+}
+
+.daily-card b,
+.daily-card p {
+  margin: 5px 0 0;
+  font-size: 15px;
 }
 
 .reward-card {
-  background: linear-gradient(#25bf50, #08752c);
+  min-height: 156px;
+
+  border: 2px solid #54c634;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8, 59, 25, 0.96),
+      rgba(4, 34, 31, 0.98)
+    );
+}
+
+.reward-card strong {
+  color: #7dff4a;
+}
+
+.reward-card b {
+  display: block;
+  text-align: center;
+  grid-column: 2;
+
+  padding: 7px 12px;
+  border-radius: 8px;
+
+  color: #071700;
+  background: linear-gradient(180deg, #73f53a, #33b91c);
+
+  font-size: 17px;
 }
 
 .challenge-card {
-  background: linear-gradient(#258ffc, #084b9d);
+  min-height: 154px;
+
+  border: 2px solid #a865ff;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(34, 17, 68, 0.97),
+      rgba(14, 27, 47, 0.98)
+    );
 }
 
+.challenge-card strong {
+  color: #ca7aff;
+}
+
+.challenge-card p {
+  grid-column: 2;
+  font-size: 15px;
+}
+
+/* =========================================================
+   MAIN HOME MENU
+   ========================================================= */
+
 .home-menu {
+  width: calc(100% - 64px);
+  height: 350px;
+  margin: -6px auto 14px;
+
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-  margin-top: 28px;
+  grid-template-columns: 280px minmax(380px, 1fr) 280px;
+  grid-template-rows: 205px 132px;
+  gap: 12px;
 }
 
 .menu-card {
-  min-height: 340px;
-  padding: 22px;
-  border: 4px solid rgba(255, 255, 255, 0.28);
-  border-radius: 25px;
-  text-align: center;
-  box-shadow: 0 12px 24px var(--shadow);
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease;
-}
+  position: relative;
 
-.menu-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--yellow);
-}
+  border: 1px solid #25577a;
+  border-radius: 15px;
 
-.menu-card > span {
-  display: block;
-  font-size: 82px;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      150deg,
+      rgba(4, 30, 39, 0.97),
+      rgba(4, 21, 33, 0.97)
+    );
+
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.40),
+    inset 0 0 16px rgba(38, 171, 255, 0.04);
 }
 
 .menu-card h2 {
-  margin: 15px 0 10px;
-  font-size: 33px;
+  margin: 0;
+  color: var(--bright-blue);
+  font-size: 25px;
   text-transform: uppercase;
 }
 
 .menu-card p {
-  min-height: 70px;
-  line-height: 1.4;
+  margin: 8px 0 0;
+  color: #e3edf5;
+  font-size: 16px;
+  line-height: 1.35;
 }
 
-.menu-card > strong {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 9px 15px;
-  border-radius: 20px;
-  background: rgba(0, 0, 0, 0.28);
-}
+.menu-card > strong:last-child {
+  position: absolute;
+  right: 17px;
+  bottom: 15px;
 
-.play-card {
-  background: linear-gradient(#36ce2d, #087a22);
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+
+  font-size: 31px;
+  color: white;
+
+  background: rgba(12, 81, 132, 0.74);
 }
 
 .training-card {
-  background: linear-gradient(#2698f6, #074a97);
+  grid-column: 1;
+  grid-row: 1 / 3;
+
+  padding: 24px 24px 18px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.training-card > span {
+  font-size: 92px;
+  margin: 10px auto 12px;
+}
+
+.training-card h2 {
+  order: -1;
+  text-align: center;
+}
+
+.play-card {
+  grid-column: 2;
+  grid-row: 1;
+
+  padding: 18px 26px;
+
+  display: grid;
+  grid-template-columns: 145px 1fr;
+  grid-template-rows: 1fr auto;
+
+  align-items: center;
+
+  border: 3px solid #58d5ff;
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #0c8ff1,
+      #0757bb
+    );
+
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, 0.48),
+    0 0 19px rgba(39, 176, 255, 0.44),
+    inset 0 0 22px rgba(255, 255, 255, 0.08);
+}
+
+.play-card > span {
+  grid-row: 1 / 3;
+  font-size: 98px;
+  text-align: center;
+}
+
+.play-card h2 {
+  align-self: end;
+  font-size: 55px;
+  color: white;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 0 4px 5px rgba(0, 0, 0, 0.45);
+}
+
+.play-card p {
+  align-self: start;
+  text-align: center;
+  font-size: 21px;
+  font-style: italic;
+  color: #fff;
 }
 
 .club-card {
-  background: linear-gradient(#f2be1c, #b87800);
+  grid-column: 3;
+  grid-row: 1 / 3;
+
+  padding: 24px 24px 18px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.club-card > span {
+  font-size: 100px;
+  margin: 8px auto 12px;
+}
+
+.club-card h2 {
+  order: -1;
+  text-align: center;
 }
 
 .market-card {
-  background: linear-gradient(#aa48e4, #5d168f);
+  grid-column: 2;
+  grid-row: 2;
+
+  padding: 15px 56px 15px 205px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
+.market-card > span {
+  position: absolute;
+  left: 25px;
+  bottom: 4px;
+  font-size: 98px;
+}
+
+.market-card h2 {
+  font-size: 24px;
+}
+
+.market-card p {
+  margin-top: 6px;
+}
+
+/* =========================================================
+   BOTTOM PANELS
+   ========================================================= */
 
 .bottom-panels {
+  width: calc(100% - 64px);
+  margin: 0 auto;
+
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin-top: 24px;
+  grid-template-columns: 1.08fr 0.92fr 1.08fr 1.08fr;
+  gap: 12px;
 }
 
-.season-panel,
-.club-panel {
+.bottom-panels > div {
+  min-height: 170px;
+  padding: 18px;
+
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 18px;
-  border: 2px solid var(--bright-blue);
+  gap: 14px;
+
+  border-radius: 14px;
+  border: 1px solid #28597a;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(5, 27, 43, 0.98),
+      rgba(7, 46, 54, 0.97)
+    );
+
+  box-shadow:
+    0 9px 22px rgba(0, 0, 0, 0.42),
+    inset 0 0 14px rgba(40, 165, 247, 0.05);
+}
+
+.bottom-panels > div > span {
+  flex: 0 0 auto;
+  font-size: 74px;
+}
+
+.bottom-panels h3 {
+  margin: 0 0 8px;
+  color: var(--bright-blue);
+  font-size: 21px;
+  text-transform: uppercase;
+}
+
+.bottom-panels p {
+  margin: 4px 0;
+  color: #edf3f8;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.bottom-panels strong {
+  display: inline-block;
+  margin-top: 8px;
+  color: #42bfff;
+  font-size: 13px;
+}
+
+.rating-number {
+  font-size: 38px !important;
+  font-weight: 1000;
+  color: #ffd84c !important;
+}
+
+/* =========================================================
+   BOTTOM NAV LOOK
+   created visually with pseudo element
+   ========================================================= */
+
+#home-screen::after {
+  content: "🏠  HOME        ⚽  MATCHES        👥  CLUB        🛒  MARKET        👤  PROFILE";
+
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 20;
+
+  width: 100%;
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 18px;
+
+  color: #d7e2ee;
+  font-size: 17px;
+  font-weight: 900;
+  word-spacing: 18px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(3, 20, 35, 0.98),
+      rgba(1, 11, 22, 0.99)
+    );
+
+  border-top: 1px solid #193c59;
+
+  box-shadow:
+    0 -8px 24px rgba(0, 0, 0, 0.40);
+}
+
+/* =========================================================
+   GAME MODE SCREEN
+   ========================================================= */
+
+#mode-screen,
+#penalty-screen,
+#match-screen,
+#results-screen {
+  min-height: 100vh;
+  padding: 22px 24px 40px;
+
+  color: white;
+
+  background:
+    radial-gradient(circle at top, #104d99 0%, #071c45 45%, #031534 100%);
+}
+
+#mode-screen .top-bar,
+#penalty-screen .top-bar,
+#match-screen .top-bar {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto 24px;
+
+  display: grid;
+  grid-template-columns: 160px 1fr auto;
+  align-items: center;
+  gap: 16px;
+
+  padding: 15px 18px;
+
+  border: 2px solid #2eafff;
   border-radius: 18px;
-  background: rgba(3, 22, 56, 0.94);
-  box-shadow: 0 8px 18px var(--shadow);
-}
 
-.season-panel > span,
-.club-panel > span {
-  font-size: 48px;
-}
-
-.season-panel h3,
-.club-panel h3 {
-  margin: 0;
-  color: var(--yellow);
-}
-
-.season-panel p,
-.club-panel p {
-  margin: 6px 0 0;
-  color: #b9e6ff;
-}
-
-.back-button {
-  padding: 12px 17px;
-  border: 2px solid var(--light-blue);
-  border-radius: 13px;
-  background: var(--navy);
-  font-weight: 800;
+  background: rgba(4, 22, 52, 0.92);
 }
 
 .page-title {
-  flex: 1;
   text-align: center;
 }
 
 .page-title h1 {
   margin: 0;
-  font-size: 35px;
-  text-transform: uppercase;
+  font-size: 32px;
 }
 
 .page-title p {
   margin: 5px 0 0;
-  color: #b8e6ff;
+  color: #c8daf1;
 }
 
+.back-button,
+.main-button {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+
+  color: white;
+  font-weight: 900;
+}
+
+.back-button {
+  padding: 12px 16px;
+  background: #0f477f;
+}
+
+.main-button {
+  padding: 14px 24px;
+  background: linear-gradient(180deg, #49df43, #158d2b);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.30);
+}
+
+/* ---------- mode cards ---------- */
+
 .mode-grid {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto 24px;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin-top: 28px;
+  gap: 20px;
 }
 
 .mode-card {
-  min-height: 330px;
-  padding: 22px;
+  min-height: 390px;
+  padding: 28px;
+
   border: 4px solid transparent;
-  border-radius: 23px;
+  border-radius: 24px;
+
+  color: white;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
   text-align: center;
-  box-shadow: 0 12px 23px var(--shadow);
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease;
-}
 
-.mode-card:hover {
-  transform: translateY(-5px);
-}
-
-.mode-card.selected {
-  border-color: var(--yellow);
-  transform: translateY(-5px);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.35);
 }
 
 .mode-card > span {
-  display: block;
-  font-size: 85px;
+  font-size: 80px;
 }
 
 .mode-card h2 {
-  font-size: 28px;
+  margin: 0;
+  font-size: 30px;
   text-transform: uppercase;
 }
 
 .mode-card p {
-  min-height: 55px;
-  line-height: 1.4;
+  font-size: 18px;
+  line-height: 1.35;
 }
 
 .mode-card strong {
-  display: inline-block;
-  padding: 9px 14px;
-  border-radius: 18px;
-  background: rgba(0, 0, 0, 0.3);
+  padding: 11px 20px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.28);
+  font-size: 18px;
 }
 
-.penalty {
-  background: linear-gradient(#2dbb38, #086f28);
+.mode-card.penalty {
+  background: linear-gradient(145deg, #25bb38, #087b2b);
 }
 
-.match {
-  background: linear-gradient(#258cff, #084798);
+.mode-card.match {
+  background: linear-gradient(145deg, #2f92ff, #1253aa);
 }
 
-.tournament {
-  background: linear-gradient(#a347dc, #5b168d);
+.mode-card.tournament {
+  background: linear-gradient(145deg, #b84de0, #7622aa);
 }
+
+.mode-card.selected {
+  border-color: #ffe04e;
+}
+
+/* ---------- difficulty ---------- */
 
 .difficulty-panel {
-  margin-top: 25px;
+  max-width: 1300px;
+  margin: 0 auto 22px;
   padding: 20px;
-  border: 3px solid var(--bright-blue);
+
+  border: 3px solid #2eafff;
   border-radius: 20px;
-  background: rgba(3, 22, 56, 0.95);
-  text-align: center;
+
+  background: rgba(4, 21, 54, 0.90);
 }
 
 .difficulty-panel h2 {
-  margin-top: 0;
-  color: var(--yellow);
+  margin: 0 0 18px;
+  text-align: center;
+  color: #ffd84c;
   text-transform: uppercase;
 }
 
 .difficulty-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 14px;
 }
 
 .difficulty {
-  min-height: 85px;
-  padding: 14px 8px;
-  border: 3px solid var(--bright-blue);
-  border-radius: 16px;
-  background: #092f69;
-  font-size: 17px;
-  font-weight: 800;
+  min-height: 82px;
+  border: 3px solid #2eafff;
+  border-radius: 17px;
+
+  color: white;
+  background: #123d79;
+
+  font-weight: 900;
+  font-size: 18px;
+  cursor: pointer;
 }
 
 .difficulty.active {
-  border-color: var(--yellow);
-  background: linear-gradient(#25ae38, #087028);
-  transform: translateY(-4px);
+  border-color: #ffe04e;
+  background: #1ca337;
 }
 
 #selection-text {
-  margin: 22px 0 10px;
   text-align: center;
   font-size: 19px;
-  font-weight: 800;
+  font-weight: 900;
 }
 
-.main-button {
+#mode-screen #start-game {
   display: block;
-  width: min(100%, 360px);
-  margin: 18px auto;
-  padding: 17px;
-  border: 3px solid #b8ff88;
-  border-radius: 16px;
-  color: white;
-  background: linear-gradient(#48e016, #168d00);
-  font-size: 22px;
-  font-weight: 900;
-  text-transform: uppercase;
+  margin: 16px auto 0;
+  min-width: 240px;
 }
+
+/* =========================================================
+   PENALTY SCREEN
+   ========================================================= */
 
 .scoreboard {
+  max-width: 760px;
+  margin: 0 auto 18px;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin: 22px 0;
-  padding: 15px;
-  border: 3px solid var(--bright-blue);
-  border-radius: 20px;
-  background: rgba(3, 22, 56, 0.96);
-  text-align: center;
+  gap: 12px;
 }
 
-.scoreboard div {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+.scoreboard > div {
+  padding: 15px;
+
+  border-radius: 14px;
+  border: 2px solid #2eafff;
+
+  text-align: center;
+
+  background: rgba(4, 22, 51, 0.94);
 }
 
 .scoreboard small {
-  color: #b8e5ff;
-  font-size: 16px;
+  display: block;
+  color: #a9c5e2;
 }
 
 .scoreboard strong {
-  font-size: 39px;
+  display: block;
+  margin-top: 5px;
+  font-size: 32px;
 }
 
 .stadium {
   position: relative;
-  height: 440px;
-  overflow: hidden;
-  border-radius: 22px;
-  background:
-    linear-gradient(rgba(2, 17, 48, 0.22), rgba(0, 75, 35, 0.22)),
-    repeating-linear-gradient(
-      90deg,
-      #19854a 0,
-      #19854a 75px,
-      #137740 75px,
-      #137740 150px
-    );
-  box-shadow: 0 12px 25px var(--shadow);
-}
 
-.stadium::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 140px;
+  max-width: 900px;
+  height: 430px;
+  margin: 0 auto 16px;
+
+  border-radius: 24px;
+  overflow: hidden;
+
+  border: 3px solid #36b6ff;
+
   background:
-    radial-gradient(circle, white 1px, transparent 2px) 0 0 / 13px 13px,
-    linear-gradient(#12376a, #071936);
-  opacity: 0.9;
+    linear-gradient(rgba(9, 52, 95, 0.25), rgba(0, 58, 20, 0.45)),
+    url("pitch.png") center / cover no-repeat;
+
+  box-shadow: 0 15px 32px rgba(0, 0, 0, 0.4);
 }
 
 .goal {
   position: absolute;
-  left: 10%;
-  top: 20%;
-  width: 80%;
-  height: 58%;
-  border: 10px solid white;
+  left: 50%;
+  top: 50px;
+  transform: translateX(-50%);
+
+  width: 62%;
+  height: 195px;
+
+  border: 8px solid white;
+  border-bottom-width: 5px;
+
   background:
     repeating-linear-gradient(
       90deg,
-      transparent 0,
-      transparent 42px,
-      rgba(255, 255, 255, 0.34) 43px,
-      rgba(255, 255, 255, 0.34) 45px
+      rgba(255,255,255,.18) 0 2px,
+      transparent 2px 32px
     ),
     repeating-linear-gradient(
       0deg,
-      transparent 0,
-      transparent 35px,
-      rgba(255, 255, 255, 0.34) 36px,
-      rgba(255, 255, 255, 0.34) 38px
+      rgba(255,255,255,.18) 0 2px,
+      transparent 2px 28px
     );
-  box-shadow: 0 12px 18px var(--shadow);
 }
 
 #goalkeeper {
   position: absolute;
   left: 50%;
-  top: 50%;
-  z-index: 4;
-  font-size: 78px;
-  transform: translate(-50%, -50%);
-  transition:
-    left 0.45s ease,
-    top 0.45s ease;
+  bottom: 12px;
+  transform: translateX(-50%);
+  font-size: 70px;
 }
 
 #ball {
   position: absolute;
   left: 50%;
-  bottom: 28px;
-  z-index: 5;
-  font-size: 55px;
+  bottom: 45px;
   transform: translateX(-50%);
-  transition:
-    left 0.48s ease,
-    bottom 0.48s ease,
-    transform 0.48s ease;
-  filter: drop-shadow(0 8px 5px var(--shadow));
+  font-size: 62px;
 }
 
 #game-message {
-  margin: 22px auto;
-  padding: 16px;
-  border-radius: 17px;
-  color: #062456;
-  background: white;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 800;
-  box-shadow: 0 8px 18px var(--shadow);
 }
 
 .shot-grid {
+  max-width: 900px;
+  margin: 0 auto;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 
 .shot-grid button {
-  padding: 17px 8px;
-  border: 3px solid var(--bright-blue);
-  border-radius: 14px;
-  background: linear-gradient(#145394, #082d62);
+  min-height: 62px;
+
+  border: 2px solid #2eafff;
+  border-radius: 12px;
+
+  color: white;
+  background: #0c3b73;
+
   font-weight: 800;
-  box-shadow: 0 5px 0 #031a3a;
+  cursor: pointer;
 }
 
-.shot-grid button:disabled {
-  opacity: 0.5;
+/* =========================================================
+   MATCH SCREEN
+   ========================================================= */
+
+.match-scoreboard {
+  max-width: 950px;
+  margin: 0 auto 18px;
+
+  display: grid;
+  grid-template-columns: 1fr 180px 1fr;
+  gap: 14px;
+}
+
+.match-scoreboard > div {
+  min-height: 90px;
+
+  border-radius: 15px;
+  border: 2px solid #2eafff;
+
+  background: rgba(4, 22, 51, 0.94);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  text-align: center;
+}
+
+.match-team {
+  font-size: 18px;
+}
+
+.match-team > span:last-child {
+  font-size: 36px;
+  font-weight: 1000;
+}
+
+.match-clock {
+  flex-direction: column;
+}
+
+.match-clock strong {
+  font-size: 32px;
+}
+
+.match-pitch {
+  position: relative;
+
+  max-width: 1000px;
+  height: 520px;
+  margin: 0 auto 18px;
+
+  overflow: hidden;
+
+  border-radius: 24px;
+  border: 3px solid #38b8ff;
+
+  background: #0a4b22;
+}
+
+.pitch-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.match-ball {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 50px;
+
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.35));
+}
+
+#match-commentary {
+  position: absolute;
+  left: 50%;
+  bottom: 15px;
+  transform: translateX(-50%);
+
+  width: min(90%, 650px);
+  padding: 11px 16px;
+
+  text-align: center;
+  font-weight: 800;
+
+  border-radius: 10px;
+
+  background: rgba(0, 0, 0, 0.70);
+}
+
+.match-controls {
+  max-width: 1000px;
+  margin: 0 auto 18px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.match-controls button {
+  min-height: 68px;
+
+  border: 2px solid #2eafff;
+  border-radius: 13px;
+
+  color: white;
+  background: #0e447d;
+
+  font-weight: 900;
+  cursor: pointer;
+}
+
+#finish-match {
+  display: block;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   RESULTS SCREEN
+   ========================================================= */
+
+#results-screen {
+  display: grid;
+  place-items: center;
 }
 
 .results-box {
-  width: min(100%, 650px);
-  margin: 55px auto;
-  padding: 35px;
-  border: 3px solid var(--bright-blue);
-  border-radius: 25px;
-  background: rgba(3, 22, 56, 0.98);
+  width: min(90%, 620px);
+  padding: 36px;
+
+  border: 3px solid #38b8ff;
+  border-radius: 28px;
+
   text-align: center;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(5, 28, 58, 0.98),
+      rgba(8, 54, 67, 0.98)
+    );
+
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.48);
 }
 
 #result-icon {
-  font-size: 100px;
+  font-size: 90px;
 }
 
 .results-box h1 {
-  margin: 10px 0;
-  color: var(--yellow);
-  font-size: 48px;
+  margin: 8px 0;
+  font-size: 42px;
 }
 
-#result-message {
-  font-size: 19px;
+.results-box > p {
+  color: #cfdeee;
+  font-size: 18px;
 }
 
 .rewards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+
   margin: 25px 0;
 }
 
-.rewards div {
+.rewards > div {
+  min-height: 120px;
+  padding: 18px;
+
+  border-radius: 15px;
+  border: 2px solid #2eafff;
+
+  background: rgba(3, 22, 44, 0.88);
+
   display: flex;
   flex-direction: column;
-  padding: 22px;
-  border: 2px solid var(--bright-blue);
-  border-radius: 18px;
-  background: #092f69;
-  font-size: 42px;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 34px;
 }
 
 .rewards strong {
-  margin-top: 8px;
-  font-size: 27px;
+  display: block;
+  font-size: 25px;
 }
 
 .rewards small {
-  font-size: 15px;
+  color: #bed0e5;
 }
 
+.results-box .main-button,
 .results-box .back-button {
-  display: block;
-  width: min(100%, 360px);
-  margin: 12px auto;
+  margin: 7px;
 }
 
-@media (max-width: 900px) {
-  .top-bar,
-  .welcome-area {
-    align-items: stretch;
-    flex-direction: column;
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  #home-screen {
+    padding-left: 18px;
+    padding-right: 18px;
   }
 
-  .money-bar {
-    justify-content: flex-start;
+  .profile {
+    left: 18px;
+    width: 250px;
   }
 
   .daily-panels {
+    right: 18px;
+    width: 280px;
+  }
+
+  .home-menu {
+    width: calc(100% - 36px);
+    grid-template-columns: 245px minmax(330px, 1fr) 245px;
+  }
+
+  .bottom-panels {
+    width: calc(100% - 36px);
+  }
+}
+
+@media (max-width: 850px) {
+  #home-screen {
+    overflow-y: auto;
+    padding-bottom: 86px;
+  }
+
+  .home-hero {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+    margin-bottom: 16px;
+  }
+
+  #home-screen .top-bar {
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  #home-screen .money-bar {
+    position: static;
+  }
+
+  .welcome-area {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .profile,
+  .mascot,
+  .speech-bubble,
+  .daily-panels {
+    position: static;
+    transform: none;
     width: 100%;
+    height: auto;
+  }
+
+  .profile {
+    min-height: 280px;
+  }
+
+  .mascot {
+    display: none;
+  }
+
+  .speech-bubble {
+    padding: 18px;
+    border: 2px solid #299eff;
+    border-radius: 15px;
+    background: rgba(3, 20, 38, 0.95);
+  }
+
+  .daily-panels {
+    flex-direction: row;
   }
 
   .daily-card {
     flex: 1;
-    width: auto;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .daily-card > span {
+    grid-row: auto;
   }
 
   .home-menu {
-    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    height: auto;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .training-card,
+  .play-card,
+  .club-card,
+  .market-card {
+    grid-column: auto;
+    grid-row: auto;
+    min-height: 210px;
+  }
+
+  .market-card {
+    padding: 22px;
+  }
+
+  .market-card > span {
+    position: static;
+    font-size: 60px;
+  }
+
+  .bottom-panels {
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
   }
 
   .mode-grid {
@@ -662,2086 +1425,14 @@ button:active {
   }
 
   .difficulty-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 560px) {
-  .screen {
-    padding: 10px;
-  }
-
-  .profile {
-    align-items: flex-start;
-  }
-
-  .badge {
-    width: 58px;
-    height: 58px;
-  }
-
-  .profile h1 {
-    font-size: 20px;
-  }
-
-  .xp-bar {
-    width: 155px;
-  }
-
-  .welcome-area,
-  .daily-panels {
-    flex-direction: column;
-  }
-
-  .speech-bubble {
-    max-width: none;
-  }
-
-  .daily-card {
-    width: 100%;
-  }
-
-  .home-menu,
-  .bottom-panels,
-  .difficulty-grid,
-  .shot-grid,
-  .rewards {
-    grid-template-columns: 1fr;
-  }
-
-  .menu-card {
-    min-height: 250px;
-  }
-
-  .stadium {
-    height: 360px;
-  }
-
-  .page-title h1 {
-    font-size: 25px;
-  }
-}
-/* KICKVERSE POLISH UPDATE */
-
-button,
-.home-card,
-.menu-card,
-.daily-card,
-.difficulty-card,
-.shot-grid button,
-.reward-card {
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    filter 0.2s ease;
-}
-
-button:active,
-.home-card:active,
-.menu-card:active,
-.daily-card:active,
-.difficulty-card:active,
-.shot-grid button:active {
-  transform: scale(0.97);
-}
-
-.home-card,
-.menu-card,
-.daily-card,
-.difficulty-card,
-.reward-card {
-  box-shadow:
-    0 14px 30px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
-}
-
-.home-card:hover,
-.menu-card:hover,
-.daily-card:hover,
-.difficulty-card:hover,
-.reward-card:hover {
-  transform: translateY(-6px);
-  filter: brightness(1.08);
-  box-shadow:
-    0 20px 38px rgba(0, 0, 0, 0.35),
-    0 0 18px rgba(43, 167, 255, 0.35);
-}
-
-.home-card h2,
-.menu-card h2,
-.daily-card strong {
-  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
-}
-
-.top-bar,
-.score-board,
-.player-profile,
-.bottom-panel,
-.kick-message {
-  backdrop-filter: blur(8px);
-  box-shadow:
-    0 12px 28px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-.xp-fill {
-  transition: width 0.6s ease;
-  box-shadow: 0 0 12px rgba(255, 216, 61, 0.65);
-}
-
-#ball {
-  transition:
-    transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1),
-    left 0.55s ease,
-    top 0.55s ease;
-  filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.35));
-}
-
-#goalkeeper {
-  transition:
-    transform 0.5s ease,
-    left 0.5s ease,
-    top 0.5s ease;
-  filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.3));
-}
-
-@keyframes cardGlow {
-  0%,
-  100% {
-    box-shadow:
-      0 14px 30px rgba(0, 0, 0, 0.28),
-      0 0 0 rgba(43, 167, 255, 0);
-  }
-
-  50% {
-    box-shadow:
-      0 18px 38px rgba(0, 0, 0, 0.35),
-      0 0 22px rgba(43, 167, 255, 0.45);
-  }
-}
-
-.play-card {
-  animation: cardGlow 2.5s ease-in-out infinite;
-}
-/* ===== REALISTIC PENALTY PITCH ===== */
-
-.penalty-area {
-    position: relative;
-    overflow: hidden;
-    border-radius: 22px;
-  background: url("pitch.png") center center / cover no-repeat;
-}
-
-.penalty-area::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background-image:
-        linear-gradient(rgba(255,255,255,.10) 2px, transparent 2px),
-        linear-gradient(90deg, rgba(255,255,255,.10) 2px, transparent 2px);
-    background-size:70px 70px;
-    opacity:.25;
-    pointer-events:none;
-}
-
-.penalty-area::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-        radial-gradient(circle at center,
-        rgba(255,255,255,.08),
-        transparent 65%);
-    pointer-events:none;
-}
-.pitch-image {
-    width: 100%;
-    max-width: 500px;
-    display: block;
-    margin: 0 auto 15px;
-    border-radius: 12px;
-}
-
-.match-pitch {
-    position: relative;
-    width: 500px;
-    max-width: 100%;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.match-ball {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 32px;
-}
-/* Match Mode action buttons */
-#match-screen button {
-  padding: 14px 22px;
-  margin: 6px;
-  border: 2px solid #28a8ff;
-  border-radius: 14px;
-  background: linear-gradient(180deg, #1765a8, #0b3768);
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  min-width: 140px;
-  min-height: 55px;
-}
-
-#match-screen button:active {
-  transform: scale(0.96);
-}
-
-#match-screen button:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-/* ========================================
-   KICKVERSE HOME SCREEN V2
-======================================== */
-
-#home-screen {
-  min-height: 100vh;
-  padding: 18px;
-  box-sizing: border-box;
-
-  background:
-    radial-gradient(circle at 50% 30%,
-      rgba(0, 153, 255, 0.28),
-      transparent 38%),
-    linear-gradient(
-      180deg,
-      #03152f 0%,
-      #062b55 55%,
-      #071c32 100%
-    );
-
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
-
-/* KickVerse title */
-.home-hero {
-  text-align: center;
-  padding: 14px 10px 20px;
-}
-
-.home-brand {
-  font-size: clamp(32px, 6vw, 58px);
-  font-weight: 900;
-  letter-spacing: 2px;
-  color: white;
-  text-shadow:
-    0 3px 0 #087fd1,
-    0 6px 18px rgba(0, 170, 255, 0.55);
-}
-
-.home-tagline {
-  margin: 7px 0 0;
-  font-size: 16px;
-  color: #bfe8ff;
-  font-weight: 600;
-}
-
-/* Top player information */
-#home-screen .top-bar {
-  background: rgba(2, 15, 35, 0.88);
-  border: 2px solid #168ee8;
-  border-radius: 18px;
-  padding: 14px;
-
-  box-shadow:
-    0 8px 25px rgba(0, 0, 0, 0.35),
-    inset 0 0 20px rgba(0, 140, 255, 0.08);
-}
-
-/* Coins / Gems / XP */
-#home-screen .money-bar > div {
-  background: #071c34;
-  border: 1px solid #1d79b7;
-  border-radius: 12px;
-  padding: 10px 14px;
-  font-weight: 800;
-
-  box-shadow:
-    inset 0 0 12px rgba(0, 153, 255, 0.12);
-}
-/* Home menu cards */
-#home-screen .home-menu {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 14px;
-  margin-top: 18px;
-}
-
-#home-screen .menu-card {
-  min-height: 150px;
-  border: 2px solid #168ee8;
-  border-radius: 20px;
-  background: linear-gradient(145deg, #0d4f91, #071c42);
-  color: white;
-  padding: 20px;
-  text-align: left;
-  cursor: pointer;
-  box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.35),
-    inset 0 0 20px rgba(0, 153, 255, 0.10);
-}
-
-#home-screen .menu-card span {
-  font-size: 34px;
-  display: block;
-  margin-bottom: 8px;
-}
-
-#home-screen .menu-card h2 {
-  margin: 4px 0;
-  font-size: 25px;
-}
-
-#home-screen .menu-card p {
-  margin: 8px 0;
-  opacity: 0.8;
-}
-
-#home-screen .play-card {
-  background: linear-gradient(145deg, #1472c9, #082b61);
-  transform: scale(1.02);
-}
-
-#home-screen .menu-card:active {
-  transform: scale(0.97);
-}
-
-#home-screen .coming-soon {
-  opacity: 0.7;
-}
-/* Daily Reward + Daily Challenge */
-#home-screen .daily-panels {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-top: 18px;
-}
-
-#home-screen .daily-card {
-  min-height: 95px;
-  border: 2px solid #168ee8;
-  border-radius: 18px;
-  background: linear-gradient(145deg, #0b3768, #071c3f);
-  color: white;
-  padding: 16px;
-  text-align: left;
-  box-shadow:
-    0 8px 22px rgba(0, 0, 0, 0.30),
-    inset 0 0 16px rgba(0, 153, 255, 0.10);
-}
-
-#home-screen .daily-card > span {
-  font-size: 30px;
-  display: block;
-  margin-bottom: 6px;
-}
-
-#home-screen .daily-card strong {
-  display: block;
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-
-#home-screen .daily-card small {
-  color: #bfe8ff;
-  font-size: 14px;
-}
-
-#home-screen .reward-card {
-  border-color: #ffd34d;
-  background: linear-gradient(145deg, #5b4610, #14264a);
-}
-
-#home-screen .challenge-card {
-  border-color: #36d98b;
-  background: linear-gradient(145deg, #0c5944, #10294c);
-}
-
-#home-screen .daily-card:active {
-  transform: scale(0.97);
-}
-/* Season + Club panels */
-#home-screen .season-card,
-#home-screen .club-card {
-  border: 2px solid #168ee8;
-  border-radius: 18px;
-  background: linear-gradient(145deg, #0a2a52, #06152e);
-  color: white;
-  padding: 16px;
-  margin-top: 16px;
-
-  box-shadow:
-    0 8px 22px rgba(0, 0, 0, 0.30),
-    inset 0 0 16px rgba(0, 153, 255, 0.08);
-}
-
-#home-screen .season-card h3,
-#home-screen .club-card h3 {
-  margin: 0 0 8px;
-  font-size: 20px;
-}
-
-#home-screen .season-card p,
-#home-screen .club-card p {
-  margin: 4px 0;
-  color: #c8eaff;
-}
-
-#home-screen .season-card strong,
-#home-screen .club-card strong {
-  color: #ffffff;
-}
-/* ========================================
-   HOME SCREEN DESKTOP LAYOUT
-======================================== */
-
-#home-screen {
-  display: grid;
-  grid-template-columns: 280px minmax(420px, 1fr) 320px;
-  grid-template-areas:
-    "brand money money"
-    "profile welcome daily"
-    "menu menu menu"
-    "bottom bottom bottom";
-  gap: 18px;
-  align-items: start;
-}
-
-/* Let profile + currency bar join the main grid */
-#home-screen .top-bar {
-  display: contents;
-}
-
-#home-screen .home-hero {
-  grid-area: brand;
-  text-align: left;
-  align-self: center;
-}
-
-#home-screen .profile {
-  grid-area: profile;
-  background: rgba(2, 15, 35, 0.92);
-  border: 2px solid #168ee8;
-  border-radius: 20px;
-  padding: 20px;
-  min-height: 250px;
-}
-
-#home-screen .money-bar {
-  grid-area: money;
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-#home-screen .welcome-area {
-  grid-area: welcome;
-  text-align: center;
-  min-height: 270px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#home-screen .daily-panels {
-  grid-area: daily;
-  grid-template-columns: 1fr;
-  margin-top: 0;
-}
-
-#home-screen .home-menu {
-  grid-area: menu;
-}
-
-#home-screen .bottom-panels {
-  grid-area: bottom;
-}
-/* Welcome / mascot panel */
-#home-screen .welcome-area {
-  position: relative;
-  background:
-    radial-gradient(circle at center,
-      rgba(0, 153, 255, 0.22),
-      transparent 62%);
-  border-radius: 22px;
-  padding: 24px;
-}
-
-#home-screen .mascot {
-  font-size: 90px;
-  line-height: 1;
-  margin-bottom: 12px;
-  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
-}
-
-#home-screen .speech-bubble {
-  background: rgba(2, 15, 35, 0.9);
-  border: 2px solid #168ee8;
-  border-radius: 18px;
-  padding: 16px 20px;
-  max-width: 360px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
-}
-
-#home-screen .speech-bubble strong {
-  display: block;
-  font-size: 24px;
-  color: #42b9ff;
-  margin-bottom: 6px;
-}
-/* Big central PLAY card */
-#home-screen .play-card {
-  min-height: 210px;
-  position: relative;
-  background:
-    linear-gradient(145deg, #159cff, #0752b8 65%, #032b68);
-  border: 3px solid #55d7ff;
-  border-radius: 28px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  box-shadow:
-    0 0 0 4px rgba(0, 119, 255, 0.25),
-    0 12px 30px rgba(0, 0, 0, 0.4),
-    inset 0 0 28px rgba(120, 225, 255, 0.25);
-}
-
-#home-screen .play-card span {
-  font-size: 62px;
-  margin: 0;
-}
-
-#home-screen .play-card h2 {
-  font-size: 46px;
-  margin: 4px 0;
-  letter-spacing: 2px;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.45);
-}
-
-#home-screen .play-card p {
-  font-size: 18px;
-  margin: 4px 0 10px;
-}
-
-#home-screen .play-card strong {
-  font-size: 20px;
-}
-/* Arrange main menu like the concept */
-#home-screen .home-menu {
-  grid-template-columns: 1fr 1.7fr 1fr;
-  grid-template-areas:
-    "training play club"
-    ". market .";
-  align-items: stretch;
-}
-
-#home-screen .training-card {
-  grid-area: training;
-}
-
-#home-screen .play-card {
-  grid-area: play;
-}
-
-#home-screen .club-card {
-  grid-area: club;
-}
-
-#home-screen .market-card {
-  grid-area: market;
-  min-height: 115px;
-}
-
-/* Tablet / smaller screens */
-@media (max-width: 900px) {
-  #home-screen {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "brand"
-      "money"
-      "profile"
-      "welcome"
-      "daily"
-      "menu"
-      "bottom";
-  }
-
-  #home-screen .home-menu {
     grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "play play"
-      "training club"
-      "market market";
-  }
-}
-/* Profile card */
-#home-screen .profile {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-}
-
-#home-screen .profile-name {
-  font-size: 24px;
-  font-weight: 900;
-  color: #ffffff;
-}
-
-#home-screen .level-badge {
-  display: inline-block;
-  width: fit-content;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #ffdf4d, #d89b00);
-  color: #1d1600;
-  font-weight: 900;
-  box-shadow: 0 4px 12px rgba(255, 200, 0, 0.25);
-}
-
-#home-screen .xp-bar {
-  width: 100%;
-  height: 14px;
-  border-radius: 999px;
-  overflow: hidden;
-  background: #031126;
-  border: 1px solid #177fc7;
-}
-
-#home-screen .xp-fill {
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, #18a9ff, #47e2ff);
-  box-shadow: 0 0 12px rgba(44, 205, 255, 0.55);
-}
-/* Compact the top dashboard */
-#home-screen {
-  grid-template-columns: 260px minmax(420px, 1fr) 290px;
-  gap: 14px 18px;
-}
-
-#home-screen .home-hero {
-  padding: 6px 10px;
-}
-
-#home-screen .profile {
-  min-height: 210px;
-  padding: 16px;
-}
-
-#home-screen .welcome-area {
-  min-height: 210px;
-  padding: 10px 18px;
-  justify-content: flex-start;
-}
-
-#home-screen .mascot {
-  font-size: 72px;
-  margin-bottom: 8px;
-}
-
-#home-screen .speech-bubble {
-  padding: 12px 16px;
-  max-width: 320px;
-}
-
-#home-screen .daily-panels {
-  gap: 10px;
-}
-
-#home-screen .daily-card {
-  min-height: 82px;
-  padding: 12px;
-}
-
-#home-screen .home-menu {
-  margin-top: 4px;
-}
-
-#home-screen .menu-card {
-  min-height: 135px;
-}
-/* Main home menu layout */
-#home-screen .home-menu {
-  display: grid;
-  grid-template-columns: 1fr 1.6fr 1fr;
-  grid-template-areas:
-    "training play club"
-    ". market .";
-  gap: 14px;
-  align-items: stretch;
-}
-
-#home-screen .training-card {
-  grid-area: training;
-}
-
-#home-screen .play-card {
-  grid-area: play;
-  min-height: 220px;
-  transform: scale(1.03);
-}
-
-#home-screen .club-card {
-  grid-area: club;
-}
-
-#home-screen .market-card {
-  grid-area: market;
-  min-height: 115px;
-}
-
-#home-screen .menu-card {
-  padding: 18px;
-}
-
-#home-screen .menu-card h2 {
-  margin: 8px 0;
-}
-
-#home-screen .menu-card p {
-  margin: 6px 0 12px;
-}
-/* Tablet / iPad home screen */
-@media (max-width: 1100px) {
-  #home-screen {
-    padding: 18px 22px 30px;
   }
 
-  #home-screen .home-menu {
-    grid-template-columns: 1fr 1.5fr 1fr;
-    grid-template-areas:
-      "training play club"
-      ". market .";
-    gap: 12px;
+  .match-scoreboard {
+    grid-template-columns: 1fr;
   }
 
-  #home-screen .play-card {
-    min-height: 190px;
+  .match-controls {
+    grid-template-columns: 1fr 1fr;
   }
-
-  #home-screen .market-card {
-    min-height: 100px;
-  }
-
-  #home-screen .menu-card {
-    min-height: 0;
-  }
-}
-/* Make the upper dashboard compact */
-#home-screen {
-  grid-template-rows: auto auto auto auto;
-}
-
-#home-screen .profile,
-#home-screen .welcome-area,
-#home-screen .daily-panels {
-  align-self: start;
-}
-
-#home-screen .profile {
-  min-height: 175px;
-}
-
-#home-screen .welcome-area {
-  min-height: 175px;
-  max-height: 210px;
-}
-
-#home-screen .mascot {
-  font-size: 58px;
-}
-
-#home-screen .speech-bubble {
-  padding: 9px 14px;
-}
-
-#home-screen .speech-bubble strong {
-  font-size: 20px;
-}
-
-#home-screen .daily-card {
-  min-height: 70px;
-  padding: 9px 12px;
-}
-
-#home-screen .daily-card > span {
-  font-size: 23px;
-  margin-bottom: 2px;
-}
-
-#home-screen .daily-card strong {
-  font-size: 16px;
-}
-
-#home-screen .daily-card small {
-  font-size: 12px;
-}
-/* ===== KICKVERSE NEW HOME SCREEN ===== */
-
-#home-screen {
-  min-height: 100vh;
-  padding: 20px 28px 110px;
-  background:
-    linear-gradient(rgba(2, 18, 35, 0.28), rgba(2, 18, 35, 0.38)),
-    url("pitch.png") center center / cover no-repeat;
-}
-
-#home-screen .home-menu {
-  display: grid;
-  grid-template-columns: 1fr 1.65fr 1fr;
-  grid-template-areas:
-    "training play club"
-    "training market club";
-  gap: 16px;
-  max-width: 1120px;
-  margin: 20px auto;
-  align-items: stretch;
-}
-
-#home-screen .training-card {
-  grid-area: training;
-}
-
-#home-screen .play-card {
-  grid-area: play;
-}
-
-#home-screen .club-card {
-  grid-area: club;
-}
-
-#home-screen .market-card {
-  grid-area: market;
-}
-
-#home-screen .menu-card {
-  border: 2px solid #159cff;
-  border-radius: 20px;
-  background: rgba(2, 20, 38, 0.9);
-  color: white;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-}
-
-#home-screen .play-card {
-  min-height: 190px;
-  background: linear-gradient(135deg, #078cff, #0751bd);
-  border: 4px solid #50c9ff;
-  transform: scale(1.03);
-}
-
-#home-screen .play-card h2 {
-  font-size: 3rem;
-  margin: 8px 0;
-}
-
-#home-screen .play-card span {
-  font-size: 3.4rem;
-}
-
-#home-screen .play-card p {
-  font-size: 1.15rem;
-}
-/* Bottom dashboard cards */
-#home-screen .bottom-panels {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  max-width: 1120px;
-  margin: 18px auto 0;
-}
-
-#home-screen .season-panel,
-#home-screen .club-panel,
-#home-screen .packs-panel,
-#home-screen .news-panel {
-  min-height: 125px;
-  padding: 16px;
-  border: 2px solid #168ee8;
-  border-radius: 18px;
-  background: linear-gradient(
-    145deg,
-    rgba(8, 45, 82, 0.96),
-    rgba(3, 19, 39, 0.96)
-  );
-  color: white;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  box-shadow:
-    0 8px 22px rgba(0, 0, 0, 0.35),
-    inset 0 0 18px rgba(0, 153, 255, 0.08);
-}
-
-#home-screen .bottom-panels > div > span {
-  font-size: 38px;
-}
-
-#home-screen .bottom-panels h3 {
-  margin: 0 0 6px;
-  font-size: 18px;
-}
-
-#home-screen .bottom-panels p {
-  margin: 4px 0;
-  font-size: 13px;
-  color: #c8eaff;
-}
-
-#home-screen .bottom-panels strong {
-  display: block;
-  margin-top: 8px;
-  color: #42b9ff;
-  font-size: 12px;
-}
-
-#home-screen .rating-number {
-  font-size: 28px !important;
-  font-weight: 900;
-  color: white !important;
-}
-/* ===== KICKVERSE HOME SCREEN LAYOUT FIX ===== */
-
-#home-screen {
-  min-height: 100vh;
-  padding: 20px 28px 90px;
-  overflow-x: hidden;
-}
-
-#home-screen .home-hero {
-  margin-bottom: 10px;
-}
-
-#home-screen .welcome-area {
-  position: relative;
-  min-height: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#home-screen .mascot {
-  margin: 0 0 10px;
-}
-
-#home-screen .speech-bubble {
-  margin: 0;
-  text-align: center;
-}
-
-#home-screen .daily-panels {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  width: 320px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 2;
-}
-
-#home-screen .daily-card {
-  width: 100%;
-  min-height: 120px;
-  padding: 18px;
-}
-
-#home-screen .home-menu {
-  display: grid;
-  grid-template-columns: 1fr 1.55fr 1fr;
-  grid-template-areas:
-    "training play club"
-    "training market club";
-  gap: 16px;
-  align-items: stretch;
-  margin-top: 10px;
-}
-
-#home-screen .training-card {
-  grid-area: training;
-}
-
-#home-screen .play-card {
-  grid-area: play;
-  min-height: 190px;
-}
-
-#home-screen .club-card {
-  grid-area: club;
-}
-
-#home-screen .market-card {
-  grid-area: market;
-  min-height: 130px;
-}
-
-#home-screen .menu-card {
-  height: auto;
-  margin: 0;
-}
-
-#home-screen .bottom-panels {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  margin-top: 18px;
-}
-
-#home-screen .bottom-panels > div {
-  min-height: 145px;
-}
-
-@media (max-width: 900px) {
-  #home-screen .daily-panels {
-    position: static;
-    width: 100%;
-    max-width: 500px;
-    margin-top: 15px;
-  }
-
-  #home-screen .home-menu {
-    grid-template-columns: 1fr 1.4fr 1fr;
-  }
-}
-/* Fix Daily Reward + Daily Challenge position */
-#home-screen .welcome-area {
-  position: relative;
-  min-height: 280px;
-  padding-right: 360px;
-}
-
-#home-screen .daily-panels {
-  position: absolute;
-  top: 10px;
-  right: 0;
-  width: 320px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  z-index: 5;
-}
-
-#home-screen .daily-card {
-  position: static;
-  width: 100%;
-  min-height: 115px;
-  margin: 0;
-}
-
-#home-screen .speech-bubble {
-  max-width: 360px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#home-screen .mascot {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media (max-width: 900px) {
-  #home-screen .welcome-area {
-    padding-right: 0;
-  }
-
-  #home-screen .daily-panels {
-    position: static;
-    width: 100%;
-    max-width: 520px;
-    margin: 16px auto 0;
-  }
-}
-/* ===== KICKVERSE HOME SCREEN - TOP LAYOUT FIX ===== */
-
-#home-screen .welcome-area {
-  display: grid !important;
-  grid-template-columns: 280px 1fr 320px !important;
-  grid-template-rows: auto auto !important;
-  gap: 20px !important;
-  align-items: center !important;
-  max-width: 1400px !important;
-  margin: 0 auto !important;
-  padding: 20px 30px !important;
-}
-
-/* Profile - LEFT */
-#home-screen .profile-card {
-  grid-column: 1 !important;
-  grid-row: 1 / span 2 !important;
-  width: 100% !important;
-  position: relative !important;
-  inset: auto !important;
-  transform: none !important;
-}
-
-/* Mascot - CENTER */
-#home-screen .mascot {
-  grid-column: 2 !important;
-  grid-row: 1 !important;
-  position: relative !important;
-  inset: auto !important;
-  transform: none !important;
-  justify-self: center !important;
-  text-align: center !important;
-}
-
-/* Welcome message - CENTER */
-#home-screen .speech-bubble {
-  grid-column: 2 !important;
-  grid-row: 2 !important;
-  position: relative !important;
-  inset: auto !important;
-  transform: none !important;
-  justify-self: center !important;
-  width: min(100%, 430px) !important;
-  text-align: center !important;
-}
-
-/* Daily cards - RIGHT */
-#home-screen .daily-panels {
-  grid-column: 3 !important;
-  grid-row: 1 / span 2 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 14px !important;
-  width: 100% !important;
-  position: relative !important;
-  inset: auto !important;
-  transform: none !important;
-}
-
-#home-screen .daily-card {
-  position: relative !important;
-  inset: auto !important;
-  transform: none !important;
-  width: 100% !important;
-  max-width: none !important;
-  margin: 0 !important;
-}
-
-/* Tablet / smaller screens */
-@media (max-width: 900px) {
-  #home-screen .welcome-area {
-    grid-template-columns: 240px 1fr 280px !important;
-    gap: 12px !important;
-    padding: 16px !important;
-  }
-
-  #home-screen .daily-panels {
-    width: 100% !important;
-  }
-}
-/* ===== HOME SCREEN MASTER GRID ===== */
-
-#home-screen {
-  display: grid !important;
-  grid-template-columns: 300px minmax(420px, 1fr) 340px !important;
-  grid-template-rows: auto auto auto auto auto !important;
-  column-gap: 24px !important;
-  row-gap: 16px !important;
-  align-items: center !important;
-  max-width: 1500px !important;
-  margin: 0 auto !important;
-  padding: 22px 34px 90px !important;
-}
-
-/* Let children of these sections join the main grid */
-#home-screen .top-bar,
-#home-screen .welcome-area {
-  display: contents !important;
-}
-
-/* Logo */
-#home-screen .home-hero {
-  grid-column: 1 !important;
-  grid-row: 1 !important;
-  margin: 0 !important;
-  align-self: start !important;
-}
-
-/* Coins / gems / XP */
-#home-screen .money-bar {
-  grid-column: 2 / 4 !important;
-  grid-row: 1 !important;
-  justify-self: end !important;
-  position: static !important;
-  margin: 0 !important;
-}
-
-/* Profile card */
-#home-screen .profile {
-  grid-column: 1 !important;
-  grid-row: 2 / 4 !important;
-  position: static !important;
-  width: 100% !important;
-  margin: 0 !important;
-  transform: none !important;
-}
-
-/* Character */
-#home-screen .mascot {
-  grid-column: 2 !important;
-  grid-row: 2 !important;
-  position: static !important;
-  margin: 0 !important;
-  justify-self: center !important;
-  transform: none !important;
-}
-
-/* Welcome message */
-#home-screen .speech-bubble {
-  grid-column: 2 !important;
-  grid-row: 3 !important;
-  position: static !important;
-  width: 100% !important;
-  max-width: 430px !important;
-  margin: 0 !important;
-  justify-self: center !important;
-  transform: none !important;
-}
-
-/* Reward + challenge on the right */
-#home-screen .daily-panels {
-  grid-column: 3 !important;
-  grid-row: 2 / 4 !important;
-  position: static !important;
-  width: 100% !important;
-  margin: 0 !important;
-  transform: none !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 14px !important;
-}
-
-#home-screen .daily-card {
-  position: static !important;
-  width: 100% !important;
-  margin: 0 !important;
-  transform: none !important;
-}
-
-/* Main game buttons */
-#home-screen .home-menu {
-  grid-column: 1 / 4 !important;
-  grid-row: 4 !important;
-  width: 100% !important;
-  margin: 8px 0 0 !important;
-}
-
-/* Bottom cards */
-#home-screen .bottom-panels {
-  grid-column: 1 / 4 !important;
-  grid-row: 5 !important;
-  width: 100% !important;
-  margin: 4px 0 0 !important;
-}
-/* ===== HOME SCREEN COMPACT SPACING FIX ===== */
-
-#home-screen {
-  row-gap: 8px !important;
-}
-
-#home-screen .home-hero {
-  margin-bottom: 0 !important;
-}
-
-#home-screen .profile {
-  align-self: start !important;
-}
-
-#home-screen .mascot {
-  margin-top: -8px !important;
-  margin-bottom: -8px !important;
-}
-
-#home-screen .speech-bubble {
-  margin-top: -6px !important;
-}
-
-#home-screen .daily-panels {
-  align-self: start !important;
-}
-
-#home-screen .home-menu {
-  margin-top: 0 !important;
-}
-
-#home-screen .bottom-panels {
-  margin-top: 0 !important;
-}
-
-#home-screen .training-card,
-#home-screen .club-card {
-  min-height: 360px !important;
-}
-
-#home-screen .play-card {
-  min-height: 210px !important;
-}
-
-#home-screen .market-card {
-  min-height: 135px !important;
-}
-/* ===== HOME SCREEN HEIGHT REDUCTION ===== */
-
-#home-screen {
-  padding-top: 12px !important;
-  row-gap: 4px !important;
-}
-
-#home-screen .home-hero {
-  transform: scale(0.82);
-  transform-origin: top left;
-  margin-bottom: -35px !important;
-}
-
-#home-screen .profile {
-  transform: scale(0.88) !important;
-  transform-origin: top left !important;
-}
-
-#home-screen .mascot {
-  transform: scale(0.78) !important;
-  transform-origin: center !important;
-  margin-top: -25px !important;
-  margin-bottom: -25px !important;
-}
-
-#home-screen .speech-bubble {
-  transform: scale(0.9) !important;
-  margin-top: -20px !important;
-}
-
-#home-screen .daily-panels {
-  transform: scale(0.88) !important;
-  transform-origin: top right !important;
-  margin-bottom: -45px !important;
-}
-
-#home-screen .home-menu {
-  margin-top: -35px !important;
-}
-
-#home-screen .training-card,
-#home-screen .club-card {
-  min-height: 290px !important;
-}
-
-#home-screen .play-card {
-  min-height: 175px !important;
-}
-
-#home-screen .market-card {
-  min-height: 105px !important;
-}
-
-#home-screen .bottom-panels > div {
-  min-height: 115px !important;
-}
-/* ===== FINAL COMPACT HOME DASHBOARD ===== */
-
-#home-screen {
-  grid-template-columns: 260px minmax(420px, 1fr) 300px !important;
-  grid-template-rows: 80px 210px 330px 120px !important;
-  column-gap: 18px !important;
-  row-gap: 10px !important;
-  padding: 12px 28px 85px !important;
-}
-
-/* Top logo + currency */
-#home-screen .home-hero {
-  grid-column: 1 !important;
-  grid-row: 1 !important;
-  transform: scale(0.7) !important;
-  transform-origin: top left !important;
-}
-
-#home-screen .money-bar {
-  grid-column: 2 / 4 !important;
-  grid-row: 1 !important;
-  align-self: start !important;
-}
-
-/* Profile */
-#home-screen .profile {
-  grid-column: 1 !important;
-  grid-row: 2 !important;
-  height: 200px !important;
-  transform: none !important;
-}
-
-/* Centre welcome */
-#home-screen .mascot {
-  grid-column: 2 !important;
-  grid-row: 2 !important;
-  align-self: start !important;
-  transform: scale(0.65) !important;
-  margin-top: -15px !important;
-}
-
-#home-screen .speech-bubble {
-  grid-column: 2 !important;
-  grid-row: 2 !important;
-  align-self: end !important;
-  max-width: 420px !important;
-  height: 90px !important;
-  transform: none !important;
-}
-
-/* Daily cards */
-#home-screen .daily-panels {
-  grid-column: 3 !important;
-  grid-row: 2 !important;
-  height: 200px !important;
-  transform: none !important;
-  gap: 8px !important;
-}
-
-#home-screen .daily-card {
-  min-height: 94px !important;
-  padding: 10px !important;
-}
-
-/* Main buttons */
-#home-screen .home-menu {
-  grid-column: 1 / 4 !important;
-  grid-row: 3 !important;
-  height: 330px !important;
-  margin: 0 !important;
-}
-
-#home-screen .training-card,
-#home-screen .club-card {
-  min-height: 330px !important;
-}
-
-#home-screen .play-card {
-  min-height: 195px !important;
-}
-
-#home-screen .market-card {
-  min-height: 125px !important;
-}
-
-/* Bottom row */
-#home-screen .bottom-panels {
-  grid-column: 1 / 4 !important;
-  grid-row: 4 !important;
-  height: 120px !important;
-}
-
-#home-screen .bottom-panels > div {
-  min-height: 110px !important;
-  padding: 12px !important;
-}
-/* ===== FIX HOME CARD COLLISIONS ===== */
-
-#home-screen .daily-panels {
-  height: auto !important;
-  min-height: 220px !important;
-  gap: 12px !important;
-  overflow: visible !important;
-}
-
-#home-screen .daily-card {
-  min-height: 105px !important;
-  height: auto !important;
-  padding: 12px 14px !important;
-  overflow: hidden !important;
-}
-
-#home-screen .challenge-card {
-  min-height: 120px !important;
-}
-
-#home-screen .challenge-card p {
-  margin: 4px 0 !important;
-  line-height: 1.2 !important;
-}
-
-#home-screen .market-card {
-  min-height: 125px !important;
-  overflow: hidden !important;
-  padding-bottom: 18px !important;
-}
-
-#home-screen .market-card p {
-  margin-bottom: 6px !important;
-  line-height: 1.25 !important;
-}
-
-#home-screen .home-menu {
-  height: 340px !important;
-}
-
-#home-screen .bottom-panels {
-  margin-top: 10px !important;
-}
-/* ===== FINAL CARD OVERLAP FIX ===== */
-
-#home-screen .daily-panels {
-  min-height: 250px !important;
-  height: 250px !important;
-}
-
-#home-screen .daily-card {
-  flex: 1 1 0 !important;
-  min-height: 118px !important;
-}
-
-#home-screen .challenge-card {
-  min-height: 125px !important;
-}
-
-#home-screen .club-card {
-  padding-top: 28px !important;
-}
-
-#home-screen .market-card {
-  min-height: 135px !important;
-  padding-bottom: 24px !important;
-}
-
-#home-screen .market-card p {
-  display: block !important;
-  overflow: visible !important;
-}
-
-#home-screen .home-menu {
-  height: 355px !important;
-}
-
-#home-screen .bottom-panels {
-  margin-top: 18px !important;
-}
-/* ===== HOME GRID POSITIONING FIX ===== */
-
-/* Keep the right-hand cards in their own column */
-#home-screen .daily-panels {
-  position: relative !important;
-  z-index: 2 !important;
-  margin-bottom: 18px !important;
-}
-
-/* Prevent challenge from floating over My Club */
-#home-screen .challenge-card {
-  position: relative !important;
-  top: auto !important;
-  bottom: auto !important;
-  transform: none !important;
-  margin-bottom: 16px !important;
-}
-
-/* My Club must stay below/clear of challenge */
-#home-screen .club-card {
-  position: relative !important;
-  z-index: 1 !important;
-  padding-top: 36px !important;
-}
-
-/* Give Market enough room for its description */
-#home-screen .market-card {
-  height: auto !important;
-  min-height: 150px !important;
-  padding-bottom: 28px !important;
-  overflow: visible !important;
-}
-
-#home-screen .market-card p {
-  position: static !important;
-  margin: 8px 0 0 !important;
-  padding: 0 !important;
-  line-height: 1.3 !important;
-}
-
-/* Push bottom four cards below Market */
-#home-screen .bottom-panels {
-  position: relative !important;
-  clear: both !important;
-  margin-top: 30px !important;
-}
-/* Fix Daily Challenge overlapping My Club */
-
-#home-screen .daily-panels {
-  grid-row: 2 / 4 !important;
-  align-self: start !important;
-  min-height: 270px !important;
-}
-
-#home-screen .challenge-card {
-  margin-bottom: 24px !important;
-}
-
-#home-screen .home-menu {
-  margin-top: 20px !important;
-}
-/* ===== HOME SCREEN TARGET LAYOUT ===== */
-
-#home-screen {
-  grid-template-columns: 280px minmax(430px, 1fr) 320px !important;
-  grid-template-rows: 78px 290px 340px 125px !important;
-  column-gap: 18px !important;
-  row-gap: 12px !important;
-  padding: 12px 28px 90px !important;
-}
-
-/* LEFT PROFILE */
-#home-screen .profile {
-  grid-column: 1 !important;
-  grid-row: 2 !important;
-  height: 270px !important;
-  align-self: start !important;
-  transform: none !important;
-}
-
-/* CENTER WELCOME */
-#home-screen .speech-bubble {
-  grid-column: 2 !important;
-  grid-row: 2 !important;
-  align-self: start !important;
-  justify-self: center !important;
-  width: 420px !important;
-  height: 86px !important;
-  margin: 0 !important;
-  transform: none !important;
-  z-index: 2 !important;
-}
-
-#home-screen .mascot {
-  grid-column: 2 !important;
-  grid-row: 2 !important;
-  align-self: end !important;
-  justify-self: center !important;
-  margin: 0 0 10px !important;
-  transform: scale(0.72) !important;
-  z-index: 1 !important;
-}
-
-/* RIGHT DAILY CARDS */
-#home-screen .daily-panels {
-  grid-column: 3 !important;
-  grid-row: 2 !important;
-  align-self: start !important;
-  width: 100% !important;
-  height: 280px !important;
-  min-height: 280px !important;
-  display: grid !important;
-  grid-template-rows: 132px 136px !important;
-  gap: 12px !important;
-  margin: 0 !important;
-  transform: none !important;
-}
-
-#home-screen .daily-card,
-#home-screen .challenge-card {
-  width: 100% !important;
-  height: 100% !important;
-  min-height: 0 !important;
-  margin: 0 !important;
-  position: static !important;
-  transform: none !important;
-  overflow: hidden !important;
-}
-
-/* MAIN BUTTON AREA */
-#home-screen .home-menu {
-  grid-column: 1 / 4 !important;
-  grid-row: 3 !important;
-  height: 340px !important;
-  margin: 0 !important;
-  align-self: start !important;
-}
-
-#home-screen .training-card,
-#home-screen .club-card {
-  height: 340px !important;
-  min-height: 340px !important;
-}
-
-#home-screen .play-card {
-  height: 200px !important;
-  min-height: 200px !important;
-}
-
-#home-screen .market-card {
-  height: 128px !important;
-  min-height: 128px !important;
-  overflow: hidden !important;
-}
-
-/* BOTTOM FOUR CARDS */
-#home-screen .bottom-panels {
-  grid-column: 1 / 4 !important;
-  grid-row: 4 !important;
-  height: 125px !important;
-  margin: 0 !important;
-  align-self: start !important;
-}
-
-#home-screen .bottom-panels > div {
-  height: 120px !important;
-  min-height: 120px !important;
-}
-/* ===== CLEAN HOME SCREEN LAYOUT ===== */
-
-#home-screen {
-  display: grid !important;
-  grid-template-columns: 280px minmax(440px, 1fr) 320px !important;
-  grid-template-rows: auto auto auto auto !important;
-  column-gap: 18px !important;
-  row-gap: 14px !important;
-  max-width: 1500px !important;
-  margin: 0 auto !important;
-  padding: 18px 28px 90px !important;
-}
-
-/* Profile on the left */
-#home-screen .profile {
-  grid-column: 1 !important;
-  grid-row: 2 !important;
-  position: static !important;
-  width: 100% !important;
-  height: 280px !important;
-  margin: 0 !important;
-  transform: none !important;
-  align-self: start !important;
-}
-
-/* Mascot + welcome in the centre */
-#home-screen .mascot {
-  grid-column: 2 !important;
-  grid-row: 2 !important;
-  position: static !important;
-  justify-self: center !important;
-  align-self: start !important;
-  transform: scale(0.72) !important;
-  margin: 0 !important;
-}
-
-#home-screen .speech-bubble {
-  grid-column: 2 !important;
-  grid-row: 2 !important;
-  position: static !important;
-  justify-self: center !important;
-  align-self: end !important;
-  width: 430px !important;
-  max-width: 100% !important;
-  min-height: 90px !important;
-  margin: 0 !important;
-  transform: none !important;
-}
-
-/* Reward and challenge on the right */
-#home-screen .daily-panels {
-  grid-column: 3 !important;
-  grid-row: 2 !important;
-  position: static !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 12px !important;
-  width: 100% !important;
-  height: auto !important;
-  min-height: 0 !important;
-  margin: 0 !important;
-  transform: none !important;
-}
-
-#home-screen .daily-card {
-  position: static !important;
-  width: 100% !important;
-  height: 132px !important;
-  min-height: 132px !important;
-  margin: 0 !important;
-  transform: none !important;
-  overflow: hidden !important;
-}
-
-/* Training / Play / Market / My Club */
-#home-screen .home-menu {
-  grid-column: 1 / 4 !important;
-  grid-row: 3 !important;
-  width: 100% !important;
-  height: 350px !important;
-  margin: 0 !important;
-}
-
-#home-screen .training-card,
-#home-screen .club-card {
-  height: 350px !important;
-  min-height: 350px !important;
-}
-
-#home-screen .play-card {
-  height: 205px !important;
-  min-height: 205px !important;
-}
-
-#home-screen .market-card {
-  height: 133px !important;
-  min-height: 133px !important;
-  overflow: hidden !important;
-}
-
-/* Bottom four cards */
-#home-screen .bottom-panels {
-  grid-column: 1 / 4 !important;
-  grid-row: 4 !important;
-  width: 100% !important;
-  margin: 0 !important;
-}
-
-#home-screen .bottom-panels > div {
-  min-height: 120px !important;
-}
-/* ===== PULL TOP HOME AREA UP ===== */
-
-#home-screen {
-  row-gap: 8px !important;
-}
-
-#home-screen .profile,
-#home-screen .daily-panels,
-#home-screen .mascot,
-#home-screen .speech-bubble {
-  transform: translateY(-70px) !important;
-}
-
-#home-screen .mascot {
-  margin-bottom: -20px !important;
-}
-
-#home-screen .speech-bubble {
-  margin-bottom: -35px !important;
-}
-
-#home-screen .home-menu {
-  margin-top: -55px !important;
-}
-
-#home-screen .bottom-panels {
-  margin-top: -15px !important;
-}
-/* ===== FIX TOP HOME SECTION ===== */
-
-#home-screen .home-hero {
-  grid-column: 1 !important;
-  grid-row: 1 !important;
-  transform: none !important;
-  margin: 0 !important;
-  align-self: start !important;
-}
-
-#home-screen .profile {
-  margin-top: 10px !important;
-  transform: none !important;
-}
-
-#home-screen .mascot {
-  transform: scale(0.78) !important;
-  margin-top: -10px !important;
-}
-
-#home-screen .speech-bubble {
-  margin-top: 115px !important;
-  margin-bottom: 0 !important;
-}
-
-#home-screen .daily-panels {
-  margin-top: 10px !important;
-}
-
-#home-screen .home-menu {
-  margin-top: 0 !important;
-}
-/* ===== TOP POSITION CORRECTION ===== */
-
-/* Push profile below the KickVerse logo */
-#home-screen .profile {
-  margin-top: 95px !important;
-  align-self: start !important;
-}
-
-/* Move welcome box upward away from PLAY */
-#home-screen .speech-bubble {
-  margin-top: 25px !important;
-  transform: translateY(-35px) !important;
-}
-
-/* Keep mascot between welcome and PLAY */
-#home-screen .mascot {
-  transform: translateY(-20px) scale(0.70) !important;
-  margin: 0 !important;
-}
-
-/* Give PLAY a little breathing room */
-#home-screen .play-card {
-  margin-top: 20px !important;
-}
-/* ===== COMPACT HOME VERTICAL SPACING ===== */
-
-#home-screen {
-  row-gap: 6px !important;
-}
-
-/* Pull the whole upper dashboard together */
-#home-screen .profile {
-  margin-top: 35px !important;
-}
-
-#home-screen .mascot {
-  transform: translateY(-45px) scale(0.70) !important;
-}
-
-#home-screen .speech-bubble {
-  transform: translateY(-70px) !important;
-  margin-top: 0 !important;
-}
-
-#home-screen .daily-panels {
-  transform: translateY(-25px) !important;
-}
-
-/* Bring the main cards upward */
-#home-screen .home-menu {
-  transform: translateY(-85px) !important;
-  margin-bottom: -85px !important;
-}
-
-/* Keep bottom row close underneath */
-#home-screen .bottom-panels {
-  transform: translateY(-70px) !important;
-  margin-bottom: -70px !important;
-}
-/* ===== KICKVERSE VISUAL TARGET STYLE ===== */
-
-#home-screen {
-  position: relative !important;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(2, 18, 40, 0.28) 0%,
-      rgba(2, 20, 36, 0.46) 48%,
-      rgba(4, 40, 18, 0.78) 100%
-    ),
-    url("pitch.png") center bottom / cover no-repeat !important;
-
-  min-height: 100vh !important;
-  border-radius: 0 !important;
-  overflow: hidden !important;
-}
-
-/* Dark game-style cards */
-#home-screen .profile,
-#home-screen .training-card,
-#home-screen .club-card,
-#home-screen .market-card,
-#home-screen .season-panel,
-#home-screen .club-panel,
-#home-screen .packs-panel,
-#home-screen .news-panel,
-#home-screen .speech-bubble {
-  background:
-    linear-gradient(
-      145deg,
-      rgba(3, 20, 38, 0.96),
-      rgba(3, 35, 50, 0.90)
-    ) !important;
-
-  border: 2px solid rgba(47, 174, 255, 0.72) !important;
-  box-shadow:
-    0 10px 24px rgba(0, 0, 0, 0.42),
-    inset 0 0 18px rgba(25, 151, 255, 0.08) !important;
-
-  border-radius: 16px !important;
-}
-
-/* Main PLAY panel */
-#home-screen .play-card {
-  background:
-    radial-gradient(
-      circle at 50% 30%,
-      rgba(37, 167, 255, 0.95),
-      rgba(10, 93, 205, 0.98)
-    ) !important;
-
-  border: 3px solid #63d8ff !important;
-
-  box-shadow:
-    0 12px 28px rgba(0, 0, 0, 0.48),
-    0 0 22px rgba(28, 161, 255, 0.45),
-    inset 0 0 28px rgba(255, 255, 255, 0.08) !important;
-
-  border-radius: 22px !important;
-}
-
-/* Reward */
-#home-screen .reward-card {
-  background:
-    linear-gradient(
-      135deg,
-      rgba(72, 55, 7, 0.96),
-      rgba(20, 38, 39, 0.96)
-    ) !important;
-
-  border: 2px solid #ffd64a !important;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45) !important;
-}
-
-/* Challenge */
-#home-screen .challenge-card {
-  background:
-    linear-gradient(
-      135deg,
-      rgba(8, 93, 75, 0.96),
-      rgba(11, 51, 72, 0.96)
-    ) !important;
-
-  border: 2px solid #40df8d !important;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45) !important;
-}
-
-/* Stronger headings like the reference */
-#home-screen h2,
-#home-screen h3,
-#home-screen strong {
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.65) !important;
-}
-
-/* Bottom row */
-#home-screen .bottom-panels {
-  gap: 12px !important;
-}
-
-#home-screen .bottom-panels > div {
-  background:
-    linear-gradient(
-      145deg,
-      rgba(5, 27, 49, 0.97),
-      rgba(8, 48, 66, 0.94)
-    ) !important;
-
-  border: 2px solid rgba(48, 174, 255, 0.72) !important;
-  border-radius: 15px !important;
-
-  box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.40),
-    inset 0 0 14px rgba(41, 163, 255, 0.07) !important;
 }
