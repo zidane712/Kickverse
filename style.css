@@ -2539,3 +2539,35 @@ button:active,
 #home-screen .bottom-panels {
   margin-top: -15px !important;
 }
+/* ===== FIX TOP HOME SECTION ===== */
+
+#home-screen .home-hero {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  transform: none !important;
+  margin: 0 !important;
+  align-self: start !important;
+}
+
+#home-screen .profile {
+  margin-top: 10px !important;
+  transform: none !important;
+}
+
+#home-screen .mascot {
+  transform: scale(0.78) !important;
+  margin-top: -10px !important;
+}
+
+#home-screen .speech-bubble {
+  margin-top: 115px !important;
+  margin-bottom: 0 !important;
+}
+
+#home-screen .daily-panels {
+  margin-top: 10px !important;
+}
+
+#home-screen .home-menu {
+  margin-top: 0 !important;
+}
