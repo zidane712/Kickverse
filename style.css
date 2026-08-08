@@ -2400,69 +2400,85 @@ button:active,
   height: 120px !important;
   min-height: 120px !important;
 }
-/* ===== FINAL HOME SCREEN CLEANUP ===== */
+/* ===== CLEAN HOME SCREEN LAYOUT ===== */
 
 #home-screen {
-  grid-template-columns: 280px minmax(430px, 1fr) 320px !important;
-  grid-template-rows: 80px 300px 350px 130px !important;
+  display: grid !important;
+  grid-template-columns: 280px minmax(440px, 1fr) 320px !important;
+  grid-template-rows: auto auto auto auto !important;
   column-gap: 18px !important;
   row-gap: 14px !important;
+  max-width: 1500px !important;
+  margin: 0 auto !important;
+  padding: 18px 28px 90px !important;
 }
 
-/* Keep profile in its own space */
+/* Profile on the left */
 #home-screen .profile {
   grid-column: 1 !important;
   grid-row: 2 !important;
+  position: static !important;
+  width: 100% !important;
   height: 280px !important;
   margin: 0 !important;
+  transform: none !important;
   align-self: start !important;
 }
 
-/* Welcome + mascot in the middle */
-#home-screen .speech-bubble {
-  grid-column: 2 !important;
-  grid-row: 2 !important;
-  align-self: start !important;
-  width: 420px !important;
-  height: 90px !important;
-  margin: 0 !important;
-}
-
+/* Mascot + welcome in the centre */
 #home-screen .mascot {
   grid-column: 2 !important;
   grid-row: 2 !important;
-  align-self: center !important;
+  position: static !important;
   justify-self: center !important;
-  transform: scale(0.7) !important;
-  margin: 25px 0 0 !important;
+  align-self: start !important;
+  transform: scale(0.72) !important;
+  margin: 0 !important;
 }
 
-/* Daily cards stay completely above My Club */
+#home-screen .speech-bubble {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  position: static !important;
+  justify-self: center !important;
+  align-self: end !important;
+  width: 430px !important;
+  max-width: 100% !important;
+  min-height: 90px !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+/* Reward and challenge on the right */
 #home-screen .daily-panels {
   grid-column: 3 !important;
   grid-row: 2 !important;
-  display: grid !important;
-  grid-template-rows: 135px 145px !important;
-  gap: 12px !important;
-  height: 292px !important;
-  min-height: 292px !important;
-  margin: 0 !important;
   position: static !important;
-}
-
-#home-screen .daily-card,
-#home-screen .challenge-card {
-  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  height: auto !important;
   min-height: 0 !important;
   margin: 0 !important;
+  transform: none !important;
+}
+
+#home-screen .daily-card {
   position: static !important;
+  width: 100% !important;
+  height: 132px !important;
+  min-height: 132px !important;
+  margin: 0 !important;
+  transform: none !important;
   overflow: hidden !important;
 }
 
-/* Main four cards */
+/* Training / Play / Market / My Club */
 #home-screen .home-menu {
   grid-column: 1 / 4 !important;
   grid-row: 3 !important;
+  width: 100% !important;
   height: 350px !important;
   margin: 0 !important;
 }
@@ -2484,15 +2500,14 @@ button:active,
   overflow: hidden !important;
 }
 
-/* Bottom row */
+/* Bottom four cards */
 #home-screen .bottom-panels {
   grid-column: 1 / 4 !important;
   grid-row: 4 !important;
-  height: 125px !important;
+  width: 100% !important;
   margin: 0 !important;
 }
 
 #home-screen .bottom-panels > div {
   min-height: 120px !important;
-  height: 120px !important;
 }
