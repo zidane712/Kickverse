@@ -2511,3 +2511,31 @@ button:active,
 #home-screen .bottom-panels > div {
   min-height: 120px !important;
 }
+/* ===== PULL TOP HOME AREA UP ===== */
+
+#home-screen {
+  row-gap: 8px !important;
+}
+
+#home-screen .profile,
+#home-screen .daily-panels,
+#home-screen .mascot,
+#home-screen .speech-bubble {
+  transform: translateY(-70px) !important;
+}
+
+#home-screen .mascot {
+  margin-bottom: -20px !important;
+}
+
+#home-screen .speech-bubble {
+  margin-bottom: -35px !important;
+}
+
+#home-screen .home-menu {
+  margin-top: -55px !important;
+}
+
+#home-screen .bottom-panels {
+  margin-top: -15px !important;
+}
