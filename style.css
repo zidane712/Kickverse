@@ -2571,3 +2571,27 @@ button:active,
 #home-screen .home-menu {
   margin-top: 0 !important;
 }
+/* ===== TOP POSITION CORRECTION ===== */
+
+/* Push profile below the KickVerse logo */
+#home-screen .profile {
+  margin-top: 95px !important;
+  align-self: start !important;
+}
+
+/* Move welcome box upward away from PLAY */
+#home-screen .speech-bubble {
+  margin-top: 25px !important;
+  transform: translateY(-35px) !important;
+}
+
+/* Keep mascot between welcome and PLAY */
+#home-screen .mascot {
+  transform: translateY(-20px) scale(0.70) !important;
+  margin: 0 !important;
+}
+
+/* Give PLAY a little breathing room */
+#home-screen .play-card {
+  margin-top: 20px !important;
+}
