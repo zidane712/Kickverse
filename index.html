@@ -1,154 +1,275 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+<!-- HOME SCREEN -->
+<main id="home-screen" class="screen">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <!-- TOP HEADER -->
+  <header class="kv-header">
+    <div class="kv-logo">
+      <span class="logo-kick">KICK</span><span class="logo-verse">VERSE</span> ⚽
+    </div>
 
-  <title>KickVerse</title>
+    <div class="currencies">
+      <div class="currency">🪙 <strong class="coins-copy">25680</strong> <button>+</button></div>
+      <div class="currency">💎 <strong>1250</strong> <button>+</button></div>
 
-  <link rel="stylesheet" href="style.css?v=2">
-</head>
+      <div class="xp-top">
+        <span class="xp-badge">XP</span>
+        <strong>2,450</strong> / 3,000
+        <div class="xp-top-bar">
+          <div></div>
+        </div>
+      </div>
 
-<body>
+      <div class="level-badge">
+        <small>LVL</small>
+        <strong>12</strong>
+      </div>
 
-  <!-- HOME SCREEN -->
-  <main id="home-screen" class="screen">
-<section class="home-hero">
-  <div class="home-brand">⚽ KICKVERSE</div>
-  <p class="home-tagline">Build your club. Win your story.</p>
-</section>
-<header class="top-bar">
+      <button class="icon-button">🔔</button>
+      <button class="icon-button">⚙️</button>
+    </div>
+  </header>
 
-  <section class="profile">
-    <div class="badge">KV</div>
 
-    <div>
-      <h1>Chief Creator</h1>
-      <p>⭐ Level <span id="level">1</span></p>
+  <!-- STADIUM AREA -->
+  <section class="home-dashboard">
 
-      <div class="xp-bar">
-        <div id="xp-fill"></div>
+    <!-- PROFILE -->
+    <section class="profile-card">
+      <h3>YOUR PROFILE</h3>
+
+      <div class="profile-shield">
+        KV
+      </div>
+
+      <h2>Chief Creator</h2>
+
+      <div class="profile-level">
+        ⭐ <strong>LEVEL 12</strong>
+      </div>
+
+      <div class="profile-xp">
+        <strong>XP</strong>
+        <span>2,450 / 3,000 XP</span>
+      </div>
+
+      <div class="profile-xp-bar">
+        <div></div>
+      </div>
+    </section>
+
+
+    <!-- CENTER -->
+    <section class="welcome-area">
+
+      <div class="welcome-title">
+        <div class="crown">👑</div>
+        <h2>WELCOME BACK,</h2>
+        <h1>CHIEF CREATOR!</h1>
+        <p>Ready to become a football legend?</p>
+      </div>
+
+      <div class="creator-character">
+        🧑🏻
+      </div>
+
+    </section>
+
+
+    <!-- DAILY BOXES -->
+    <section class="daily-area">
+
+      <div class="daily-reward">
+        <h2>DAILY REWARD</h2>
+
+        <div class="reward-content">
+          <div class="reward-gift">🎁</div>
+          <p>
+            Come back every<br>
+            day for bigger<br>
+            rewards!
+          </p>
+        </div>
+
+        <button id="claim-reward">CLAIM</button>
+      </div>
+
+
+      <div class="daily-challenge">
+        <h2>DAILY CHALLENGE</h2>
+
+        <div class="challenge-content">
+          <div class="target">🎯</div>
+
+          <div>
+            <p>Score 3 goals<br>in any match</p>
+            <strong>PROGRESS: <span id="challenge-progress">0</span>/3</strong>
+          </div>
+        </div>
+
+        <div class="challenge-bar">
+          <div></div>
+        </div>
+      </div>
+
+    </section>
+
+  </section>
+
+
+  <!-- MAIN ACTION CARDS -->
+  <section class="action-grid">
+
+    <!-- TRAINING -->
+    <button class="game-card training-card" id="training-button">
+      <h2>TRAINING</h2>
+
+      <div class="training-art">
+        ⚽
+        <span>🚧</span>
+      </div>
+
+      <p>Improve your skills<br>and attributes</p>
+
+      <div class="card-arrow">›</div>
+    </button>
+
+
+    <!-- CENTER ACTIONS -->
+    <section class="center-actions">
+
+      <button class="play-card" id="play-button">
+        <div class="play-ball">⚽</div>
+
+        <div>
+          <h1>PLAY</h1>
+          <p>Jump into the action</p>
+        </div>
+      </button>
+
+
+      <button class="market-card" id="market-button">
+        <div class="player-cards">
+          <div class="mini-player gold">91</div>
+          <div class="mini-player purple">88</div>
+          <div class="mini-player blue">87</div>
+        </div>
+
+        <div class="market-text">
+          <h2>MARKET</h2>
+          <p>Buy, sell and trade<br>football players</p>
+        </div>
+
+        <div class="card-arrow">›</div>
+      </button>
+
+    </section>
+
+
+    <!-- MY CLUB -->
+    <button class="game-card club-card" id="club-button">
+      <h2>MY CLUB</h2>
+
+      <div class="club-shield">
+        <span>★</span>
+        <strong>III</strong>
+      </div>
+
+      <p>Build your team and<br>upgrade your stadium</p>
+
+      <div class="card-arrow">›</div>
+    </button>
+
+  </section>
+
+
+  <!-- LOWER CARDS -->
+  <section class="bottom-cards">
+
+    <button class="bottom-card season-card">
+      <div class="bottom-art">🏆</div>
+
+      <div>
+        <h2>SEASON 1</h2>
+        <p>Win games and<br>climb the rankings</p>
+        <strong>VIEW SEASON ›</strong>
+      </div>
+    </button>
+
+
+    <div class="bottom-card rating-card">
+      <div class="rating-shield">⭐</div>
+
+      <div>
+        <h2>CLUB RATING</h2>
+        <div class="rating-number">60</div>
+        <div class="rating-stars">★★★☆☆</div>
+      </div>
+
+      <div class="rating-progress">
+        <div></div>
       </div>
     </div>
-  </section>
 
-  <section class="money-bar">
-    <div>🪙 <span id="coins">500</span></div>
-    <div>💎 <span id="gems">0</span></div>
-    <div>⭐ <span id="xp">0</span> XP</div>
-  </section>
 
-</header>
+    <button class="bottom-card packs-card">
+      <div class="pack-art">
+        <span>KV</span>
+        <span>KV</span>
+      </div>
 
-<section class="welcome-area">
-
-  <div class="mascot">
-    ⚽😊
-  </div>
-
-  <div class="speech-bubble">
-    <strong>WELCOME BACK,<br>CHIEF CREATOR!</strong>
-    <p>Ready to become a football legend?</p>
-  </div>
-
-  <div class="daily-panels">
-
-    <button id="daily-reward" class="daily-card reward-card">
-      <span>🎁</span>
-      <strong>DAILY REWARD</strong>
-      <small id="reward-text">Come back every day for bigger rewards!</small>
-      <b>CLAIM</b>
+      <div>
+        <h2>PACKS</h2>
+        <p>Open packs and<br>find amazing cards</p>
+        <strong>OPEN PACKS ›</strong>
+      </div>
     </button>
 
-    <button class="daily-card challenge-card">
-      <span>🎯</span>
-      <strong>DAILY CHALLENGE</strong>
-      <small>Score 3 goals in any match</small>
-      <p>PROGRESS: <span id="challenge">0</span>/3</p>
+
+    <button class="bottom-card news-card">
+      <div>
+        <h2>LATEST NEWS</h2>
+        <p class="yellow">New Tournament<br>starting soon!</p>
+        <p>Big Update<br>coming this week!</p>
+        <strong>VIEW NEWS ›</strong>
+      </div>
+
+      <div class="news-art">📣</div>
     </button>
 
-  </div>
+  </section>
 
-</section>    
 
-   <section class="home-menu">
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-navigation">
 
-  <button class="menu-card training-card">
-    <span>🥅</span>
-    <h2>TRAINING</h2>
-    <p>Improve your skills and attributes</p>
-    <strong>›</strong>
-  </button>
+    <button class="nav-item active">
+      <span>🏠</span>
+      <strong>HOME</strong>
+    </button>
 
-  <button id="play-button" class="menu-card play-card">
-    <span>⚽</span>
-    <h2>PLAY</h2>
-    <p>Jump into the action</p>
-  </button>
+    <button class="nav-item" id="matches-nav">
+      <span>⚽</span>
+      <strong>MATCHES</strong>
+    </button>
 
-  <button class="menu-card club-card">
-    <span>🛡️</span>
-    <h2>MY CLUB</h2>
-    <p>Build your team and upgrade your stadium</p>
-    <strong>›</strong>
-  </button>
+    <button class="nav-item" id="club-nav">
+      <span>👥</span>
+      <strong>CLUB</strong>
+    </button>
 
-  <button class="menu-card market-card">
-    <span>🃏</span>
-    <h2>MARKET</h2>
-    <p>Buy, sell and trade football players</p>
-    <strong>›</strong>
-  </button>
+    <button class="nav-item" id="market-nav">
+      <span>🛒</span>
+      <strong>MARKET</strong>
+    </button>
 
-</section> 
+    <button class="nav-item">
+      <span>👤</span>
+      <strong>PROFILE</strong>
+    </button>
 
-    <section class="bottom-panels">
+  </nav>
 
-  <div class="season-panel">
-    <span>🏆</span>
-    <div>
-      <h3>SEASON 1</h3>
-      <p>Win games and climb the rankings</p>
-      <strong>VIEW SEASON ›</strong>
-    </div>
-  </div>
-
-  <div class="club-panel">
-    <span>🛡️</span>
-    <div>
-      <h3>CLUB RATING</h3>
-      <p class="rating-number">60</p>
-      <p>⭐⭐⭐☆☆</p>
-    </div>
-  </div>
-
-  <div class="packs-panel">
-    <span>🎴</span>
-    <div>
-      <h3>PACKS</h3>
-      <p>Open packs and find amazing cards</p>
-      <strong>OPEN PACKS ›</strong>
-    </div>
-  </div>
-
-  <div class="news-panel">
-    <span>📣</span>
-    <div>
-      <h3>LATEST NEWS</h3>
-      <p>New Tournament starting soon!</p>
-      <p>Big Update coming this week!</p>
-      <strong>VIEW NEWS ›</strong>
-    </div>
-  </div>
-
-</section>
-
-  </main>
-
+</main>
 
   <!-- GAME MODE SCREEN -->
   <main id="mode-screen" class="screen hidden">
