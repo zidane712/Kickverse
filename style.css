@@ -3099,3 +3099,119 @@ button.bottom-card {
     transform-origin: right top !important;
   }
 }
+
+
+/* ===== KICKVERSE CREATOR CHARACTER ===== */
+
+.creator-character {
+  position: relative;
+  width: 240px;
+  height: 290px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: visible;
+}
+
+/* Hair */
+.creator-hair {
+  position: absolute;
+  top: 0;
+  z-index: 4;
+  font-size: 82px;
+  line-height: 1;
+}
+
+/* Face */
+.creator-face {
+  position: absolute;
+  top: 48px;
+  z-index: 3;
+  font-size: 105px;
+  line-height: 1;
+}
+
+/* Hoodie/body */
+.creator-body {
+  position: absolute;
+  bottom: 0;
+  width: 190px;
+  height: 175px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #172532 0%,
+      #0c141d 45%,
+      #172532 100%
+    );
+
+  border-radius: 65px 65px 22px 22px;
+
+  border: 2px solid rgba(70, 170, 230, 0.3);
+
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.65),
+    0 15px 30px rgba(0, 0, 0, 0.35);
+
+  z-index: 2;
+}
+
+/* Hoodie opening */
+.creator-body::before {
+  content: "";
+  position: absolute;
+
+  left: 50%;
+  top: 0;
+
+  width: 42px;
+  height: 100%;
+
+  transform: translateX(-50%);
+
+  background: linear-gradient(
+    90deg,
+    transparent 45%,
+    #35aef4 47%,
+    #35aef4 53%,
+    transparent 55%
+  );
+}
+
+/* KV logo on hoodie */
+.creator-kv {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+
+  transform: translateX(-50%) skew(-7deg);
+
+  color: white;
+
+  font-size: 25px;
+  font-weight: 1000;
+  font-style: italic;
+
+  text-shadow:
+    2px 2px 0 #111,
+    0 0 8px rgba(45, 180, 255, 0.5);
+}
+
+/* Keep character behind PLAY panel */
+.center-area {
+  position: relative;
+}
+
+.creator-character {
+  z-index: 1;
+}
+
+.play-card,
+.play-panel,
+.play-button {
+  position: relative;
+  z-index: 5;
+}
