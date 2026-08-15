@@ -2062,3 +2062,1040 @@ button.bottom-card {
     grid-template-columns: 1fr 1fr;
   }
 }
+/* =========================================================
+   KICKVERSE FINAL HOME SCREEN OVERRIDE
+   TARGET: STADIUM DASHBOARD REFERENCE
+   ========================================================= */
+
+#home-screen {
+  min-height: 100vh !important;
+  width: 100% !important;
+  padding: 14px 30px 88px !important;
+  margin: 0 !important;
+  overflow-x: hidden !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  color: #fff !important;
+
+  background:
+    radial-gradient(
+      circle at 72% 10%,
+      rgba(255,255,255,.32) 0 2%,
+      rgba(150,220,255,.14) 5%,
+      transparent 16%
+    ),
+    radial-gradient(
+      circle at 8% 21%,
+      rgba(255,255,255,.18),
+      transparent 12%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(2,16,35,.15) 0%,
+      rgba(2,24,44,.30) 38%,
+      rgba(3,66,30,.55) 65%,
+      rgba(2,42,19,.92) 100%
+    ),
+    url("pitch.png") center center / cover no-repeat !important;
+
+  position: relative !important;
+}
+
+#home-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.26),
+      transparent 24%,
+      transparent 76%,
+      rgba(0,0,0,.26)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3,15,32,.16),
+      transparent 50%,
+      rgba(0,25,5,.18)
+    ) !important;
+}
+
+#home-screen > * {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+#home-screen .kv-header {
+  width: 100% !important;
+  height: 74px !important;
+  min-height: 74px !important;
+
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+
+  gap: 12px !important;
+  margin: 0 0 10px !important;
+}
+
+#home-screen .kv-logo {
+  width: 220px !important;
+  flex: 0 0 220px !important;
+
+  padding: 5px 0 0 8px !important;
+
+  font-size: 34px !important;
+  line-height: .95 !important;
+  font-weight: 1000 !important;
+  font-style: italic !important;
+  letter-spacing: -3px !important;
+
+  color: #fff !important;
+
+  transform: skew(-5deg) !important;
+
+  text-shadow:
+    0 3px 0 #0874c6,
+    0 6px 10px rgba(0,0,0,.65) !important;
+}
+
+#home-screen .logo-kick {
+  color: white !important;
+}
+
+#home-screen .logo-verse {
+  color: #22aaff !important;
+}
+
+#home-screen .currencies {
+  width: auto !important;
+
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+
+  gap: 7px !important;
+}
+
+#home-screen .currency,
+#home-screen .xp-top,
+#home-screen .level-badge,
+#home-screen .icon-button {
+  height: 48px !important;
+
+  border: 1px solid #245374 !important;
+  border-radius: 9px !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(7,34,55,.99),
+      rgba(2,18,33,.99)
+    ) !important;
+
+  box-shadow:
+    0 5px 11px rgba(0,0,0,.42),
+    inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+
+#home-screen .currency {
+  min-width: 105px !important;
+  padding: 0 8px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 7px !important;
+
+  font-size: 16px !important;
+  font-weight: 900 !important;
+}
+
+#home-screen .currency button {
+  width: 23px !important;
+  height: 23px !important;
+
+  padding: 0 !important;
+
+  border: 0 !important;
+  border-radius: 5px !important;
+
+  color: #fff !important;
+  background: #22a432 !important;
+
+  font-size: 17px !important;
+  font-weight: 1000 !important;
+}
+
+#home-screen .xp-top {
+  position: relative !important;
+
+  min-width: 185px !important;
+  padding: 7px 11px 5px 42px !important;
+
+  font-size: 12px !important;
+}
+
+#home-screen .xp-badge {
+  position: absolute !important;
+  left: 7px !important;
+  top: 8px !important;
+
+  width: 29px !important;
+  height: 29px !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  border: 2px solid #75d9ff !important;
+  border-radius: 7px !important;
+
+  color: white !important;
+  background: #092541 !important;
+
+  font-size: 11px !important;
+  font-weight: 1000 !important;
+}
+
+#home-screen .xp-top-bar {
+  width: 100% !important;
+  height: 6px !important;
+
+  margin-top: 4px !important;
+
+  border-radius: 999px !important;
+  overflow: hidden !important;
+
+  background: #06131f !important;
+}
+
+#home-screen .xp-top-bar > div {
+  width: 75% !important;
+  height: 100% !important;
+
+  background: #22aaff !important;
+}
+
+#home-screen .level-badge {
+  width: 49px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  color: white !important;
+}
+
+#home-screen .level-badge small {
+  color: #bfe9ff !important;
+  font-size: 9px !important;
+}
+
+#home-screen .level-badge strong {
+  color: #ffd94c !important;
+  font-size: 19px !important;
+}
+
+#home-screen .icon-button {
+  width: 46px !important;
+  padding: 0 !important;
+
+  color: white !important;
+  font-size: 20px !important;
+}
+
+
+/* =========================================================
+   TOP DASHBOARD
+   ========================================================= */
+
+#home-screen .home-dashboard {
+  width: 100% !important;
+  height: 326px !important;
+  min-height: 326px !important;
+
+  display: grid !important;
+  grid-template-columns: 285px minmax(390px, 1fr) 320px !important;
+
+  gap: 14px !important;
+
+  align-items: stretch !important;
+
+  margin: 0 0 12px !important;
+}
+
+
+/* PROFILE */
+
+#home-screen .profile-card {
+  width: 100% !important;
+  height: 326px !important;
+
+  padding: 14px 17px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+
+  text-align: center !important;
+
+  border: 1px solid #456a88 !important;
+  border-radius: 14px !important;
+
+  background:
+    linear-gradient(
+      150deg,
+      rgba(3,18,34,.98),
+      rgba(4,34,46,.97)
+    ) !important;
+
+  box-shadow:
+    0 9px 22px rgba(0,0,0,.46),
+    inset 0 0 20px rgba(37,168,255,.05) !important;
+}
+
+#home-screen .profile-card h3 {
+  width: 100% !important;
+
+  margin: 0 0 12px !important;
+  padding-bottom: 8px !important;
+
+  border-bottom: 1px solid rgba(255,255,255,.08) !important;
+
+  color: #c7ccd3 !important;
+
+  font-size: 16px !important;
+  font-weight: 900 !important;
+}
+
+#home-screen .profile-shield {
+  width: 105px !important;
+  height: 108px !important;
+
+  margin: 0 0 11px !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  border: 4px solid #dceefa !important;
+  border-radius: 24% 24% 42% 42% !important;
+
+  color: white !important;
+
+  background:
+    linear-gradient(
+      150deg,
+      #173f63,
+      #061726 58%,
+      #0e2d46
+    ) !important;
+
+  box-shadow:
+    inset 0 0 19px rgba(255,255,255,.12),
+    0 6px 14px rgba(0,0,0,.42) !important;
+
+  font-size: 30px !important;
+  font-weight: 1000 !important;
+  font-style: italic !important;
+}
+
+#home-screen .profile-card h2 {
+  margin: 0 0 7px !important;
+
+  color: white !important;
+
+  font-size: 21px !important;
+  font-weight: 900 !important;
+}
+
+#home-screen .profile-level {
+  color: #ffd74a !important;
+
+  font-size: 14px !important;
+}
+
+#home-screen .profile-xp {
+  width: 100% !important;
+
+  margin-top: 12px !important;
+
+  display: flex !important;
+  justify-content: space-between !important;
+
+  color: #d3e0ec !important;
+
+  font-size: 11px !important;
+}
+
+#home-screen .profile-xp-bar {
+  width: 100% !important;
+  height: 9px !important;
+
+  margin-top: 5px !important;
+
+  overflow: hidden !important;
+
+  border: 1px solid #244b67 !important;
+  border-radius: 999px !important;
+
+  background: #07131f !important;
+}
+
+#home-screen .profile-xp-bar > div {
+  width: 75% !important;
+  height: 100% !important;
+
+  border-radius: inherit !important;
+
+  background: #20aaff !important;
+}
+
+
+/* CENTER */
+
+#home-screen .welcome-area {
+  width: 100% !important;
+  height: 326px !important;
+  min-height: 326px !important;
+
+  position: relative !important;
+
+  display: block !important;
+
+  overflow: hidden !important;
+}
+
+#home-screen .welcome-title {
+  width: 100% !important;
+
+  position: relative !important;
+  z-index: 3 !important;
+
+  margin: 4px 0 0 !important;
+
+  text-align: center !important;
+}
+
+#home-screen .crown {
+  height: 25px !important;
+
+  margin: 0 0 -3px !important;
+
+  font-size: 23px !important;
+}
+
+#home-screen .welcome-title h2 {
+  margin: 0 !important;
+
+  color: white !important;
+
+  font-size: 21px !important;
+  font-style: italic !important;
+  line-height: 1 !important;
+}
+
+#home-screen .welcome-title h1 {
+  margin: 3px 0 5px !important;
+
+  color: #24adff !important;
+
+  font-size: 28px !important;
+  font-style: italic !important;
+  line-height: 1 !important;
+
+  text-shadow:
+    0 3px 5px rgba(0,0,0,.65) !important;
+}
+
+#home-screen .welcome-title p {
+  margin: 0 !important;
+
+  color: white !important;
+
+  font-size: 14px !important;
+}
+
+#home-screen .creator-character {
+  position: absolute !important;
+
+  left: 50% !important;
+  bottom: -38px !important;
+
+  transform: translateX(-50%) !important;
+
+  width: 280px !important;
+  height: 245px !important;
+
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+
+  overflow: hidden !important;
+
+  font-size: 215px !important;
+  line-height: 1 !important;
+
+  filter:
+    drop-shadow(0 13px 8px rgba(0,0,0,.42)) !important;
+}
+
+
+/* DAILY */
+
+#home-screen .daily-area {
+  width: 100% !important;
+  height: 326px !important;
+
+  display: grid !important;
+  grid-template-rows: 1fr 1fr !important;
+
+  gap: 10px !important;
+}
+
+#home-screen .daily-reward,
+#home-screen .daily-challenge {
+  width: 100% !important;
+
+  border-radius: 14px !important;
+
+  overflow: hidden !important;
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.42),
+    inset 0 0 14px rgba(255,255,255,.04) !important;
+}
+
+#home-screen .daily-reward {
+  position: relative !important;
+
+  padding: 12px 14px 11px 100px !important;
+
+  border: 2px solid #5bd232 !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8,67,27,.98),
+      rgba(3,37,30,.98)
+    ) !important;
+}
+
+#home-screen .daily-reward h2 {
+  margin: 0 0 7px !important;
+
+  color: #72ed44 !important;
+
+  font-size: 18px !important;
+  font-style: italic !important;
+}
+
+#home-screen .reward-gift {
+  position: absolute !important;
+
+  left: 17px !important;
+  top: 45px !important;
+
+  font-size: 61px !important;
+}
+
+#home-screen .reward-content p {
+  margin: 0 0 6px !important;
+
+  color: white !important;
+
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+}
+
+#home-screen #claim-reward {
+  width: 100% !important;
+  height: 29px !important;
+
+  padding: 0 !important;
+
+  border: 1px solid #8cff5d !important;
+  border-radius: 6px !important;
+
+  color: #071900 !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #77f143,
+      #38b821
+    ) !important;
+
+  font-size: 14px !important;
+  font-weight: 1000 !important;
+}
+
+#home-screen .daily-challenge {
+  padding: 11px 14px !important;
+
+  border: 2px solid #a25cf0 !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(38,17,73,.98),
+      rgba(11,28,47,.98)
+    ) !important;
+}
+
+#home-screen .daily-challenge h2 {
+  margin: 0 0 7px !important;
+
+  color: #c778ff !important;
+
+  font-size: 18px !important;
+  font-style: italic !important;
+}
+
+#home-screen .challenge-content {
+  display: grid !important;
+  grid-template-columns: 66px 1fr !important;
+
+  align-items: center !important;
+
+  gap: 8px !important;
+}
+
+#home-screen .target {
+  font-size: 55px !important;
+}
+
+#home-screen .challenge-content p {
+  margin: 0 0 5px !important;
+
+  color: white !important;
+
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+}
+
+#home-screen .challenge-content strong {
+  color: white !important;
+
+  font-size: 11px !important;
+}
+
+#home-screen .challenge-bar {
+  width: 100% !important;
+  height: 8px !important;
+
+  margin-top: 7px !important;
+
+  border-radius: 999px !important;
+
+  overflow: hidden !important;
+
+  background: #07121d !important;
+}
+
+
+/* =========================================================
+   TRAINING / PLAY / MARKET / CLUB
+   ========================================================= */
+
+#home-screen .action-grid {
+  width: 100% !important;
+  height: 310px !important;
+
+  display: grid !important;
+  grid-template-columns: 280px minmax(400px, 1fr) 280px !important;
+
+  gap: 13px !important;
+
+  margin: 0 0 13px !important;
+}
+
+#home-screen .game-card,
+#home-screen .market-card {
+  border: 1px solid #275978 !important;
+  border-radius: 14px !important;
+
+  color: white !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(4,30,39,.98),
+      rgba(3,19,32,.99)
+    ) !important;
+
+  box-shadow:
+    0 10px 22px rgba(0,0,0,.42),
+    inset 0 0 16px rgba(33,167,244,.04) !important;
+}
+
+#home-screen .training-card,
+#home-screen .club-card {
+  width: 100% !important;
+  height: 310px !important;
+
+  padding: 18px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+
+  text-align: center !important;
+}
+
+#home-screen .game-card h2 {
+  margin: 0 !important;
+
+  color: #22aaff !important;
+
+  font-size: 23px !important;
+  font-style: italic !important;
+}
+
+#home-screen .training-art {
+  flex: 1 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 4px !important;
+
+  font-size: 78px !important;
+}
+
+#home-screen .training-art span {
+  font-size: 48px !important;
+}
+
+#home-screen .game-card p {
+  margin: 0 0 10px !important;
+
+  color: #e4edf4 !important;
+
+  font-size: 13px !important;
+  line-height: 1.25 !important;
+}
+
+
+/* CENTER ACTIONS */
+
+#home-screen .center-actions {
+  width: 100% !important;
+  height: 310px !important;
+
+  display: grid !important;
+  grid-template-rows: 190px 107px !important;
+
+  gap: 13px !important;
+}
+
+#home-screen .play-card {
+  width: 100% !important;
+  height: 190px !important;
+
+  padding: 10px 25px !important;
+
+  display: grid !important;
+  grid-template-columns: 145px 1fr !important;
+
+  align-items: center !important;
+
+  border: 3px solid #5ddaff !important;
+  border-radius: 24px !important;
+
+  color: white !important;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #36c0ff,
+      #0c90ec 45%,
+      #0754b5 100%
+    ) !important;
+
+  box-shadow:
+    0 12px 26px rgba(0,0,0,.45),
+    0 0 19px rgba(41,179,255,.42),
+    inset 0 0 24px rgba(255,255,255,.08) !important;
+}
+
+#home-screen .play-ball {
+  font-size: 98px !important;
+
+  text-align: center !important;
+}
+
+#home-screen .play-card h1 {
+  margin: 0 !important;
+
+  color: white !important;
+
+  font-size: 51px !important;
+  font-style: italic !important;
+  line-height: 1 !important;
+
+  text-shadow:
+    0 4px 5px rgba(0,0,0,.44) !important;
+}
+
+#home-screen .play-card p {
+  margin: 8px 0 0 !important;
+
+  color: white !important;
+
+  font-size: 17px !important;
+  font-style: italic !important;
+}
+
+#home-screen .market-card {
+  position: relative !important;
+
+  width: 100% !important;
+  height: 107px !important;
+
+  padding: 10px 40px 10px 180px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+
+  text-align: left !important;
+}
+
+#home-screen .market-text h2 {
+  margin: 0 !important;
+
+  color: #22aaff !important;
+
+  font-size: 21px !important;
+  font-style: italic !important;
+}
+
+#home-screen .market-text p {
+  margin: 5px 0 0 !important;
+
+  color: #e0eaf1 !important;
+
+  font-size: 12px !important;
+}
+
+#home-screen .player-cards {
+  position: absolute !important;
+
+  left: 18px !important;
+  bottom: 3px !important;
+
+  width: 145px !important;
+  height: 102px !important;
+}
+
+#home-screen .mini-player {
+  width: 63px !important;
+  height: 90px !important;
+}
+
+
+/* MY CLUB */
+
+#home-screen .club-shield {
+  flex: 1 !important;
+
+  width: 145px !important;
+
+  margin: 10px auto !important;
+}
+
+
+/* =========================================================
+   BOTTOM FOUR
+   ========================================================= */
+
+#home-screen .bottom-cards {
+  width: 100% !important;
+
+  display: grid !important;
+  grid-template-columns: 1.08fr .92fr 1.08fr 1.08fr !important;
+
+  gap: 12px !important;
+
+  margin: 0 !important;
+}
+
+#home-screen .bottom-card {
+  min-height: 126px !important;
+
+  padding: 13px !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 10px !important;
+
+  border: 1px solid #28597a !important;
+  border-radius: 13px !important;
+
+  color: white !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(4,27,42,.98),
+      rgba(5,43,51,.97)
+    ) !important;
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.40),
+    inset 0 0 13px rgba(37,168,244,.04) !important;
+}
+
+#home-screen .bottom-card h2 {
+  margin: 0 0 5px !important;
+
+  color: #22aaff !important;
+
+  font-size: 17px !important;
+  font-style: italic !important;
+}
+
+#home-screen .bottom-card p {
+  margin: 2px 0 !important;
+
+  color: #e4edf4 !important;
+
+  font-size: 11px !important;
+  line-height: 1.25 !important;
+}
+
+#home-screen .bottom-card strong {
+  display: inline-block !important;
+
+  margin-top: 6px !important;
+
+  color: #38baff !important;
+
+  font-size: 10px !important;
+}
+
+#home-screen .bottom-art {
+  font-size: 58px !important;
+}
+
+#home-screen .rating-number {
+  color: #ffd84a !important;
+
+  font-size: 31px !important;
+  font-weight: 1000 !important;
+}
+
+#home-screen .rating-stars {
+  color: #ffd84a !important;
+}
+
+#home-screen .news-art {
+  font-size: 53px !important;
+}
+
+
+/* =========================================================
+   BOTTOM NAV
+   ========================================================= */
+
+#home-screen .bottom-navigation {
+  position: fixed !important;
+
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+
+  z-index: 100 !important;
+
+  width: 100% !important;
+  height: 72px !important;
+
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+
+  border-top: 1px solid #1e4866 !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4,25,42,.995),
+      rgba(1,11,21,.995)
+    ) !important;
+
+  box-shadow:
+    0 -8px 22px rgba(0,0,0,.46) !important;
+}
+
+#home-screen .nav-item {
+  border: 0 !important;
+
+  color: #a9b8c5 !important;
+  background: transparent !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 3px !important;
+}
+
+#home-screen .nav-item span {
+  font-size: 22px !important;
+}
+
+#home-screen .nav-item strong {
+  font-size: 10px !important;
+}
+
+#home-screen .nav-item.active {
+  color: #31b7ff !important;
+}
+
+
+/* =========================================================
+   TABLET / IPAD FIT
+   ========================================================= */
+
+@media (max-width: 1180px) and (min-width: 851px) {
+
+  #home-screen {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  #home-screen .home-dashboard {
+    grid-template-columns:
+      250px minmax(330px, 1fr) 280px !important;
+
+    gap: 11px !important;
+  }
+
+  #home-screen .action-grid {
+    grid-template-columns:
+      245px minmax(340px, 1fr) 245px !important;
+
+    gap: 11px !important;
+  }
+
+  #home-screen .currencies {
+    transform: scale(.92) !important;
+    transform-origin: right top !important;
+  }
+}
