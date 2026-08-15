@@ -3215,3 +3215,171 @@ button.bottom-card {
   position: relative;
   z-index: 5;
 }
+
+
+/* ===== CUSTOM CREATOR FACE ===== */
+
+.character-head {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 112px;
+  height: 128px;
+  background: linear-gradient(135deg, #e9a77e, #c97958);
+  border-radius: 48% 48% 45% 45%;
+  z-index: 5;
+  box-shadow:
+    inset -10px -8px 18px rgba(80, 30, 20, 0.18),
+    0 8px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Hair */
+.character-hair {
+  position: absolute;
+  width: 122px;
+  height: 55px;
+  left: -5px;
+  top: -10px;
+  background: #321d18;
+  border-radius: 60% 55% 35% 30%;
+  transform: rotate(-4deg);
+}
+
+.character-hair::before {
+  content: "";
+  position: absolute;
+  width: 75px;
+  height: 35px;
+  left: 8px;
+  top: -13px;
+  background: #3b2119;
+  border-radius: 70% 30% 60% 30%;
+  transform: rotate(-12deg);
+}
+
+/* Ears */
+.character-ear {
+  position: absolute;
+  top: 54px;
+  width: 20px;
+  height: 30px;
+  background: #d98b67;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.character-ear.left {
+  left: -12px;
+}
+
+.character-ear.right {
+  right: -12px;
+}
+
+/* Eyes */
+.character-eye {
+  position: absolute;
+  top: 54px;
+  width: 25px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: inset 0 -2px 3px rgba(0,0,0,.15);
+}
+
+.character-eye::after {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 15px;
+  background: #392116;
+  border-radius: 50%;
+  left: 7px;
+  top: 8px;
+  box-shadow: inset 0 0 0 3px #15100d;
+}
+
+.character-eye.left {
+  left: 22px;
+}
+
+.character-eye.right {
+  right: 22px;
+}
+
+/* Nose */
+.character-nose {
+  position: absolute;
+  left: 50%;
+  top: 75px;
+  width: 12px;
+  height: 18px;
+  transform: translateX(-50%);
+  background: rgba(180, 91, 62, 0.35);
+  border-radius: 50%;
+}
+
+/* Smile */
+.character-smile {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  width: 39px;
+  height: 17px;
+  transform: translateX(-50%);
+  border-bottom: 5px solid #672a26;
+  border-radius: 0 0 50% 50%;
+}
+
+/* Hoodie */
+.creator-body {
+  bottom: 0;
+  width: 190px;
+  height: 170px;
+  border-radius: 60px 60px 18px 18px;
+  background: linear-gradient(115deg, #17232d, #080e14 55%, #182936);
+  border: 2px solid rgba(61, 166, 224, 0.28);
+}
+
+/* Hoodie shoulders */
+.hood {
+  position: absolute;
+  top: 7px;
+  width: 68px;
+  height: 62px;
+  border: 5px solid #273b49;
+  border-bottom: 0;
+  opacity: .9;
+}
+
+.hood.left {
+  left: 24px;
+  border-radius: 50px 0 0 0;
+  transform: rotate(15deg);
+}
+
+.hood.right {
+  right: 24px;
+  border-radius: 0 50px 0 0;
+  transform: rotate(-15deg);
+}
+
+.creator-kv {
+  top: 82px;
+  font-size: 27px;
+  z-index: 6;
+}
+
+/* Make the character sit behind PLAY like the reference */
+.creator-character {
+  width: 240px;
+  height: 285px;
+  margin-top: -4px;
+}
+
+.play-card,
+.play-panel,
+.play-button {
+  z-index: 10;
+}
