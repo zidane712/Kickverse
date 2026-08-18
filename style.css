@@ -3807,3 +3807,39 @@ button.bottom-card {
     margin: 0 auto !important;
   }
 }
+/* ===== CREATOR FINAL PROPORTIONS ===== */
+
+#home-screen .creator-character {
+  position: absolute !important;
+  left: 50% !important;
+  bottom: -15px !important;
+
+  width: 260px !important;
+  height: 255px !important;
+
+  margin: 0 !important;
+
+  transform: translateX(-50%) scale(1.05) !important;
+  transform-origin: bottom center !important;
+}
+
+#home-screen .character-head {
+  top: 8px !important;
+  width: 108px !important;
+  height: 125px !important;
+}
+
+#home-screen .character-hair {
+  width: 120px !important;
+  height: 54px !important;
+}
+
+#home-screen .creator-body {
+  width: 185px !important;
+  height: 160px !important;
+}
+
+#home-screen .creator-kv {
+  top: 76px !important;
+  font-size: 25px !important;
+}
