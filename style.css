@@ -3383,3 +3383,55 @@ button.bottom-card {
 .play-button {
   z-index: 10;
 }
+/* ===== FINAL CHARACTER POSITION / SIZE ===== */
+
+.creator-character {
+  width: 300px !important;
+  height: 310px !important;
+  margin: -35px auto -5px !important;
+  transform: scale(1.18);
+  transform-origin: bottom center;
+}
+
+.character-head {
+  top: 12px;
+  width: 125px;
+  height: 142px;
+}
+
+.character-hair {
+  width: 137px;
+  height: 62px;
+  left: -6px;
+  top: -12px;
+}
+
+.character-eye {
+  top: 61px;
+}
+
+.character-eye.left {
+  left: 27px;
+}
+
+.character-eye.right {
+  right: 27px;
+}
+
+.character-nose {
+  top: 84px;
+}
+
+.character-smile {
+  bottom: 17px;
+}
+
+.creator-body {
+  width: 215px !important;
+  height: 185px !important;
+}
+
+.creator-kv {
+  top: 92px;
+  font-size: 29px;
+}
