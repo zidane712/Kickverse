@@ -3843,3 +3843,28 @@ button.bottom-card {
   top: 76px !important;
   font-size: 25px !important;
 }
+/* ===== STADIUM BACKGROUND ===== */
+
+#home-screen {
+  background:
+    radial-gradient(circle at 8% 18%,
+      rgba(255,255,255,.85) 0 1%,
+      rgba(120,205,255,.30) 3%,
+      transparent 12%
+    ),
+    radial-gradient(circle at 72% 12%,
+      rgba(255,255,255,.90) 0 1%,
+      rgba(120,205,255,.30) 3%,
+      transparent 13%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0,12,30,.08) 0%,
+      rgba(0,20,40,.12) 45%,
+      rgba(0,45,18,.30) 70%,
+      rgba(0,28,10,.48) 100%
+    ),
+    url("pitch.PNG") center center / cover no-repeat !important;
+
+  background-attachment: scroll !important;
+}
