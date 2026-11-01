@@ -6,6 +6,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KickVerse</title>
 <style>
+
+/* KICKVERSE DREAM HOME SCREEN */
+#home{
+background:
+linear-gradient(180deg,#00101b99,#001a2bbb 50%,#001009ee),
+url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1600");
+background-size:cover;
+background-position:center;
+}
+#home .panel{
+backdrop-filter:blur(12px);
+box-shadow:0 12px 30px #0008,inset 0 1px #ffffff22;
+border-radius:20px;
+}
+#home .logo{
+color:white;
+text-shadow:0 0 20px #00aaff,4px 5px #001b44;
+letter-spacing:-2px;
+}
+#home .welcome h1{
+color:white;
+text-shadow:0 3px #005caa,0 0 22px #00aeff;
+}
+#home .avatar{
+font-size:115px;
+filter:drop-shadow(0 12px 12px #000b);
+}
+#playTile{
+background:linear-gradient(135deg,#37d4ff,#097ce9 55%,#003b9c);
+box-shadow:0 0 30px #009dff77;
+border:3px solid #8ce9ff;
+}
+#playTile:hover{
+box-shadow:0 0 45px #00bbffbb;
+transform:scale(1.02);
+}
+#home .reward{
+background:linear-gradient(135deg,#175e31ee,#03271bee);
+}
+#home .challenge{
+background:linear-gradient(135deg,#4b207eee,#120d31ee);
+}
+#home .maincards .panel{
+border-width:2px;
+}
+#home .bottomcards .panel:hover{
+border-color:#36caff;
+transform:translateY(-3px);
+}
+  
 *{box-sizing:border-box}
 :root{--bg:#041323;--panel:#071d30;--line:#245071;--blue:#16aaff;--gold:#ffd044;--green:#50e889;--text:#f3faff}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
@@ -656,7 +706,8 @@ document.getElementById("cupRound").textContent=rounds[Math.min(state.cup,3)];
 document.getElementById("cupOpponent").textContent="Next opponent: "+["Storm FC","Thunder United","Ice Wolves","Legend XI"][Math.min(state.cup,3)];
 }
 renderHUD();show("home");
-</script>
+  
+
   
 /* KICKVERSE LEGENDS AND MATCH UPGRADE */
 
