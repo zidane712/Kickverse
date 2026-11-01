@@ -657,5 +657,192 @@ document.getElementById("cupOpponent").textContent="Next opponent: "+["Storm FC"
 }
 renderHUD();show("home");
 </script>
+  
+/* KICKVERSE LEGENDS AND MATCH UPGRADE */
+
+// Add legendary footballers without deleting existing players.
+const legends = [
+ ["Cristiano Ronaldo","ST",98,"Hall-of-Fame"],
+ ["Lionel Messi","RW",98,"Hall-of-Fame"],
+ ["Ronaldinho","CAM",96,"Iconic"],
+ ["Kylian Mbappé","ST",96,"Iconic"],
+ ["Neymar Jr","LW",95,"Iconic"],
+ ["Erling Haaland","ST",95,"Rare"],
+ ["Jude Bellingham","CAM",94,"Rare"],
+ ["Vinícius Júnior","LW",94,"Icebreakers"],
+ ["Lamine Yamal","RW",93,"Icebreakers"],
+ ["Mohamed Salah","RW",94,"Iconic"],
+ ["Kevin De Bruyne","CM",95,"Iconic"],
+ ["Virgil van Dijk","CB",94,"Rare"],
+ ["Thibaut Courtois","GK",93,"Rare"],
+ ["Luka Modrić","CM",96,"Hall-of-Fame"],
+ ["Ronaldo Nazário","ST",98,"Hall-of-Fame"],
+ ["Thierry Henry","ST",97,"Hall-of-Fame"],
+ ["Paolo Maldini","CB",97,"Hall-of-Fame"],
+ ["Zinedine Zidane","CAM",99,"Hall-of-Fame"]
+];
+
+legends.forEach(p=>{
+ if(!pool.some(x=>x.name===p[0])){
+  pool.push({
+   id:pool.length,
+   name:p[0],
+   pos:p[1],
+   rating:p[2],
+   rarity:p[3]
+  });
+ }
+});
+
+const zidaneId=pool.find(p=>p.name==="Zinedine Zidane").id;
+
+// Special pack odds: 0.1% per player draw.
+randomPlayer=function(type){
+ if(Math.random()<0.001)return zidaneId;
+
+ let choices=pool.filter(p=>p.id!==zidaneId);
+
+ if(type==="ice"){
+  choices=choices.filter(p=>
+   ["Icebreakers","Iconic","Hall-of-Fame"].includes(p.rarity)
+  );
+ }else if(type==="premium"){
+  choices=choices.filter(p=>p.rating>=82);
+ }
+ return choices[rand(choices.length)].id;
+};
+
+// Save trained player ratings separately.
+const oldSave=save;
+save=function(){
+ state.playerRatings=Object.fromEntries(
+  pool.filter(p=>p.baseRating!==undefined)
+  .map(p=>[p.id,p.rating])
+ );
+ oldSave();
+};
+
+if(state.playerRatings){
+ Object.entries(state.playerRatings).forEach(([id,value])=>{
+  if(pool[id])pool[id].rating=value;
+ });
+}
+
+// Make player cards more distinctive.
+const originalCard=card;
+card=function(id,action="",label=""){
+ const el=originalCard(id,action,label);
+ const p=player(id);
+ if(id===zidaneId){
+  el.style.boxShadow="0 0 25px #ffe680";
+  el.style.border="3px solid #fff3a0";
+  const tag=document.createElement("div");
+  tag.textContent="👑 ULTIMATE LEGEND";
+  tag.style.cssText="color:#fff0a0;font-size:11px;font-weight:bold;margin:6px";
+  el.prepend(tag);
+ }
+ return el;
+};
+
+// Add clearer touch controls for matches.
+const controls=document.querySelector("#match .controls");
+if(controls){
+ controls.innerHTML=`
+ <button class="btn ghost" onclick="matchAction('switch')">🔄 SWITCH</button>
+ <button class="btn" onclick="matchAction('pass')">➡️ PASS</button>
+ <button class="btn gold" onclick="matchAction('shoot')">⚽ SHOOT</button>
+ <button class="btn red" onclick="matchAction('tackle')">🛡️ TACKLE</button>
+ <button class="btn green" onclick="matchAction('sprint')">⚡ SPRINT</button>
+ `;
+}
+
+// Improve movement, player tracking and bot behaviour.
+matchAction=(function(original){
+ return function(action){
+  if(!match||!match.playing)return;
+  if(action==="sprint"){
+   const p=match.players[match.selected];
+   p.x=Math.min(94,p.x+10);
+   if(match.ballOwner===match.selected)setBallOwner(match.selected);
+   say("⚡ Sprinting towards goal!");
+   drawMatch();
+   return;
+  }
+  original(action);
+ };
+})(matchAction);
+
+tickMatch=function(){
+ if(!match||!match.playing)return;
+
+ match.time+=3;
+
+ const owner=match.ballOwner;
+
+ match.players.forEach((p,i)=>{
+  if(i===owner)return;
+
+  const attacking=p.team===0?1:-1;
+  const target=match.ball;
+
+  if(p.team===1&&possession()===0){
+   // Defenders chase the ball.
+   const dx=target.x-p.x;
+   const dy=target.y-p.y;
+   const dist=Math.hypot(dx,dy)||1;
+   if(dist<35){
+    p.x+=dx/dist*1.1;
+    p.y+=dy/dist*1.1;
+   }
+   if(dist<5&&Math.random()<skill()*.18){
+    setBallOwner(i);
+    say("The bots tackled you!");
+   }
+  }else if(p.team===0&&possession()===1){
+   // Your teammates chase opponents.
+   const dx=target.x-p.x;
+   const dy=target.y-p.y;
+   const dist=Math.hypot(dx,dy)||1;
+   if(dist<35){
+    p.x+=dx/dist*.8;
+    p.y+=dy/dist*.8;
+   }
+   if(dist<4&&Math.random()<.1){
+    setBallOwner(i);
+    match.selected=i;
+    say("Your team wins the ball!");
+   }
+  }else if(i!==match.selected){
+   // Other players make supporting runs.
+   p.x+=attacking*.25;
+   p.y+=(Math.random()-.5)*.6;
+  }
+
+  p.x=Math.max(6,Math.min(94,p.x));
+  p.y=Math.max(6,Math.min(94,p.y));
+ });
+
+ if(owner>=0&&possession()===1){
+  const bot=match.players[owner];
+  bot.x=Math.max(6,bot.x-(1.2+skill()*1.5));
+  setBallOwner(owner);
+
+  if(bot.x<24&&Math.random()<.12){
+   if(Math.random()<.25+skill()*.35){
+    match.them++;
+    say("⚽ GOAL FOR THE BOTS!");
+    resetKickoff();
+   }else{
+    setBallOwner(0);
+    say("🧤 Brilliant goalkeeper save!");
+   }
+  }
+ }
+
+ drawMatch();
+ if(match.time>=180)endMatch(false);
+};
+
+notify("⚽ KickVerse upgrade loaded! New legends and match controls added.");
 </body>
 </html>
