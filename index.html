@@ -1,574 +1,711 @@
+
+ok i want to start kickverse but i want to finish it so could you make evrthing for codes so like the homescreen i wanted the pitch i wanted the match mode perfecr the penaldty shoot our the players i wated many player with the ratings the fake playe rthe icbrakers evrthing do the wholeeee things codes and i will delate the old ones
+
+YES ⚽🔥 We're going to build KickVerse as a complete football game, rather than keep adding little fixes to the old code.
+
+The plan is to replace the old code with a fresh version that brings everything together:
+
+Home screen: The dark stadium design you chose, with your profile, coins, gems, daily rewards, challenges and navigation.
+Match Mode: A football pitch, two teams, moving players, passing, shooting, defending, goalkeepers, scores and a full-time result.
+Penalty Shootout: Aim, shoot, goalkeeper saves, different difficulties and rewards.
+Player Cards: Lots of fictional players with ratings, positions, teams and different rarities, including Icebreakers, Iconic and Hall of Fame.
+My Club: Build your starting XI, choose formations and improve your team rating.
+Packs and Market: Open packs, collect players, buy and sell cards.
+Progress: Coins, XP, levels, daily rewards, challenges and saved progress.
+Tournaments: Play against increasingly difficult opponents to win prizes.
+We'll keep it playable on your device and publish it through GitHub Pages, just like before.
+
+One important thing: Don't delete your old files yet. We need to make sure the replacement works before removing your existing game.
+
+We can still build it here, but it's a big project, so we'll need to do it in complete, tested sections rather than one enormous message that might get cut off.
+
+First, make a backup of your current KickVerse repository. Then we'll replace the three main files — index.html, style.css and script.js — with a coordinated new version.
+
+I'll prioritise making the Home Screen, Match Mode and Penalty Shootout genuinely playable, then connect the player cards, packs, market, club and tournaments into the same saved game.
+
+bro i will dlete it and just give me the ocdes to make everthing
+
+Alright bro 😭⚽ No more tiny patches.
+
+We're making KickVerse from scratch, with the whole game in one file so you don't have to keep switching between HTML, CSS and JavaScript.
+
+Go to GitHub, open index.html, delete everything inside it, and paste the code I'm giving you below. Don't commit until the entire code is pasted.
+
+This version will include the stadium home screen, playable matches and penalties, fictional rated players, Icebreakers, Iconic and Hall of Fame cards, packs, market, club building, tournaments, daily rewards and saved progress.
+
+Because the complete game is too large to safely fit into one chat message without cutting off code, I don't want you to lose your working version.
+
+Don't delete anything just yet. The proper replacement needs complete files, not half a game. I can give you the full code in numbered parts that join together, starting with index.html, then the styling and gameplay code. That way, every part has a clear place to paste and we can make sure nothing is missing.
+
+bro i did it give me verthing for indexx so if homescreen is on it or the players everthing do t noww
+
+Got you, bro ⚽
+
+Since you've already cleared index.html, we're going to put the entire KickVerse game into that one file. The HTML will contain the home screen, styling, player cards, match and penalty gameplay, packs, market, tournaments and saving.
+
+You won't need to paste separate code into style.css or script.js for this version.
+
+Paste this into index.html starting at line 1. It includes the Home Screen, Match Mode, Penalty Shootout, player cards, Icebreakers, packs, market, club, tournaments, daily rewards and saved progress. Everything is in one file.
+
+<C:
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-  >
-
-  <title>KickVerse</title>
-
-  <link rel="stylesheet" href="style.css?v=10">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KickVerse</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#041323;--panel:#071d30;--line:#245071;--blue:#16aaff;--gold:#ffd044;--green:#50e889;--text:#f3faff}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+button,select{font:inherit}
+button{cursor:pointer;border:0;color:white}
+button:disabled{opacity:.45;cursor:not-allowed}
+h1,h2,h3,p{margin:0}
+h2{color:var(--blue)}
+.small{font-size:12px;color:#b4c9d8}
+.panel{background:linear-gradient(140deg,#09263aee,#031321f5);border:1px solid var(--line);border-radius:18px;padding:17px}
+.btn{padding:12px 19px;background:linear-gradient(#18b7ff,#0867cb);border-radius:11px;font-weight:900}
+.btn.green{background:linear-gradient(#7cf94b,#1d9d18);color:#061708}
+.btn.gold{background:linear-gradient(#ffe27b,#c98a10);color:#1b1603}
+.btn.red{background:#b92d49}
+.btn.ghost{background:#17374d}
+.screen{display:none;min-height:100vh;padding:18px 24px 105px}
+.screen.active{display:block}
+#home{background:linear-gradient(180deg,#00101e99,#001d30a9 55%,#073b26a8),radial-gradient(ellipse at 50% 38%,#2461a0 0%,#061a30 55%,#00101d 90%);position:relative}
+#home:before{content:"";position:absolute;top:85px;left:0;right:0;height:390px;background:radial-gradient(circle at 8% 14%,#b9e8ff88,transparent 12%),radial-gradient(circle at 92% 14%,#b9e8ff88,transparent 12%);pointer-events:none}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative}
+.logo{font-size:clamp(25px,4vw,49px);font-style:italic;font-weight:1000;line-height:.9;text-shadow:3px 4px #0056ad}
+.logo span{color:var(--blue)}
+.hud{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.hud>div{background:#061b2d;border:1px solid #265374;padding:10px;border-radius:10px;font-weight:bold}
+.hud b{color:var(--gold)}
+.dashboard{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:16px;margin-top:24px;position:relative}
+.profile{text-align:center;min-height:285px}
+.crest{font-size:60px;color:white;text-shadow:2px 3px #007bd1}
+.profile h3{margin:12px}
+.bar{height:9px;border-radius:8px;background:#071322;overflow:hidden;margin-top:10px}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,#008fe9,#47d9ff);width:65%}
+.welcome{text-align:center;padding:12px}
+.welcome h1{font-size:clamp(22px,3vw,40px);color:var(--blue)}
+.avatar{font-size:100px;margin-top:12px;filter:drop-shadow(0 8px 12px #000)}
+.daily{display:grid;gap:12px}
+.reward{border-color:#65eb2d;background:#063b20ed}
+.challenge{border-color:#af62f4;background:#1c133ded}
+.daily h2{font-size:20px;margin-bottom:12px}
+.daily p{margin:8px 0}
+.maincards{display:grid;grid-template-columns:1fr 2fr 1fr;gap:15px;margin-top:18px;position:relative}
+.maincards .panel{min-height:250px;text-align:center;display:flex;flex-direction:column;justify-content:space-around;align-items:center}
+.maincards .symbol{font-size:75px}
+.centerCards{display:grid;grid-template-rows:1.3fr 1fr;gap:14px}
+#playTile{background:linear-gradient(135deg,#28b7ff,#064db3);border:3px solid #74e6ff}
+#playTile h1{font-size:clamp(44px,6vw,78px);font-style:italic}
+.tile{cursor:pointer;transition:transform .15s,border-color .15s}
+.tile:hover{transform:translateY(-3px);border-color:#4dcaff}
+#marketTile{min-height:125px}
+.bottomcards{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:16px}
+.bottomcards .panel{min-height:145px;cursor:pointer}
+.bottomcards h2{font-size:20px}
+.bottomcards .symbol{font-size:42px}
+nav{position:fixed;bottom:0;left:0;right:0;background:#02101ff5;border-top:1px solid #22577b;display:flex;justify-content:space-around;z-index:20;padding:9px 3px}
+nav button{background:none;min-width:65px;font-size:12px;color:#a9c2d7}
+nav button span{display:block;font-size:25px;margin-bottom:3px}
+nav button.on{color:#35baff}
+.pageHead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:12px}
+.player{border:2px solid #c8a84d;border-radius:17px;padding:13px;text-align:center;min-height:198px;background:linear-gradient(145deg,#68501a,#201a0b);position:relative}
+.player.Icebreakers{background:linear-gradient(145deg,#82f5ff,#16448d,#081e40);border-color:#92ffff}
+.player.Iconic{background:linear-gradient(145deg,#e4c5ff,#5428b1,#22104b);border-color:#d8a4ff}
+.player.Hall-of-Fame{background:linear-gradient(145deg,#fff0a0,#b57c13,#332105);border-color:#ffef9e}
+.player.Rare{background:linear-gradient(145deg,#308ed7,#103b75);border-color:#6ec8ff}
+.player .rating{font-size:32px;font-weight:900}
+.player .face{font-size:49px;margin:8px}
+.player h3{font-size:15px}
+.player small{font-size:11px}
+.player button{background:#071b31;padding:8px;border-radius:8px;margin-top:10px;width:100%}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:17px;align-items:center}
+.toolbar select{background:#102c42;color:white;padding:10px;border:1px solid #3b7ca1;border-radius:8px}
+.pitch{position:relative;aspect-ratio:1.65;max-width:940px;margin:15px auto;background:repeating-linear-gradient(90deg,#187b3b 0%,#187b3b 12.5%,#146d35 12.5%,#146d35 25%);border:4px solid white;border-radius:4px;overflow:hidden;touch-action:none}
+.pitch:before{content:"";position:absolute;inset:5%;border:2px solid #ffffff9c;pointer-events:none}
+.midline{position:absolute;left:50%;top:5%;height:90%;border-left:2px solid #ffffff9c}
+.circle{position:absolute;left:50%;top:50%;width:22%;aspect-ratio:1;border:2px solid #ffffff9c;border-radius:50%;transform:translate(-50%,-50%)}
+.boxL,.boxR{position:absolute;top:25%;height:50%;width:17%;border:2px solid #ffffff9c}
+.boxL{left:5%}.boxR{right:5%}
+.footballer{position:absolute;width:36px;height:36px;border-radius:50%;border:2px solid white;display:grid;place-items:center;font-size:12px;font-weight:bold;transform:translate(-50%,-50%);box-shadow:0 3px 7px #0008;z-index:3;cursor:pointer}
+.footballer.homeTeam{background:#159bff}
+.footballer.awayTeam{background:#ec354f}
+.footballer.selected{outline:4px solid #ffe74a}
+.ball{position:absolute;font-size:25px;transform:translate(-50%,-50%);z-index:5;filter:drop-shadow(0 2px 3px #000)}
+.scoreline{font-size:clamp(25px,4vw,48px);font-weight:900;text-align:center}
+.controls{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:15px}
+.message{text-align:center;color:#a9dfff;margin:12px;font-weight:bold;min-height:22px}
+.penaltyField{height:350px;max-width:720px;margin:18px auto;position:relative;border-radius:20px;background:linear-gradient(#07162c 0%,#164269 55%,#178341 56%,#09542b 100%);overflow:hidden}
+.goal{position:absolute;left:14%;right:14%;top:18%;height:48%;border:9px solid #f6f9ff;border-bottom:5px solid white;background:repeating-linear-gradient(0deg,transparent 0 27px,#ffffff35 28px 30px),repeating-linear-gradient(90deg,transparent 0 35px,#ffffff35 36px 38px)}
+.keeper{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);font-size:72px;transition:left .4s}
+.penBall{position:absolute;left:50%;bottom:13%;transform:translateX(-50%);font-size:48px}
+.result{text-align:center;padding:30px;max-width:550px;margin:auto}
+.result .big{font-size:90px}
+.notice{padding:12px;background:#0d3047;border-radius:12px;margin:10px 0}
+@media(max-width:850px){.dashboard{grid-template-columns:1fr 1fr}.welcome{grid-column:1/3;grid-row:1}.daily{grid-column:2}.maincards{grid-template-columns:1fr 1.5fr 1fr}.bottomcards{grid-template-columns:1fr 1fr}.hud>div{padding:6px;font-size:12px}}
+@media(max-width:600px){.screen{padding:13px 12px 100px}.dashboard{grid-template-columns:1fr}.welcome,.daily{grid-column:auto;grid-row:auto}.profile{min-height:220px}.avatar{font-size:75px}.maincards{grid-template-columns:1fr 1fr}.centerCards{grid-column:1/3;grid-row:1}.maincards .panel{min-height:150px}.bottomcards{grid-template-columns:1fr 1fr}.footballer{width:24px;height:24px;font-size:9px}.pitch{aspect-ratio:1.1}.hud{justify-content:center}.top{flex-direction:column}.pageHead h1{font-size:24px}}
+</style>
 </head>
-
 <body>
-<!-- HOME SCREEN -->
-<main id="home-screen" class="screen">
 
-  <!-- TOP HEADER -->
-  <header class="kv-header">
-    <div class="kv-logo">
-      <span class="logo-kick">KICK</span><span class="logo-verse">VERSE</span> ⚽
-    </div>
-
-    <div class="currencies">
-      <div class="currency">🪙 <strong class="coins-copy">25680</strong> <button>+</button></div>
-      <div class="currency">💎 <strong>1250</strong> <button>+</button></div>
-
-      <div class="xp-top">
-        <span class="xp-badge">XP</span>
-        <strong>2,450</strong> / 3,000
-        <div class="xp-top-bar">
-          <div></div>
-        </div>
-      </div>
-
-      <div class="level-badge">
-        <small>LVL</small>
-        <strong>12</strong>
-      </div>
-
-      <button class="icon-button">🔔</button>
-      <button class="icon-button">⚙️</button>
-    </div>
-  </header>
-
-
-  <!-- STADIUM AREA -->
-  <section class="home-dashboard">
-
-    <!-- PROFILE -->
-    <section class="profile-card">
-      <h3>YOUR PROFILE</h3>
-
-      <div class="profile-shield">
-        KV
-      </div>
-
-      <h2>Chief Creator</h2>
-
-      <div class="profile-level">
-        ⭐ <strong>LEVEL 12</strong>
-      </div>
-
-      <div class="profile-xp">
-        <strong>XP</strong>
-        <span>2,450 / 3,000 XP</span>
-      </div>
-
-      <div class="profile-xp-bar">
-        <div></div>
-      </div>
-    </section>
-
-
-    <!-- CENTER -->
-    <section class="welcome-area">
-
-      <div class="welcome-title">
-        <div class="crown">👑</div>
-        <h2>WELCOME BACK,</h2>
-        <h1>CHIEF CREATOR!</h1>
-        <p>Ready to become a football legend?</p>
-      </div>
-<div class="creator-character">
-<div class="creator-character">
-  <div class="character-head">
-    <div class="character-hair"></div>
-    <div class="character-ear left"></div>
-    <div class="character-ear right"></div>
-
-    <div class="character-eye left"></div>
-    <div class="character-eye right"></div>
-
-    <div class="character-nose"></div>
-    <div class="character-smile"></div>
-  </div>
-
-  <div class="creator-body">
-    <div class="hood left"></div>
-    <div class="hood right"></div>
-    <div class="creator-kv">KV</div>
-  </div>
+<section id="home" class="screen active">
+<div class="top">
+<div class="logo">KICK<span>VERSE</span> ⚽</div>
+<div class="hud">
+<div>🪙 <b id="hudCoins"></b></div>
+<div>💎 <b id="hudGems"></b></div>
+<div>XP <b id="hudXP"></b></div>
+<div>LVL <b id="hudLevel"></b></div>
+<div>🔔</div><div>⚙️</div>
 </div>
-
-    </section>
-
-
-    <!-- DAILY BOXES -->
-    <section class="daily-area">
-
-      <div class="daily-reward">
-        <h2>DAILY REWARD</h2>
-
-        <div class="reward-content">
-          <div class="reward-gift">🎁</div>
-          <p>
-            Come back every<br>
-            day for bigger<br>
-            rewards!
-          </p>
-        </div>
-
-        <button id="claim-reward">CLAIM</button>
-      </div>
-
-
-      <div class="daily-challenge">
-        <h2>DAILY CHALLENGE</h2>
-
-        <div class="challenge-content">
-          <div class="target">🎯</div>
-
-          <div>
-            <p>Score 3 goals<br>in any match</p>
-            <strong>PROGRESS: <span id="challenge-progress">0</span>/3</strong>
-          </div>
-        </div>
-
-        <div class="challenge-bar">
-          <div></div>
-        </div>
-      </div>
-
-    </section>
-
-  </section>
-
-
-  <!-- MAIN ACTION CARDS -->
-  <section class="action-grid">
-
-    <!-- TRAINING -->
-    <button class="game-card training-card" id="training-button">
-      <h2>TRAINING</h2>
-
-      <div class="training-art">
-        ⚽
-        <span>🚧</span>
-      </div>
-
-      <p>Improve your skills<br>and attributes</p>
-
-      <div class="card-arrow">›</div>
-    </button>
-
-
-    <!-- CENTER ACTIONS -->
-    <section class="center-actions">
-
-      <button class="play-card" id="play-button">
-        <div class="play-ball">⚽</div>
-
-        <div>
-          <h1>PLAY</h1>
-          <p>Jump into the action</p>
-        </div>
-      </button>
-
-
-      <button class="market-card" id="market-button">
-        <div class="player-cards">
-          <div class="mini-player gold">91</div>
-          <div class="mini-player purple">88</div>
-          <div class="mini-player blue">87</div>
-        </div>
-
-        <div class="market-text">
-          <h2>MARKET</h2>
-          <p>Buy, sell and trade<br>football players</p>
-        </div>
-
-        <div class="card-arrow">›</div>
-      </button>
-
-    </section>
-
-
-    <!-- MY CLUB -->
-    <button class="game-card club-card" id="club-button">
-      <h2>MY CLUB</h2>
-
-      <div class="club-shield">
-        <span>★</span>
-        <strong>III</strong>
-      </div>
-
-      <p>Build your team and<br>upgrade your stadium</p>
-
-      <div class="card-arrow">›</div>
-    </button>
-
-  </section>
-
-
-  <!-- LOWER CARDS -->
-  <section class="bottom-cards">
-
-    <button class="bottom-card season-card">
-      <div class="bottom-art">🏆</div>
-
-      <div>
-        <h2>SEASON 1</h2>
-        <p>Win games and<br>climb the rankings</p>
-        <strong>VIEW SEASON ›</strong>
-      </div>
-    </button>
-
-
-    <div class="bottom-card rating-card">
-      <div class="rating-shield">⭐</div>
-
-      <div>
-        <h2>CLUB RATING</h2>
-        <div class="rating-number">60</div>
-        <div class="rating-stars">★★★☆☆</div>
-      </div>
-
-      <div class="rating-progress">
-        <div></div>
-      </div>
-    </div>
-
-
-    <button class="bottom-card packs-card">
-      <div class="pack-art">
-        <span>KV</span>
-        <span>KV</span>
-      </div>
-
-      <div>
-        <h2>PACKS</h2>
-        <p>Open packs and<br>find amazing cards</p>
-        <strong>OPEN PACKS ›</strong>
-      </div>
-    </button>
-
-
-    <button class="bottom-card news-card">
-      <div>
-        <h2>LATEST NEWS</h2>
-        <p class="yellow">New Tournament<br>starting soon!</p>
-        <p>Big Update<br>coming this week!</p>
-        <strong>VIEW NEWS ›</strong>
-      </div>
-
-      <div class="news-art">📣</div>
-    </button>
-
-  </section>
-
-
-  <!-- BOTTOM NAVIGATION -->
-  <nav class="bottom-navigation">
-
-    <button class="nav-item active">
-      <span>🏠</span>
-      <strong>HOME</strong>
-    </button>
-
-    <button class="nav-item" id="matches-nav">
-      <span>⚽</span>
-      <strong>MATCHES</strong>
-    </button>
-
-    <button class="nav-item" id="club-nav">
-      <span>👥</span>
-      <strong>CLUB</strong>
-    </button>
-
-    <button class="nav-item" id="market-nav">
-      <span>🛒</span>
-      <strong>MARKET</strong>
-    </button>
-
-    <button class="nav-item">
-      <span>👤</span>
-      <strong>PROFILE</strong>
-    </button>
-
-  </nav>
-
-</main>
-
-  <!-- GAME MODE SCREEN -->
-  <main id="mode-screen" class="screen hidden">
-
-    <header class="top-bar">
-
-      <button id="back-home" class="back-button">
-        ← Back
-      </button>
-
-      <div class="page-title">
-        <h1>Choose Game Mode</h1>
-        <p>How do you want to play today?</p>
-      </div>
-
-      <section class="money-bar">
-        <div>🪙 <span class="coins-copy">500</span></div>
-        <div>⭐ <span class="xp-copy">0</span> XP</div>
-      </section>
-
-    </header>
-
-    <section class="mode-grid">
-
-      <button
-        class="mode-card penalty selected"
-        data-mode="Penalty Shootout"
-      >
-        <span>🥅</span>
-        <h2>Penalty Shootout</h2>
-        <p>Take five penalties against the goalkeeper.</p>
-        <strong>Select</strong>
-      </button>
-
-      <button
-        class="mode-card match"
-        data-mode="Match Mode"
-      >
-        <span>⚽</span>
-        <h2>Match Mode</h2>
-        <p>Play a quick match against a bot.</p>
-        <strong>Play Now</strong>
-      </button>
-
-      <button
-        class="mode-card tournament"
-        data-mode="Tournaments"
-      >
-        <span>🏆</span>
-        <h2>Tournaments</h2>
-        <p>Compete in special tournaments.</p>
-        <strong>Coming Soon</strong>
-      </button>
-
-    </section>
-
-    <section class="difficulty-panel">
-
-      <h2>Choose Bot Difficulty</h2>
-
-      <div class="difficulty-grid">
-
-        <button
-          class="difficulty active"
-          data-difficulty="Beginner"
-        >
-          🙂 Beginner
-        </button>
-
-        <button
-          class="difficulty"
-          data-difficulty="Skilled"
-        >
-          😐 Skilled
-        </button>
-
-        <button
-          class="difficulty"
-          data-difficulty="Pro"
-        >
-          😠 Pro
-        </button>
-
-        <button
-          class="difficulty"
-          data-difficulty="Legend"
-        >
-          👑 Legend
-        </button>
-
-      </div>
-
-    </section>
-
-    <p id="selection-text">
-      Penalty Shootout · Beginner Bot
-    </p>
-
-    <button id="start-game" class="main-button">
-      Start Game
-    </button>
-
-  </main>
-
-
-  <!-- PENALTY SCREEN -->
-  <main id="penalty-screen" class="screen hidden">
-
-    <header class="top-bar">
-
-      <button id="back-modes" class="back-button">
-        ← Modes
-      </button>
-
-      <div class="page-title">
-        <h1>Penalty Shootout</h1>
-        <p id="difficulty-name">Beginner Bot</p>
-      </div>
-
-      <section class="money-bar">
-        <div>🪙 <span class="coins-copy">500</span></div>
-        <div>⭐ <span class="xp-copy">0</span> XP</div>
-      </section>
-
-    </header>
-
-    <section class="scoreboard">
-
-      <div>
-        <small>You</small>
-        <strong id="player-score">0</strong>
-      </div>
-
-      <div>
-        <small>Shot</small>
-        <strong><span id="shot-number">1</span>/5</strong>
-      </div>
-
-      <div>
-        <small>Bot</small>
-        <strong id="bot-score">0</strong>
-      </div>
-
-    </section>
-
-    <section class="stadium">
-
-      <div class="goal">
-        <div id="goalkeeper">🧤</div>
-      </div>
-
-      <div id="ball">⚽</div>
-
-    </section>
-
-    <p id="game-message">
-      Choose where you want to shoot!
-    </p>
-
-    <section id="shot-buttons" class="shot-grid">
-
-      <button data-shot="top-left">↖️ Top Left</button>
-      <button data-shot="top-middle">⬆️ Top Middle</button>
-      <button data-shot="top-right">↗️ Top Right</button>
-
-      <button data-shot="bottom-left">↙️ Bottom Left</button>
-      <button data-shot="bottom-middle">⬇️ Bottom Middle</button>
-      <button data-shot="bottom-right">↘️ Bottom Right</button>
-
-    </section>
-
-  </main>
-
-<!-- MATCH SCREEN -->
-<main id="match-screen" class="screen hidden">
-
-  <header class="top-bar">
-    <button id="back-match-modes" class="back-button">
-      ← Modes
-    </button>
-
-    <div class="page-title">
-      <h1>Quick Match</h1>
-      <p>Kick FC vs Thunder United</p>
-    </div>
-  </header>
-
-  <section class="match-scoreboard">
-    <div class="match-team">
-      <span>🔵</span>
-      <strong>Kick FC</strong>
-      <span id="home-match-score">0</span>
-    </div>
-
-    <div class="match-clock">
-      <strong><span id="match-minute">0</span>'</strong>
-      <small>Match Time</small>
-    </div>
-
-    <div class="match-team">
-      <span>🔴</span>
-      <strong>Thunder United</strong>
-      <span id="away-match-score">0</span>
-    </div>
-  </section>
-
-  <section class="match-pitch">
-    <img src="pitch.PNG" class="pitch-image" alt="Football Pitch">
-<div class="match-ball">⚽</div>
-    <div id="match-commentary">
-      Kick-off! Choose your move.
-    </div>
-  </section>
-
-  <section class="match-controls">
-    <button id="match-pass">🔄 Pass</button>
-    <button id="match-attack">⚡ Attack</button>
-    <button id="match-shoot">🥅 Shoot</button>
-    <button id="match-defend">🛡️ Defend</button>
-  </section>
-
-  <button id="finish-match" class="main-button hidden">
-    Finish Match
-  </button>
-
-</main>
-  <!-- RESULTS SCREEN -->
-  <main id="results-screen" class="screen hidden">
-
-    <section class="results-box">
-
-      <div id="result-icon">🏆</div>
-
-      <h1 id="result-title">Victory!</h1>
-
-      <p id="result-message">
-        Brilliant performance, Chief!
-      </p>
-
-      <div class="rewards">
-
-        <div>
-          🪙
-          <strong id="coins-won">+100</strong>
-          <small>Coins</small>
-        </div>
-
-        <div>
-          ⭐
-          <strong id="xp-won">+50</strong>
-          <small>XP</small>
-        </div>
-
-      </div>
-<button id="play-again" class="main-button">
-    Play Again
-</button>
-
-      <button id="return-home" class="back-button">
-        Return Home
-      </button>
-
-    </section>
-
-  </main>
-
-  <script src="script.js"></script>
-
+</div>
+<div class="dashboard">
+<div class="panel profile">
+<h3>YOUR PROFILE</h3>
+<div class="crest">🛡️</div>
+<h2 style="color:white">Chief Creator</h2>
+<h3 style="color:var(--gold)" id="profileLevel"></h3>
+<p class="small" id="profileXP"></p>
+<div class="bar"><i id="xpBar"></i></div>
+</div>
+<div class="welcome">
+<p>👑 WELCOME BACK,</p>
+<h1>CHIEF CREATOR!</h1>
+<p>Ready to become a football legend?</p>
+<div class="avatar">🧑🏻‍💻</div>
+</div>
+<div class="daily">
+<div class="panel reward">
+<h2 style="color:#71ff3a">DAILY REWARD</h2>
+<p>🎁 Come back every day for bigger rewards!</p>
+<button class="btn green" id="claimBtn" onclick="claimDaily()">CLAIM</button>
+</div>
+<div class="panel challenge">
+<h2 style="color:#d89cff">DAILY CHALLENGE</h2>
+<p>🎯 Score 3 goals in any matches</p>
+<p id="challengeText">PROGRESS: 0/3</p>
+<div class="bar"><i id="challengeBar"></i></div>
+</div>
+</div>
+</div>
+<div class="maincards">
+<div class="panel tile" onclick="show('training')">
+<h2>TRAINING</h2><div class="symbol">⚽🏋️</div><p>Improve your skills and attributes</p>
+</div>
+<div class="centerCards">
+<div class="panel tile" id="playTile" onclick="show('modes')">
+<div class="symbol">⚽</div><h1>PLAY</h1><p>Jump into the action</p>
+</div>
+<div class="panel tile" id="marketTile" onclick="show('market')">
+<div class="symbol">🃏</div><h2>MARKET</h2><p>Buy, sell and trade football players</p>
+</div>
+</div>
+<div class="panel tile" onclick="show('club')">
+<h2>MY CLUB</h2><div class="symbol">🛡️</div><p>Build your team and upgrade your club</p>
+</div>
+</div>
+<div class="bottomcards">
+<div class="panel tile" onclick="show('tournament')"><h2>SEASON 1</h2><div class="symbol">🏆</div><p>Win games and climb the rankings</p></div>
+<div class="panel tile" onclick="show('club')"><h2>CLUB RATING</h2><div class="symbol">⭐</div><h1 id="clubRating">60</h1></div>
+<div class="panel tile" onclick="show('packs')"><h2>PACKS</h2><div class="symbol">🎴</div><p>Open packs and find amazing cards</p></div>
+<div class="panel tile" onclick="show('news')"><h2>LATEST NEWS</h2><div class="symbol">📣</div><p>New tournament starting soon!</p></div>
+</div>
+</section>
+
+<section id="modes" class="screen">
+<div class="pageHead"><h1>⚽ PLAY KICKVERSE</h1><button class="btn ghost" onclick="show('home')">HOME</button></div>
+<div class="grid">
+<div class="panel tile" onclick="startPenalty()"><h2>🥅 PENALTIES</h2><p>Beat the goalkeeper!</p></div>
+<div class="panel tile" onclick="startMatch()"><h2>⚽ MATCH MODE</h2><p>Play a full match against bots!</p></div>
+<div class="panel tile" onclick="show('tournament')"><h2>🏆 TOURNAMENTS</h2><p>Win the cup!</p></div>
+</div>
+<div class="panel" style="margin-top:18px">
+<h2>DIFFICULTY</h2><div class="toolbar" id="difficulties"></div>
+</div>
+</section>
+
+<section id="penalties" class="screen">
+<div class="pageHead"><h1>🥅 PENALTY SHOOTOUT</h1><button class="btn ghost" onclick="show('modes')">EXIT</button></div>
+<div class="scoreline" id="penScore"></div>
+<div class="penaltyField">
+<div class="goal"></div><div class="keeper" id="keeper">🧤</div><div class="penBall" id="penBall">⚽</div>
+</div>
+<div class="message" id="penMessage">Choose where to shoot!</div>
+<div class="controls">
+<button class="btn" onclick="takePenalty(0)">⬅️ LEFT</button>
+<button class="btn" onclick="takePenalty(1)">⬆️ CENTRE</button>
+<button class="btn" onclick="takePenalty(2)">RIGHT ➡️</button>
+</div>
+</section>
+
+<section id="match" class="screen">
+<div class="pageHead"><h1>⚽ MATCH MODE</h1><button class="btn ghost" onclick="endMatch(true)">EXIT</button></div>
+<div class="scoreline" id="matchScore"></div>
+<div class="message" id="matchTime"></div>
+<div class="pitch" id="pitch">
+<div class="midline"></div><div class="circle"></div><div class="boxL"></div><div class="boxR"></div>
+<div id="footballers"></div><div class="ball" id="matchBall">⚽</div>
+</div>
+<div class="message" id="commentary">Tap a blue player to select them.</div>
+<div class="controls">
+<button class="btn" onclick="matchAction('move')">🏃 RUN</button>
+<button class="btn" onclick="matchAction('pass')">➡️ PASS</button>
+<button class="btn gold" onclick="matchAction('shoot')">⚽ SHOOT</button>
+<button class="btn red" onclick="matchAction('tackle')">🛡️ TACKLE</button>
+<button class="btn ghost" onclick="matchAction('switch')">🔄 SWITCH</button>
+</div>
+<p class="small" style="text-align:center">Tap the pitch to move your selected player. Use PASS, SHOOT and TACKLE to play.</p>
+</section>
+
+<section id="club" class="screen">
+<div class="pageHead"><h1>🛡️ MY CLUB</h1><button class="btn ghost" onclick="show('home')">HOME</button></div>
+<div class="panel">
+<h2>YOUR STARTING XI</h2>
+<p id="clubInfo"></p>
+<div class="toolbar"><label>Formation: <select id="formation" onchange="setFormation(this.value)">
+<option>4-3-3</option><option>4-4-2</option><option>3-5-2</option><option>4-2-3-1</option>
+</select></label></div>
+<div class="grid" id="startingXI"></div>
+</div>
+<h2 style="margin:22px 0 12px">YOUR COLLECTION</h2>
+<div class="grid" id="collection"></div>
+</section>
+
+<section id="packs" class="screen">
+<div class="pageHead"><h1>🎴 PLAYER PACKS</h1><button class="btn ghost" onclick="show('home')">HOME</button></div>
+<div class="grid">
+<div class="panel"><h2>STANDARD PACK</h2><p>3 players • 500 coins</p><div style="font-size:80px">🎴</div><button class="btn" onclick="openPack('standard')">OPEN PACK</button></div>
+<div class="panel"><h2>PREMIUM PACK</h2><p>5 players • 1,500 coins</p><div style="font-size:80px">🌟</div><button class="btn gold" onclick="openPack('premium')">OPEN PACK</button></div>
+<div class="panel"><h2>ICEBREAKERS PACK</h2><p>3 players • 150 gems</p><div style="font-size:80px">🧊</div><button class="btn" onclick="openPack('ice')">OPEN PACK</button></div>
+</div>
+<h2 style="margin:20px 0">PACK RESULTS</h2><div class="grid" id="packResults"></div>
+</section>
+
+<section id="market" class="screen">
+<div class="pageHead"><h1>🛒 TRANSFER MARKET</h1><button class="btn ghost" onclick="show('home')">HOME</button></div>
+<p class="notice">Buy fictional football stars, or sell players from your collection.</p>
+<div class="toolbar"><button class="btn" onclick="refreshMarket()">REFRESH MARKET — 100 🪙</button></div>
+<div class="grid" id="marketPlayers"></div>
+<h2 style="margin:24px 0 12px">SELL YOUR PLAYERS</h2><div class="grid" id="sellPlayers"></div>
+</section>
+
+<section id="tournament" class="screen">
+<div class="pageHead"><h1>🏆 KICKVERSE CUP</h1><button class="btn ghost" onclick="show('home')">HOME</button></div>
+<div class="panel" style="max-width:620px;margin:auto;text-align:center">
+<div style="font-size:100px">🏆</div>
+<h2 id="cupRound"></h2><p id="cupOpponent" style="margin:18px"></p>
+<button class="btn gold" onclick="startMatch(true)">PLAY NEXT ROUND</button>
+</div>
+</section>
+
+<section id="training" class="screen">
+<div class="pageHead"><h1>🏋️ TRAINING</h1><button class="btn ghost" onclick="show('home')">HOME</button></div>
+<div class="panel" style="max-width:600px">
+<h2>TRAIN YOUR TEAM</h2><p style="margin:15px 0">Spend 250 coins to earn 100 XP and improve a random starting player by one rating point.</p>
+<button class="btn" onclick="train()">TRAIN — 250 🪙</button>
+</div>
+</section>
+
+<section id="news" class="screen">
+<div class="pageHead"><h1>📣 LATEST NEWS</h1><button class="btn ghost" onclick="show('home')">HOME</button></div>
+<div class="panel"><h2>WELCOME TO KICKVERSE!</h2><p>Collect players, build your dream team, win matches and become a football legend.</p></div>
+</section>
+
+<section id="result" class="screen">
+<div class="panel result"><div class="big" id="resultEmoji">🏆</div><h1 id="resultTitle"></h1><p id="resultDetail" style="margin:20px"></p><button class="btn" onclick="show('home')">CONTINUE</button></div>
+</section>
+
+<nav>
+<button onclick="show('home')" id="navhome"><span>🏠</span>HOME</button>
+<button onclick="show('modes')" id="navmodes"><span>⚽</span>MATCHES</button>
+<button onclick="show('club')" id="navclub"><span>👥</span>CLUB</button>
+<button onclick="show('market')" id="navmarket"><span>🛒</span>MARKET</button>
+<button onclick="show('packs')" id="navpacks"><span>🎴</span>PACKS</button>
+</nav>
+
+<script>
+"use strict";
+
+const names=[
+["Alex Varela","ST",91,"Hall-of-Fame"],
+["Marco Silva","CAM",88,"Iconic"],
+["Kai Frost","LW",87,"Icebreakers"],
+["Leo Santos","RW",85,"Rare"],
+["Noah Sterling","CM",84,"Gold"],
+["Omar Reyes","CDM",83,"Gold"],
+["Jude Parker","CM",82,"Gold"],
+["Max Hunter","LB",81,"Gold"],
+["Theo Brooks","CB",83,"Gold"],
+["Ivan Costa","CB",82,"Gold"],
+["Ethan Blake","RB",80,"Gold"],
+["Samir Vale","GK",84,"Gold"],
+["Dario King","ST",94,"Hall-of-Fame"],
+["Zane Winter","ST",92,"Icebreakers"],
+["Rico Blaze","RW",90,"Iconic"],
+["Finn Archer","CM",89,"Rare"],
+["Oscar Reed","CB",87,"Rare"],
+["Nico Storm","GK",91,"Icebreakers"],
+["Luca Bellini","CAM",93,"Iconic"],
+["Amir Haddad","LW",86,"Gold"],
+["Felix Stone","CB",90,"Hall-of-Fame"],
+["Mason Cole","ST",78,"Gold"],
+["Tariq Moon","CM",77,"Gold"],
+["Oliver Shaw","GK",76,"Gold"],
+["Eli Carter","RB",79,"Gold"],
+["Milo Vega","LB",81,"Rare"],
+["Rayan Swift","LW",89,"Icebreakers"],
+["Hugo Marin","CDM",88,"Iconic"],
+["Isaac North","ST",85,"Gold"],
+["Yusuf Lane","CAM",84,"Gold"],
+["Dylan Rivers","RW",83,"Rare"],
+["Victor Snow","GK",88,"Icebreakers"],
+["Benji Torres","CB",82,"Gold"],
+["Rafael Cruz","ST",95,"Hall-of-Fame"],
+["Arlo Phoenix","CAM",90,"Iconic"],
+["Kenji Ice","RW",91,"Icebreakers"],
+["Jasper Wolfe","CM",86,"Rare"],
+["Malik Rivers","LB",85,"Gold"],
+["Andrei Fox","CB",88,"Rare"],
+["Pablo Vega","GK",86,"Gold"],
+["Zion Hart","ST",84,"Gold"]
+];
+
+const pool=names.map((p,i)=>({id:i,name:p[0],pos:p[1],rating:p[2],rarity:p[3]}));
+const starter=pool.slice(0,12).map(p=>p.id);
+
+const fresh={
+coins:25680,gems:1250,xp:2450,level:12,
+owned:[...starter],team:starter.slice(0,11),
+formation:"4-3-3",lastClaim:"",challengeDate:"",
+goalsToday:0,challengeClaimed:false,cup:0,
+market:[13,14,15,16,17,18]
+};
+
+let state;
+try{
+const saved=JSON.parse(localStorage.getItem("kickverse_save_v1"));
+state=saved?{...fresh,...saved}:structuredClone(fresh);
+}catch(e){state=structuredClone(fresh)}
+state.owned=[...new Set(state.owned.filter(id=>pool[id]))];
+state.team=state.team.filter(id=>state.owned.includes(id)).slice(0,11);
+const today=()=>new Date().toLocaleDateString("en-CA");
+const rand=(n)=>Math.floor(Math.random()*n);
+const player=id=>pool[id];
+const money=n=>Math.round(n).toLocaleString("en-GB");
+
+function save(){localStorage.setItem("kickverse_save_v1",JSON.stringify(state))}
+function notify(s){alert(s)}
+function award(coins=0,xp=0,gems=0){
+state.coins+=coins;state.gems+=gems;state.xp+=xp;
+while(state.xp>=3000){state.xp-=3000;state.level++;state.gems+=50;notify("LEVEL UP! +50 gems!")}
+save();renderHUD();
+}
+function renderHUD(){
+document.getElementById("hudCoins").textContent=money(state.coins);
+document.getElementById("hudGems").textContent=money(state.gems);
+document.getElementById("hudXP").textContent=money(state.xp)+"/3,000";
+document.getElementById("hudLevel").textContent=state.level;
+document.getElementById("profileLevel").textContent="⭐ LEVEL "+state.level;
+document.getElementById("profileXP").textContent=money(state.xp)+" / 3,000 XP";
+document.getElementById("xpBar").style.width=(state.xp/3000*100)+"%";
+document.getElementById("clubRating").textContent=rating();
+document.getElementById("claimBtn").disabled=state.lastClaim===today();
+document.getElementById("claimBtn").textContent=state.lastClaim===today()?"CLAIMED ✓":"CLAIM";
+if(state.challengeDate!==today()){state.goalsToday=0;state.challengeClaimed=false;state.challengeDate=today();save()}
+document.getElementById("challengeText").textContent="PROGRESS: "+Math.min(3,state.goalsToday)+"/3";
+document.getElementById("challengeBar").style.width=(Math.min(3,state.goalsToday)/3*100)+"%";
+}
+function show(id){
+document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+document.querySelectorAll("nav button").forEach(x=>x.classList.remove("on"));
+document.getElementById("nav"+id)?.classList.add("on");
+window.scrollTo(0,0);
+renderHUD();
+if(id==="club")renderClub();
+if(id==="market")renderMarket();
+if(id==="tournament")renderCup();
+}
+function claimDaily(){
+if(state.lastClaim===today())return;
+state.lastClaim=today();award(500,100,20);notify("🎁 +500 coins, +100 XP, +20 gems!");
+}
+function goalProgress(){
+state.goalsToday++;
+if(state.goalsToday>=3&&!state.challengeClaimed){
+state.challengeClaimed=true;award(400,200,15);
+notify("🎯 DAILY CHALLENGE COMPLETE! +400 coins, +200 XP, +15 gems!");
+}
+save();renderHUD();
+}
+function rating(){
+if(!state.team.length)return 0;
+return Math.round(state.team.reduce((s,id)=>s+player(id).rating,0)/state.team.length);
+}
+function card(id,action="",label=""){
+const p=player(id);
+const el=document.createElement("div");
+el.className="player "+p.rarity.replaceAll(" ","-");
+const face=["🧑🏽","👨🏻","🧑🏿","👨🏾","🧑🏼"][id%5];
+el.innerHTML='<div class="rating">'+p.rating+'</div><small>'+p.pos+'</small><div class="face">'+face+'</div><h3>'+p.name+'</h3><small>'+p.rarity+'</small>';
+if(action){
+const b=document.createElement("button");b.textContent=label;b.onclick=()=>action(id);el.appendChild(b);
+}
+return el;
+}
+function fillCards(container,ids,action,labelFn){
+const el=document.getElementById(container);el.replaceChildren();
+ids.forEach(id=>el.appendChild(card(id,action,labelFn?labelFn(id):"")));
+}
+function renderClub(){
+document.getElementById("formation").value=state.formation;
+document.getElementById("clubInfo").textContent="Team rating: "+rating()+" | "+state.team.length+"/11 players";
+fillCards("startingXI",state.team,removeTeam,()=> "REMOVE");
+fillCards("collection",state.owned,addTeam,id=>state.team.includes(id)?"IN STARTING XI":"ADD TO XI");
+}
+function addTeam(id){
+if(state.team.includes(id))return;
+if(state.team.length>=11)return notify("Your starting XI is full. Remove a player first.");
+state.team.push(id);save();renderClub();
+}
+function removeTeam(id){state.team=state.team.filter(x=>x!==id);save();renderClub()}
+function setFormation(v){state.formation=v;save();renderClub()}
+function randomPlayer(type){
+const weighted=pool.filter(p=>{
+if(type==="ice")return p.rarity==="Icebreakers"||p.rarity==="Iconic"||p.rarity==="Hall-of-Fame";
+if(type==="premium")return p.rating>=82;
+return true;
+});
+return weighted[rand(weighted.length)].id;
+}
+function openPack(type){
+const cost=type==="standard"?500:type==="premium"?1500:150;
+const currency=type==="ice"?"gems":"coins";
+if(state[currency]<cost)return notify("Not enough "+currency+"!");
+state[currency]-=cost;
+const count=type==="premium"?5:3,won=[];
+for(let i=0;i<count;i++){
+const id=randomPlayer(type);won.push(id);
+if(state.owned.includes(id))state.coins+=Math.round(player(id).rating*3);
+else state.owned.push(id);
+}
+fillCards("packResults",won);
+save();renderHUD();
+notify("Pack opened! Duplicate cards automatically earn coins.");
+}
+function price(id){const p=player(id);return Math.round((p.rating-65)*80+(p.rating>=90?1000:0))}
+function renderMarket(){
+fillCards("marketPlayers",state.market,buy,id=>"BUY "+money(price(id))+" 🪙");
+fillCards("sellPlayers",state.owned.filter(id=>!state.team.includes(id)),sell,id=>"SELL "+money(Math.round(price(id)*.55))+" 🪙");
+}
+function buy(id){
+if(state.owned.includes(id))return notify("You already own this player.");
+if(state.coins<price(id))return notify("Not enough coins.");
+state.coins-=price(id);state.owned.push(id);save();renderMarket();renderHUD();
+}
+function sell(id){
+if(state.team.includes(id))return notify("Remove this player from your starting XI first.");
+state.owned=state.owned.filter(x=>x!==id);
+state.coins+=Math.round(price(id)*.55);
+save();renderMarket();renderHUD();
+}
+function refreshMarket(){
+if(state.coins<100)return notify("You need 100 coins.");
+state.coins-=100;
+state.market=[...pool].sort(()=>Math.random()-.5).slice(0,6).map(p=>p.id);
+save();renderMarket();renderHUD();
+}
+function train(){
+if(state.coins<250)return notify("Not enough coins.");
+state.coins-=250;
+const id=state.team[rand(state.team.length)];
+if(id===undefined)return notify("Choose your starting XI first.");
+const p=player(id);
+if(p.rating<99){p.rating++;notify(p.name+" improved to "+p.rating+" rating!")}
+award(0,100);save();
+}
+let difficulty="Normal";
+const difficulties=["Beginner","Easy","Normal","Hard","Legend"];
+document.getElementById("difficulties").replaceChildren(...difficulties.map(d=>{
+const b=document.createElement("button");b.className="btn "+(d==="Normal"?"gold":"ghost");b.textContent=d;
+b.onclick=()=>{difficulty=d;document.querySelectorAll("#difficulties button").forEach(x=>x.className="btn ghost");b.className="btn gold"};
+return b;
+}));
+function skill(){
+return {Beginner:.2,Easy:.35,Normal:.5,Hard:.68,Legend:.82}[difficulty];
+}
+
+/* PENALTIES */
+let pen={us:0,them:0,round:0,busy:false};
+function startPenalty(){
+pen={us:0,them:0,round:0,busy:false};
+show("penalties");updatePenalty();
+document.getElementById("penMessage").textContent="Choose where to shoot!";
+}
+function updatePenalty(){document.getElementById("penScore").textContent="KICKVERSE "+pen.us+" - "+pen.them+" BOTS | ROUND "+Math.min(5,pen.round+1)+"/5"}
+function takePenalty(direction){
+if(pen.busy)return;
+pen.busy=true;
+const keeper=rand(3);
+const saveChance=skill();
+document.getElementById("keeper").style.left=["30%","50%","70%"][keeper];
+const saved=keeper===direction&&Math.random()<saveChance+.1;
+if(!saved){pen.us++;goalProgress()}
+document.getElementById("penMessage").textContent=saved?"🧤 SAVED!":"⚽ GOAL!";
+setTimeout(()=>{
+const botMiss=Math.random()<(0.65-skill()*.5);
+if(!botMiss)pen.them++;
+pen.round++;updatePenalty();
+document.getElementById("keeper").style.left="50%";
+pen.busy=false;
+if(pen.round>=5){
+if(pen.us===pen.them){pen.round=4;document.getElementById("penMessage").textContent="SUDDEN DEATH!";}
+else finishPenalty();
+}else document.getElementById("penMessage").textContent=botMiss?"Bot missed! Your turn.":"Bot scored! Your turn.";
+},800);
+}
+function finishPenalty(){
+const won=pen.us>pen.them;
+award(won?350:90,won?180:60);
+result(won?"PENALTY VICTORY!":"PENALTY DEFEAT",pen.us+" - "+pen.them,won);
+}
+function result(title,detail,won){
+document.getElementById("resultEmoji").textContent=won?"🏆":"⚽";
+document.getElementById("resultTitle").textContent=title;
+document.getElementById("resultDetail").textContent=detail;
+show("result");
+}
+
+/* MATCH MODE: TOP-DOWN FOOTBALL */
+let match=null;
+const formationPoints=[
+[7,50],[23,15],[23,38],[23,62],[23,85],
+[42,25],[42,50],[42,75],[62,20],[68,50],[62,80]
+];
+function startMatch(cup=false){
+if(state.team.length<7)return notify("Add at least 7 players to your team in My Club.");
+match={us:0,them:0,time:0,playing:true,cup,selected:9,ballOwner:9,
+players:formationPoints.map((p,i)=>({x:p[0],y:p[1],team:0,i})).concat(
+formationPoints.map((p,i)=>({x:100-p[0],y:p[1],team:1,i}))
+),ball:{x:68,y:50},tick:null};
+show("match");
+drawMatch();
+match.tick=setInterval(tickMatch,450);
+}
+function drawMatch(){
+if(!match)return;
+document.getElementById("matchScore").textContent="KICKVERSE "+match.us+" - "+match.them+" BOTS";
+document.getElementById("matchTime").textContent="⏱ "+Math.floor(match.time/60)+"' "+(match.time%60)+"s";
+const root=document.getElementById("footballers");root.replaceChildren();
+match.players.forEach((p,i)=>{
+const el=document.createElement("div");
+el.className="footballer "+(p.team===0?"homeTeam":"awayTeam")+(i===match.selected?" selected":"");
+el.style.left=p.x+"%";el.style.top=p.y+"%";
+el.textContent=p.i===0?"GK":p.i;
+el.onclick=()=>{if(p.team===0){match.selected=i;drawMatch()}};
+root.appendChild(el);
+});
+const ball=document.getElementById("matchBall");
+ball.style.left=match.ball.x+"%";ball.style.top=match.ball.y+"%";
+}
+function say(s){document.getElementById("commentary").textContent=s}
+function possession(){
+return match.ballOwner>=0?match.players[match.ballOwner].team:-1;
+}
+function setBallOwner(i){
+match.ballOwner=i;match.ball.x=match.players[i].x;match.ball.y=match.players[i].y;
+}
+function matchAction(action){
+if(!match||!match.playing)return;
+const p=match.players[match.selected];
+if(action==="switch"){match.selected=(match.selected+1)%11;say("Switched player.");drawMatch();return}
+if(action==="move"){p.x=Math.min(92,p.x+5);say("Running forward!")}
+if(action==="pass"){
+if(possession()!==0){say("Win the ball first!");return}
+const teammates=match.players.slice(0,11).map((x,i)=>({x,i})).filter(x=>x.i!==match.ballOwner);
+const target=teammates.sort((a,b)=>Math.abs(a.x.x-(p.x+15))-Math.abs(b.x.x-(p.x+15)))[0];
+if(Math.random()<.86-skill()*.18){setBallOwner(target.i);match.selected=target.i;say("Great pass!")}
+else{setBallOwner(11+rand(11));say("Pass intercepted!")}
+}
+if(action==="shoot"){
+if(possession()!==0){say("You need possession!");return}
+const distance=100-match.ball.x;
+const chance=Math.max(.07,.78-distance*.009-skill()*.2+(rating()-80)*.008);
+if(Math.random()<chance){match.us++;goalProgress();say("GOOOAL! KICKVERSE SCORES!");resetKickoff()}
+else{say("Shot saved or wide!");setBallOwner(11)}
+}
+if(action==="tackle"){
+if(possession()===0){say("You already have the ball!");return}
+if(Math.random()<.7-skill()*.28){setBallOwner(match.selected);say("Brilliant tackle!")}
+else say("Tackle missed!");
+}
+drawMatch();
+}
+document.getElementById("pitch").addEventListener("click",e=>{
+if(!match||!match.playing||e.target.closest(".footballer"))return;
+const rect=e.currentTarget.getBoundingClientRect();
+const p=match.players[match.selected];
+p.x=Math.max(6,Math.min(94,(e.clientX-rect.left)/rect.width*100));
+p.y=Math.max(6,Math.min(94,(e.clientY-rect.top)/rect.height*100));
+if(match.ballOwner===match.selected)setBallOwner(match.selected);
+drawMatch();
+});
+function resetKickoff(){
+match.players.forEach((p,i)=>{const base=formationPoints[i%11];p.x=p.team===0?base[0]:100-base[0];p.y=base[1]});
+setBallOwner(9);
+}
+function tickMatch(){
+if(!match||!match.playing)return;
+match.time+=5;
+const owner=match.ballOwner;
+if(owner>=0){
+const p=match.players[owner];
+if(p.team===1){
+p.x=Math.max(6,p.x-(1+skill()*2.2));
+p.y=Math.max(7,Math.min(93,p.y+(Math.random()-.5)*8));
+setBallOwner(owner);
+if(p.x<28&&Math.random()<.17+skill()*.12){
+if(Math.random()<.22+skill()*.32){match.them++;say("The bots scored!");resetKickoff()}
+else{say("Your goalkeeper saves!");setBallOwner(0)}
+}
+if(Math.random()<.05){setBallOwner(rand(11));say("You intercepted the ball!")}
+}else if(Math.random()<.015+skill()*.035){
+setBallOwner(11+rand(11));say("The bots win possession!");
+}
+}
+match.players.forEach((p,i)=>{
+if(i!==match.ballOwner&&i!==match.selected){
+p.y=Math.max(7,Math.min(93,p.y+(Math.random()-.5)*2));
+}
+});
+drawMatch();
+if(match.time>=180)endMatch(false);
+}
+function endMatch(quit){
+if(!match)return;
+clearInterval(match.tick);
+match.playing=false;
+if(quit){show("modes");return}
+const won=match.us>match.them,draw=match.us===match.them;
+award(won?500:draw?200:90,won?250:draw?120:60,won?10:0);
+if(match.cup&&won){
+state.cup++;
+if(state.cup>=4){state.cup=0;award(2000,500,200);notify("🏆 YOU WON THE KICKVERSE CUP!")}
+save();
+}
+result(won?"FULL-TIME VICTORY!":draw?"FULL-TIME DRAW":"FULL-TIME DEFEAT",match.us+" - "+match.them+" | "+(won?"500 coins earned":draw?"200 coins earned":"90 coins earned"),won);
+}
+function renderCup(){
+const rounds=["ROUND OF 8","QUARTER-FINAL","SEMI-FINAL","FINAL"];
+document.getElementById("cupRound").textContent=rounds[Math.min(state.cup,3)];
+document.getElementById("cupOpponent").textContent="Next opponent: "+["Storm FC","Thunder United","Ice Wolves","Legend XI"][Math.min(state.cup,3)];
+}
+renderHUD();show("home");
+</script>
 </body>
 </html>
